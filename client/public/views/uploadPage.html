@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/app.css" />
+    <script defer src="../../dist/uploadController.bundle.js"></script>
+    <title>Report-App</title>
+  </head>
+  <body>
+    <nav class="side__nav">
+      <div class="links__container">
+        <div class="links__container__top">
+          <a href="/">
+            <button
+              class="
+                bg-blue-500
+                hover:bg-blue-700
+                text-white
+                font-bold
+                py-2
+                px-4
+                border border-blue-700
+                rounded
+              "
+            >
+              Input Data
+            </button>
+          </a>
+          <a href="/view">
+            <button
+              class="
+                bg-blue-500
+                hover:bg-blue-700
+                text-white
+                font-bold
+                py-2
+                px-4
+                border border-blue-700
+                rounded
+              "
+            >
+              View Data
+            </button>
+          </a>
+        </div>
+        <div class="links__container__bot">
+          <a href="/exit">
+            <button
+              class="
+                bg-blue-500
+                hover:bg-blue-700
+                text-white
+                font-bold
+                py-2
+                px-4
+                border border-blue-700
+                rounded
+              "
+            >
+              Exit
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="outer__border">
+        <form class="content__wrapper" action="/upload" method="POST">
+          <section class="input__row__1">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi
+                konsisten (Tepat Time To Market)
+              </h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__1__input__1"
+                  name="row__1__input"
+                  id="row__1"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__1__input__2"
+                  name="row__1__input"
+                  id="row__1"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__1__input__3"
+                  name="row__1__input"
+                  id="row__1"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__1__input__4"
+                  name="row__1__input"
+                  id="row__1"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__1__input__5"
+                  name="row__1__input"
+                  id="row__1"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__1__input__6"
+                  name="row__1__input"
+                  id="row__1"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__2">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Mencapai target zero complain desain produk vs URS sampai 1
+                tahun
+              </h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__2__input__1"
+                  name="row__2__input"
+                  id="row__2"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__2__input__2"
+                  name="row__2__input"
+                  id="row__2"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__2__input__3"
+                  name="row__2__input"
+                  id="row__2"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__2__input__4"
+                  name="row__2__input"
+                  id="row__2"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__2__input__5"
+                  name="row__2__input"
+                  id="row_2"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__2__input__6"
+                  name="row__2__input"
+                  id="row__2"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__3">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Mencapai Jumlah kelulusan training prosedur pembuatan, QC
+                material dan produk, manual book alat (NM assembly, instalasi &
+                QC, ETC, FMS staff terkait)
+              </h1>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__3__input__1"
+                  name="row__3__input"
+                  id="row__3"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__3__input__2"
+                  name="row__3__input"
+                  id="row__3"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__3__input__3"
+                  name="row__3__input"
+                  id="row__3"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__3__input__4"
+                  name="row__3__input"
+                  id="row__3"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__3__input__5"
+                  name="row__3__input"
+                  id="row_3"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__3__input__6"
+                  name="row__3__input"
+                  id="row__3"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__4">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Ketersediaan tools data collection performa produk sesuai target
+              </h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__4__input__1"
+                  name="row__4__input"
+                  id="row__4"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__4__input__2"
+                  name="row__4__input"
+                  id="row__4"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__4__input__3"
+                  name="row__4__input"
+                  id="row__4"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__4__input__4"
+                  name="row__4__input"
+                  id="row__4"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__4__input__5"
+                  name="row__4__input"
+                  id="row_4"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__4__input__6"
+                  name="row__4__input"
+                  id="row__4"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__5">
+            <div class="section__border">
+              <h1 class="text__heading">Mencapai target improvement product</h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__5__input__1"
+                  name="row__5__input"
+                  id="row__5"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__5__input__2"
+                  name="row__5__input"
+                  id="row__5"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__5__input__3"
+                  name="row__5__input"
+                  id="row__5"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__5__input__4"
+                  name="row__5__input"
+                  id="row__5"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__5__input__5"
+                  name="row__5__input"
+                  id="row_5"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__5__input__6"
+                  name="row__5__input"
+                  id="row__5"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__6">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Closing STCS (major) max 1 th & closing project
+              </h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__6__input__1"
+                  name="row__6__input"
+                  id="row__6"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__6__input__2"
+                  name="row__6__input"
+                  id="row__6"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__6__input__3"
+                  name="row__6__input"
+                  id="row__6"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__6__input__4"
+                  name="row__6__input"
+                  id="row__6"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__6__input__5"
+                  name="row__6__input"
+                  id="row_6"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__6__input__6"
+                  name="row__6__input"
+                  id="row__6"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__7">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Memastikan proses kerja sesuai standar ISO (Menekan temuan audit
+                status NC & PNC)
+              </h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__7__input__1"
+                  name="row__7__input"
+                  id="row__7"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__7__input__2"
+                  name="row__7__input"
+                  id="row__7"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__7__input__3"
+                  name="row__7__input"
+                  id="row__7"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__7__input__4"
+                  name="row__7__input"
+                  id="row__7"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__7__input__5"
+                  name="row__7__input"
+                  id="row_7"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__7__input__6"
+                  name="row__7__input"
+                  id="row__7"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__8">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Memenuhi gap kompetensi sesuai target
+              </h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__8__input__1"
+                  name="row__8__input"
+                  id="row__8"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__8__input__2"
+                  name="row__8__input"
+                  id="row__8"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__8__input__3"
+                  name="row__8__input"
+                  id="row__8"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__8__input__4"
+                  name="row__8__input"
+                  id="row__8"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__8__input__5"
+                  name="row__8__input"
+                  id="row_8"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__8__input__6"
+                  name="row__8__input"
+                  id="row__8"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__9">
+            <div class="section__border">
+              <h1 class="text__heading">
+                Mencapai kebersihan bangunan 100% dan 6S (5S & safety)
+              </h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__9__input__1"
+                  name="row__9__input"
+                  id="row__9"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__9__input__2"
+                  name="row__9__input"
+                  id="row__9"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__9__input__3"
+                  name="row__9__input"
+                  id="row__9"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__9__input__4"
+                  name="row__9__input"
+                  id="row__9"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__9__input__5"
+                  name="row__9__input"
+                  id="row_9"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__9__input__6"
+                  name="row__9__input"
+                  id="row__9"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__10">
+            <div class="section__border">
+              <h1 class="text__heading">Mengikuti KS (3 Per semester)</h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__10__input__1"
+                  name="row__10__input"
+                  id="row__10"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__10__input__2"
+                  name="row__10__input"
+                  id="row__10"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__10__input__3"
+                  name="row__10__input"
+                  id="row__10"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__10__input__4"
+                  name="row__10__input"
+                  id="row__10"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__10__input__5"
+                  name="row__10__input"
+                  id="row_10"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__10__input__6"
+                  name="row__10__input"
+                  id="row__10"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="input__row__11">
+            <div class="section__border">
+              <h1 class="text__heading">CMM</h1>
+              <div class="input__wrapper">
+                <label for="BO1">Input BO1 : </label>
+                <input
+                  type="text"
+                  id="row__11__input__1"
+                  name="row__11__input"
+                  id="row__11"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO2 : </label>
+                <input
+                  type="text"
+                  id="row__11__input__2"
+                  name="row__11__input"
+                  id="row__11"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO3 : </label>
+                <input
+                  type="text"
+                  id="row__11__input__3"
+                  name="row__11__input"
+                  id="row__11"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO4 : </label>
+                <input
+                  type="text"
+                  id="row__11__input__4"
+                  name="row__11__input"
+                  id="row__11"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO5 : </label>
+                <input
+                  type="text"
+                  id="row__11__input__5"
+                  name="row__11__input"
+                  id="row_11"
+                  required
+                />
+              </div>
+
+              <div class="input__wrapper">
+                <label for="BO1">Input BO6 : </label>
+                <input
+                  type="text"
+                  id="row__11__input__6"
+                  name="row__11__input"
+                  id="row__11"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <div class="btn__container">
+            <button
+              id="submit__btn"
+              class="
+                bg-blue-500
+                hover:bg-blue-700
+                text-white
+                font-bold
+                py-2
+                px-4
+                border border-blue-700
+                rounded
+              "
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
