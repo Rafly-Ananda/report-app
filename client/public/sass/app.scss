@@ -66,32 +66,47 @@ body {
 
 .outer__border {
   border: 2px solid $dark-grey;
-  border-radius: 2em;
+  border-radius: 1em;
   width: 70vw;
   height: 80vh;
-}
 
-.content__wrapper {
-  width: 85vw - $nav-width;
-  height: 80vh;
-  overflow-y: auto;
-
-  .btn__container {
+  .outside__btn__container {
     @include flex-boiler;
-    margin: 0 0 2em 0;
+    flex-direction: column;
+    height: 20vh;
+    width: 15vw;
+    justify-content: space-evenly;
+    position: fixed;
+    top: 63vh;
+    left: 76vw;
+
+    Button {
+      @include btn-style;
+    }
   }
 }
 
-.content__wrapper::-webkit-scrollbar {
+.form__wrapper {
+  width: 85vw - $nav-width;
+  height: 80vh;
+  overflow-y: scroll;
+
+  .inside__btn__container {
+    @include flex-boiler;
+    margin: 0 0 3em 0;
+  }
+}
+
+.form__wrapper::-webkit-scrollbar {
   width: 10px;
 }
 
-.content__wrapper::-webkit-scrollbar-track {
+.form__wrapper::-webkit-scrollbar-track {
   background-color: darkgrey;
   border-radius: 1em;
 }
 
-.content__wrapper::-webkit-scrollbar-thumb {
+.form__wrapper::-webkit-scrollbar-thumb {
   background-color: rgb(95, 95, 95);
   border-radius: 1em;
 }
@@ -119,11 +134,13 @@ body {
     flex-direction: column;
     width: 50%;
     border: 2px solid $dark-grey;
+    border-radius: 1em;
     padding-bottom: 2em;
 
     h1 {
       font-weight: 600;
       margin: 2em;
+      text-align: center;
     }
 
     .heading__container {
@@ -134,9 +151,14 @@ body {
       @include flex-boiler;
 
       input {
+        width: 10vw;
         border: 2px solid $dark-grey;
         margin: 1em;
       }
     }
   }
+}
+
+.element-hidden {
+  @include element-hidden;
 }

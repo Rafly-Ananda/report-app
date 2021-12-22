@@ -16,7 +16,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\r\n\r\n\r\nconst added_by = \"rafly\";\r\n\r\nconst sendGetRequest = async () => {\r\n  try {\r\n    const resp = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/view/${added_by}`);\r\n    console.log(resp.data);\r\n  } catch (err) {\r\n    console.error(err);\r\n  }\r\n};\r\n\r\nsendGetRequest();\r\n\n\n//# sourceURL=webpack://app/./client/public/js/viewController.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);\n\n\n\nconst added_by = \"rafly\";\nconst sendGetRequest = async () => {\n  try {\n    const resp = await axios__WEBPACK_IMPORTED_MODULE_0___default().get(`/view/${added_by}`);\n    console.log(resp);\n  } catch (err) {\n    console.error(err);\n  }\n};\n\nsendGetRequest();\n\n\n//# sourceURL=webpack://app/./client/public/js/viewController.js?");
 
 /***/ }),
 

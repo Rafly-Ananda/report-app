@@ -16,7 +16,7 @@
   \**********************************************/
 /***/ (() => {
 
-eval("\r\n\r\n// const btn = document.querySelector(\"#submit__btn\");\r\n// const temp = [];\r\n\r\n// btn.addEventListener(\"click\", () => {\r\n//   for (let i = 1; i < 7; i++) {\r\n//     const val = document.querySelector(`#row__${i}__input__1`).value;\r\n//     temp.push(val);\r\n//   }\r\n//   console.log(temp);\r\n// });\r\n\n\n//# sourceURL=webpack://app/./client/public/js/uploadController.js?");
+eval("\n\nconst inputSection = document.querySelectorAll(\".input__section\");\nconst nextBtn = document.querySelector(\"#next__btn\");\nconst prevBtn = document.querySelector(\"#prev__btn\");\nconst submitBtn = document.querySelector(\"#submit__btn\");\n\nlet currSection = 1;\nlet maxSection = inputSection.length;\n\nconst goToSection = (section) => {\n  document.querySelector(`.input__row__${section}`).scrollIntoView({\n    behavior: \"smooth\",\n  });\n};\n\nconst nextSection = () => {\n  currSection === maxSection ? (currSection = 1) : currSection++;\n  if (currSection === 11) submitBtn.classList.remove(\"element-hidden\");\n  goToSection(currSection);\n};\n\nconst prevSection = () => {\n  currSection === 1 ? (currSection = maxSection) : currSection--;\n  goToSection(currSection);\n};\n\nnextBtn.addEventListener(\"click\", () => {\n  nextSection();\n});\n\nprevBtn.addEventListener(\"click\", () => {\n  prevSection();\n});\n\n\n//# sourceURL=webpack://app/./client/public/js/uploadController.js?");
 
 /***/ })
 

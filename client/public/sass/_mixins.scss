@@ -10,3 +10,7 @@
   font-size: medium;
   font-weight: 400;
 }
+
+@mixin element-hidden {
+  display: none;
+}

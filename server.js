@@ -27,12 +27,14 @@ app.post("/upload", (req, res) => {
   try {
     const info = req.body;
     // const { database, identifier } = req.params;
-    const added_by = "rafly";
-    pool.query(
-      `INSERT INTO data_input (added_by, dataset) VALUES ($1, $2) RETURNING *`,
-      [added_by, JSON.stringify(info)]
-    );
-    res.json(`data added`);
+
+    // const added_by = "rafly";
+    // pool.query(
+    //   `INSERT INTO data_input (added_by, dataset) VALUES ($1, $2) RETURNING *`,
+    //   [added_by, JSON.stringify(info)]
+    // );
+    // res.json(`data added`);
+    console.log(info);
   } catch (err) {
     console.log(err.message);
   }

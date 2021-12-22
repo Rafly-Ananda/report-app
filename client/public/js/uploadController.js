@@ -1,12 +1,34 @@
 "use strict";
 
-// const btn = document.querySelector("#submit__btn");
-// const temp = [];
+const inputSection = document.querySelectorAll(".input__section");
+const nextBtn = document.querySelector("#next__btn");
+const prevBtn = document.querySelector("#prev__btn");
+const submitBtn = document.querySelector("#submit__btn");
 
-// btn.addEventListener("click", () => {
-//   for (let i = 1; i < 7; i++) {
-//     const val = document.querySelector(`#row__${i}__input__1`).value;
-//     temp.push(val);
-//   }
-//   console.log(temp);
-// });
+let currSection = 1;
+let maxSection = inputSection.length;
+
+const goToSection = (section) => {
+  document.querySelector(`.input__row__${section}`).scrollIntoView({
+    behavior: "smooth",
+  });
+};
+
+const nextSection = () => {
+  currSection === maxSection ? (currSection = 1) : currSection++;
+  if (currSection === 11) submitBtn.classList.remove("element-hidden");
+  goToSection(currSection);
+};
+
+const prevSection = () => {
+  currSection === 1 ? (currSection = maxSection) : currSection--;
+  goToSection(currSection);
+};
+
+nextBtn.addEventListener("click", () => {
+  nextSection();
+});
+
+prevBtn.addEventListener("click", () => {
+  prevSection();
+});

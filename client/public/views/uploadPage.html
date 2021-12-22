@@ -18,32 +18,14 @@
         <div class="links__container__top">
           <a href="/">
             <button
-              class="
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                border border-blue-700
-                rounded
-              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             >
               Input Data
             </button>
           </a>
           <a href="/view">
             <button
-              class="
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                border border-blue-700
-                rounded
-              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             >
               View Data
             </button>
@@ -52,16 +34,7 @@
         <div class="links__container__bot">
           <a href="/exit">
             <button
-              class="
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                border border-blue-700
-                rounded
-              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             >
               Exit
             </button>
@@ -71,8 +44,8 @@
     </nav>
     <main>
       <div class="outer__border">
-        <form class="content__wrapper" action="/upload" method="POST">
-          <section class="input__row__1">
+        <form class="form__wrapper" action="/upload" method="POST">
+          <section class="input__section input__row__1">
             <div class="section__border">
               <h1 class="text__heading">
                 Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi
@@ -146,7 +119,7 @@
             </div>
           </section>
 
-          <section class="input__row__2">
+          <section class="input__section input__row__2">
             <div class="section__border">
               <h1 class="text__heading">
                 Mencapai target zero complain desain produk vs URS sampai 1
@@ -220,7 +193,7 @@
             </div>
           </section>
 
-          <section class="input__row__3">
+          <section class="input__section input__row__3">
             <div class="section__border">
               <h1 class="text__heading">
                 Mencapai Jumlah kelulusan training prosedur pembuatan, QC
@@ -296,7 +269,7 @@
             </div>
           </section>
 
-          <section class="input__row__4">
+          <section class="input__section input__row__4">
             <div class="section__border">
               <h1 class="text__heading">
                 Ketersediaan tools data collection performa produk sesuai target
@@ -369,7 +342,7 @@
             </div>
           </section>
 
-          <section class="input__row__5">
+          <section class="input__section input__row__5">
             <div class="section__border">
               <h1 class="text__heading">Mencapai target improvement product</h1>
               <div class="input__wrapper">
@@ -440,7 +413,7 @@
             </div>
           </section>
 
-          <section class="input__row__6">
+          <section class="input__section input__row__6">
             <div class="section__border">
               <h1 class="text__heading">
                 Closing STCS (major) max 1 th & closing project
@@ -513,7 +486,7 @@
             </div>
           </section>
 
-          <section class="input__row__7">
+          <section class="input__section input__row__7">
             <div class="section__border">
               <h1 class="text__heading">
                 Memastikan proses kerja sesuai standar ISO (Menekan temuan audit
@@ -587,7 +560,7 @@
             </div>
           </section>
 
-          <section class="input__row__8">
+          <section class="input__section input__row__8">
             <div class="section__border">
               <h1 class="text__heading">
                 Memenuhi gap kompetensi sesuai target
@@ -660,7 +633,7 @@
             </div>
           </section>
 
-          <section class="input__row__9">
+          <section class="input__section input__row__9">
             <div class="section__border">
               <h1 class="text__heading">
                 Mencapai kebersihan bangunan 100% dan 6S (5S & safety)
@@ -733,7 +706,7 @@
             </div>
           </section>
 
-          <section class="input__row__10">
+          <section class="input__section input__row__10">
             <div class="section__border">
               <h1 class="text__heading">Mengikuti KS (3 Per semester)</h1>
               <div class="input__wrapper">
@@ -804,7 +777,7 @@
             </div>
           </section>
 
-          <section class="input__row__11">
+          <section class="input__section input__row__11">
             <div class="section__border">
               <h1 class="text__heading">CMM</h1>
               <div class="input__wrapper">
@@ -875,19 +848,32 @@
             </div>
           </section>
 
-          <div class="btn__container">
+          <!-- <div class="inside__btn__container">
             <button
               id="submit__btn"
-              class="
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                border border-blue-700
-                rounded
-              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+            >
+              Submit
+            </button>
+          </div> -->
+          <div class="outside__btn__container">
+            <button
+              id="prev__btn"
+              type="button"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+            >
+              Prev
+            </button>
+            <button
+              id="next__btn"
+              type="button"
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+            >
+              Next
+            </button>
+            <button
+              id="submit__btn"
+              class="element-hidden bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             >
               Submit
             </button>
