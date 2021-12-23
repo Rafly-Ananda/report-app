@@ -15,7 +15,7 @@ app.use(express.static(path.join(__dirname + "/client")));
 app.use(express.static(path.join(__dirname + "/client/public")));
 app.use(cors(corsOptions));
 
-app.get("/", (req, res) => {
+app.get("/upload", (req, res) => {
   res.sendFile(__dirname + "/client/public/views/uploadPage.html");
 });
 
@@ -25,15 +25,15 @@ app.get("/view", (req, res) => {
 
 app.post("/upload", (req, res) => {
   try {
-    const info = req.body;
-    // const { database, identifier } = req.params;
+    // const info = req.body;
+    // // const { database, identifier } = req.params;
 
     // const added_by = "rafly";
     // pool.query(
     //   `INSERT INTO data_input (added_by, dataset) VALUES ($1, $2) RETURNING *`,
     //   [added_by, JSON.stringify(info)]
     // );
-    // res.json(`data added`);
+    res.redirect("/view");
     console.log(info);
   } catch (err) {
     console.log(err.message);
@@ -52,6 +52,10 @@ app.get("/view/:added_by", async (req, res) => {
   } catch (error) {
     console.log(error.message);
   }
+});
+
+app.get("*", (req, res) => {
+  res.redirect("/view");
 });
 
 app.listen(PORT, () => {

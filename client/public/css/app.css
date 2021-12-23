@@ -66,10 +66,42 @@ body {
 .outer__border {
   border: 2px solid #222222;
   border-radius: 1em;
-  width: 70vw;
-  height: 80vh;
+  max-width: 70vw;
+  max-height: 80vh;
 }
-.outer__border .outside__btn__container {
+.outer__border .view__wrapper {
+  width: 72vw;
+  height: 80vh;
+  padding-right: 1.6em;
+  overflow-y: scroll;
+}
+.outer__border .view__wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+.outer__border .view__wrapper::-webkit-scrollbar-track {
+  background-color: darkgrey;
+  border-radius: 1em;
+}
+.outer__border .view__wrapper::-webkit-scrollbar-thumb {
+  background-color: #5f5f5f;
+  border-radius: 1em;
+}
+.outer__border .chart__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  min-width: 65vw;
+}
+.outer__border .chart__wrapper .chart__container {
+  border: 2px solid #222222;
+  border-radius: 1em;
+  width: 50vw;
+}
+.outer__border .chart__wrapper .chart__container canvas {
+  margin: 2em;
+}
+.outer__border .btn__container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,7 +113,7 @@ body {
   top: 63vh;
   left: 76vw;
 }
-.outer__border .outside__btn__container Button {
+.outer__border .btn__container Button {
   width: 8vw;
   border-radius: 0.75em;
   font-size: medium;
@@ -91,13 +123,8 @@ body {
 .form__wrapper {
   width: 72vw;
   height: 80vh;
+  padding-right: 1.6em;
   overflow-y: scroll;
-}
-.form__wrapper .inside__btn__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0 3em 0;
 }
 
 .form__wrapper::-webkit-scrollbar {
@@ -210,9 +237,24 @@ body {
   border: 2px solid #222222;
   margin: 1em;
 }
+.input__row__1 .section__indicator,
+.input__row__2 .section__indicator,
+.input__row__3 .section__indicator,
+.input__row__4 .section__indicator,
+.input__row__5 .section__indicator,
+.input__row__6 .section__indicator,
+.input__row__7 .section__indicator,
+.input__row__8 .section__indicator,
+.input__row__9 .section__indicator,
+.input__row__10 .section__indicator,
+.input__row__11 .section__indicator {
+  color: #dc143c;
+  margin: 1em 0 0 0;
+}
 
 .element-hidden {
   display: none;
+  transition: display 0s, opacity 0.5s linear;
 }
 
 /*# sourceMappingURL=app.css.map */

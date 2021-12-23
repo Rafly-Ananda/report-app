@@ -67,10 +67,47 @@ body {
 .outer__border {
   border: 2px solid $dark-grey;
   border-radius: 1em;
-  width: 70vw;
-  height: 80vh;
+  max-width: 70vw;
+  max-height: 80vh;
 
-  .outside__btn__container {
+  .view__wrapper {
+    width: 85vw - $nav-width;
+    height: 80vh;
+    padding-right: 1.6em;
+    overflow-y: scroll;
+  }
+
+  .view__wrapper::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .view__wrapper::-webkit-scrollbar-track {
+    background-color: darkgrey;
+    border-radius: 1em;
+  }
+
+  .view__wrapper::-webkit-scrollbar-thumb {
+    background-color: rgb(95, 95, 95);
+    border-radius: 1em;
+  }
+
+  .chart__wrapper {
+    @include flex-boiler;
+    min-height: 80vh;
+    min-width: 65vw;
+
+    .chart__container {
+      border: 2px solid $dark-grey;
+      border-radius: 1em;
+      width: 50vw;
+
+      canvas {
+        margin: 2em;
+      }
+    }
+  }
+
+  .btn__container {
     @include flex-boiler;
     flex-direction: column;
     height: 20vh;
@@ -89,12 +126,8 @@ body {
 .form__wrapper {
   width: 85vw - $nav-width;
   height: 80vh;
+  padding-right: 1.6em;
   overflow-y: scroll;
-
-  .inside__btn__container {
-    @include flex-boiler;
-    margin: 0 0 3em 0;
-  }
 }
 
 .form__wrapper::-webkit-scrollbar {
@@ -156,6 +189,11 @@ body {
         margin: 1em;
       }
     }
+  }
+
+  .section__indicator {
+    color: $soft-red;
+    margin: 1em 0 0 0;
   }
 }
 
