@@ -34,6 +34,7 @@ app.post("/upload", (req, res) => {
     //   [added_by, JSON.stringify(info)]
     // );
     res.redirect("/view");
+    console.log("submitted");
     console.log(info);
   } catch (err) {
     console.log(err.message);

@@ -92,3 +92,36 @@ const sendGetRequest = async () => {
 };
 
 sendGetRequest();
+
+// const Row1 = () => {
+//   const [BO1, setBO1] = useState("");
+//   const [BO2, setBO2] = useState("");
+//   const [BO3, setBO3] = useState("");
+//   const [BO4, setBO4] = useState("");
+//   const [BO5, setBO5] = useState("");
+//   const [BO6, setBO6] = useState("");
+
+//   const onSubmitData1 = (e) => {
+//     e.preventDefault();
+//     console.log(BO1);
+//     let emptyCounter = 0;
+//     let result;
+//     const data = { BO1, BO2, BO3, BO4, BO5, BO6 };
+//     const temp = Object.values(data).map((ele) => {
+//       if (ele === "0") emptyCounter++;
+//       return Number(ele);
+//     });
+//     const sum = temp.reduce((prev, curr) => {
+//       return prev + curr;
+//     });
+
+//     if (Object.values(data).includes("0")) {
+//       result = sum / (temp.length - emptyCounter);
+//       console.log(`PCP I = ${result.toFixed(1)} %`);
+//     } else {
+//       result = sum / 6;
+//       console.log(`PCP I = ${result.toFixed(1)} %`);
+//     }
+
+//     // axios.post("/upload/main_input", data);
+//   };

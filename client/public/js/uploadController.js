@@ -1,48 +1,75 @@
 "use strict";
 
-const inputSection = document.querySelectorAll(".input__section");
+const inputSections = document.querySelectorAll(".input__section");
 const nextBtn = document.querySelector("#next__btn");
 const prevBtn = document.querySelector("#prev__btn");
 const submitBtn = document.querySelector("#submit__btn");
-// const observer = new IntersectionObserver((section) => {
-//   console.log(section);
-// });
 
-// observer.observe(inputSection[10]);
+function sectionNavigation() {
+  let currSection = 1;
+  let maxSection = inputSections.length;
 
-let currSection = 1;
-let maxSection = inputSection.length;
+  const goToSection = (section) => {
+    document.querySelector(`.input__row__${section}`).scrollIntoView({
+      behavior: "smooth",
+    });
+  };
 
-const goToSection = (section) => {
-  document.querySelector(`.input__row__${section}`).scrollIntoView({
-    behavior: "smooth",
+  const nextSection = () => {
+    currSection === maxSection ? (currSection = 1) : currSection++;
+    if (currSection === 11) {
+      nextBtn.classList.add("element-hidden");
+      submitBtn.classList.remove("element-hidden");
+    }
+    prevBtn.classList.remove("element-hidden");
+    goToSection(currSection);
+  };
+
+  const prevSection = () => {
+    currSection === 1 ? null : currSection--;
+    if (currSection === 1) {
+      prevBtn.classList.add("element-hidden");
+    }
+    nextBtn.classList.remove("element-hidden");
+    submitBtn.classList.add("element-hidden");
+    goToSection(currSection);
+  };
+
+  nextBtn.addEventListener("click", () => {
+    nextSection();
   });
-};
 
-const nextSection = () => {
-  currSection === maxSection ? (currSection = 1) : currSection++;
-  if (currSection === 11) {
-    nextBtn.classList.add("element-hidden");
-    submitBtn.classList.remove("element-hidden");
-  }
-  prevBtn.classList.remove("element-hidden");
-  goToSection(currSection);
-};
+  prevBtn.addEventListener("click", () => {
+    prevSection();
+  });
+}
 
-const prevSection = () => {
-  currSection === 1 ? null : currSection--;
-  if (currSection === 1) {
-    prevBtn.classList.add("element-hidden");
-  }
-  nextBtn.classList.remove("element-hidden");
-  submitBtn.classList.add("element-hidden");
-  goToSection(currSection);
-};
+function observerSubmit() {
+  const options = {
+    threshold: 0.25,
+  };
 
-nextBtn.addEventListener("click", () => {
-  nextSection();
+  const observer = new IntersectionObserver((section) => {
+    if (section[0].isIntersecting) {
+      submitBtn.classList.remove("element-hidden");
+      nextBtn.classList.add("element-hidden");
+    } else {
+      submitBtn.classList.add("element-hidden");
+      nextBtn.classList.remove("element-hidden");
+    }
+  }, options);
+
+  observer.observe(inputSections[10]);
+}
+
+submitBtn.addEventListener("click", () => {
+  // ! Testing
+  const form = document.querySelector(".form").submit();
 });
 
-prevBtn.addEventListener("click", () => {
-  prevSection();
-});
+function start() {
+  observerSubmit();
+  sectionNavigation();
+}
+
+start();
