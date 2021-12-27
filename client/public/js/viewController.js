@@ -2,7 +2,9 @@
 import axios from "axios";
 import Chart from "chart.js/auto";
 
-const added_by = "rafly";
+const findBtn = document.querySelector(".find__data__btn");
+const selectDataSection = document.querySelector(".select__data__wrapper");
+const viewSection = document.querySelector(".view__section");
 
 const generateChart = (label, dataset, chartId) => {
   const ctx = document.getElementById(`${chartId}`).getContext("2d");
@@ -59,7 +61,7 @@ const generateChart = (label, dataset, chartId) => {
   new Chart(ctx, chartConfig);
 };
 
-const sendGetRequest = async () => {
+const getData = async (user) => {
   const title = [
     "Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi konsisten (Tepat Time To Market)",
     "Mencapai target zero complain desain produk vs URS sampai 1 tahun",
@@ -80,48 +82,35 @@ const sendGetRequest = async () => {
   ];
 
   try {
-    const resp = await axios.get(`/view/${added_by}`);
+    const resp = await axios.get(`/view/${user}`);
     const entries = Object.entries(resp.data.dataset);
+    const values = Object.values(resp.data.dataset);
+    const heading = document.querySelectorAll(".PCP__1");
 
+    // ? Calculate PCP
+    values.forEach((data, index) => {
+      const temp = data.map((ele) => Number(ele)).filter((ele) => ele > 0);
+      const result =
+        temp.reduce((prev, next) => {
+          return prev + next;
+        }) / temp.length;
+      heading[index].textContent = `PCP I = ${result.toFixed(1)}%`;
+      console.log(result);
+    });
+
+    // ? Generate Chart
     entries.forEach((element, index) => {
       generateChart(title[index], element[1], `myChart${index + 1}`);
     });
+
+    selectDataSection.classList.add("element-hidden");
+    viewSection.classList.remove("element-hidden");
   } catch (err) {
     console.error(err);
   }
 };
 
-sendGetRequest();
-
-// const Row1 = () => {
-//   const [BO1, setBO1] = useState("");
-//   const [BO2, setBO2] = useState("");
-//   const [BO3, setBO3] = useState("");
-//   const [BO4, setBO4] = useState("");
-//   const [BO5, setBO5] = useState("");
-//   const [BO6, setBO6] = useState("");
-
-//   const onSubmitData1 = (e) => {
-//     e.preventDefault();
-//     console.log(BO1);
-//     let emptyCounter = 0;
-//     let result;
-//     const data = { BO1, BO2, BO3, BO4, BO5, BO6 };
-//     const temp = Object.values(data).map((ele) => {
-//       if (ele === "0") emptyCounter++;
-//       return Number(ele);
-//     });
-//     const sum = temp.reduce((prev, curr) => {
-//       return prev + curr;
-//     });
-
-//     if (Object.values(data).includes("0")) {
-//       result = sum / (temp.length - emptyCounter);
-//       console.log(`PCP I = ${result.toFixed(1)} %`);
-//     } else {
-//       result = sum / 6;
-//       console.log(`PCP I = ${result.toFixed(1)} %`);
-//     }
-
-//     // axios.post("/upload/main_input", data);
-//   };
+findBtn.addEventListener("click", () => {
+  const user = document.querySelector("#user").value;
+  user === "" ? alert("please choose a user") : getData(user);
+});

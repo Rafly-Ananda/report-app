@@ -69,20 +69,66 @@ body {
   max-width: 70vw;
   max-height: 80vh;
 }
-.outer__border .view__wrapper {
+.outer__border .select__data__section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72vw;
+  height: 80vh;
+}
+.outer__border .select__data__section .input__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 40%;
+  height: 30%;
+}
+.outer__border .select__data__section .input__container Button {
+  width: 8vw;
+  border-radius: 0.75em;
+  font-size: medium;
+  font-weight: 400;
+}
+.outer__border .select__data__section .input__container .dropdown__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  width: 100%;
+  height: 30%;
+}
+.outer__border .select__data__section .input__container .dropdown__container select,
+.outer__border .select__data__section .input__container .dropdown__container input {
+  border: 2px solid #222222;
+  border-radius: 0.25em;
+  background: #ffffff;
+}
+.outer__border .select__data__section .input__container .dropdown__container input {
+  width: 10vw;
+}
+.outer__border .select__data__section .input__container .dropdown__container select {
+  width: 8vw;
+}
+.outer__border .select__data__section .input__container .dropdown__container option:not(:checked) {
+  background-color: #f0ffff;
+}
+.outer__border .view__section {
   width: 72vw;
   height: 80vh;
   padding-right: 1.6em;
   overflow-y: scroll;
 }
-.outer__border .view__wrapper::-webkit-scrollbar {
+.outer__border .view__section::-webkit-scrollbar {
   width: 10px;
 }
-.outer__border .view__wrapper::-webkit-scrollbar-track {
+.outer__border .view__section::-webkit-scrollbar-track {
   background-color: darkgrey;
   border-radius: 1em;
 }
-.outer__border .view__wrapper::-webkit-scrollbar-thumb {
+.outer__border .view__section::-webkit-scrollbar-thumb {
   background-color: #5f5f5f;
   border-radius: 1em;
 }
@@ -97,6 +143,10 @@ body {
   border: 2px solid #222222;
   border-radius: 1em;
   width: 50vw;
+}
+.outer__border .chart__wrapper .chart__container h1 {
+  margin: 2em;
+  font-weight: 300;
 }
 .outer__border .chart__wrapper .chart__container canvas {
   margin: 2em;
@@ -254,7 +304,6 @@ body {
 
 .element-hidden {
   display: none;
-  transition: display 0s, opacity 0.5s linear;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -62,14 +62,27 @@ function observerSubmit() {
   observer.observe(inputSections[10]);
 }
 
-submitBtn.addEventListener("click", () => {
-  // ! Testing
-  const form = document.querySelector(".form").submit();
-});
-
 function start() {
   observerSubmit();
   sectionNavigation();
 }
 
 start();
+
+// ____________________Populate Form (Developer)_________________________________ //
+
+function placeholderVal() {
+  const arr = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  const randomData = Math.floor(Math.random() * arr.length);
+  return arr[randomData];
+}
+
+const generateData = document.querySelector(".populateData");
+generateData.addEventListener("click", () => {
+  for (let i = 1; i <= 11; i++) {
+    for (let j = 1; j <= 6; j++) {
+      document.querySelector(`#row__${i}__input__${j}`).value =
+        placeholderVal();
+    }
+  }
+});

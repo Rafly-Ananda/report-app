@@ -9,10 +9,13 @@ const corsOptions = {
   origin: "http://localhost:8080",
 };
 
+// Parse incoming requests data
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: false }));
+// Use static files in client dir
 app.use(express.static(path.join(__dirname + "/client")));
 app.use(express.static(path.join(__dirname + "/client/public")));
+// Enable CORS
 app.use(cors(corsOptions));
 
 app.get("/upload", (req, res) => {
@@ -25,17 +28,17 @@ app.get("/view", (req, res) => {
 
 app.post("/upload", (req, res) => {
   try {
-    // const info = req.body;
-    // // const { database, identifier } = req.params;
+    const info = req.body;
+    // const { database, identifier } = req.params;
 
-    // const added_by = "rafly";
-    // pool.query(
-    //   `INSERT INTO data_input (added_by, dataset) VALUES ($1, $2) RETURNING *`,
-    //   [added_by, JSON.stringify(info)]
-    // );
-    res.redirect("/view");
+    const added_by = "ananda";
+    pool.query(
+      `INSERT INTO data_input (added_by, dataset) VALUES ($1, $2) RETURNING *`,
+      [added_by, info]
+    );
+
     console.log("submitted");
-    console.log(info);
+    res.redirect("/view");
   } catch (err) {
     console.log(err.message);
   }
@@ -55,7 +58,11 @@ app.get("/view/:added_by", async (req, res) => {
   }
 });
 
+const xoxo = new Date();
+console.log(xoxo);
+
 app.get("*", (req, res) => {
+  res.status(200);
   res.redirect("/view");
 });
 
