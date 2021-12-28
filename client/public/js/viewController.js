@@ -61,7 +61,7 @@ const generateChart = (label, dataset, chartId) => {
   new Chart(ctx, chartConfig);
 };
 
-const getData = async (user) => {
+const getData = async (user, period) => {
   const title = [
     "Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi konsisten (Tepat Time To Market)",
     "Mencapai target zero complain desain produk vs URS sampai 1 tahun",
@@ -82,7 +82,7 @@ const getData = async (user) => {
   ];
 
   try {
-    const resp = await axios.get(`/view/${user}`);
+    const resp = await axios.get(`/view/${user}/${period}`);
     const entries = Object.entries(resp.data.dataset);
     const values = Object.values(resp.data.dataset);
     const heading = document.querySelectorAll(".PCP__1");
@@ -106,11 +106,18 @@ const getData = async (user) => {
     selectDataSection.classList.add("element-hidden");
     viewSection.classList.remove("element-hidden");
   } catch (err) {
+    alert("Data not found!");
     console.error(err);
   }
 };
 
 findBtn.addEventListener("click", () => {
   const user = document.querySelector("#user").value;
-  user === "" ? alert("please choose a user") : getData(user);
+  const date = document.querySelector("#period").value;
+
+  if (user != "-" && date != "") {
+    getData(user, date);
+  } else {
+    alert("please choose a correct user and period");
+  }
 });

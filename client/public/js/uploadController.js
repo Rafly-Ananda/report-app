@@ -1,13 +1,16 @@
 "use strict";
 
+import axios from "axios";
+
 const inputSections = document.querySelectorAll(".input__section");
 const nextBtn = document.querySelector("#next__btn");
 const prevBtn = document.querySelector("#prev__btn");
 const submitBtn = document.querySelector("#submit__btn");
 
 function sectionNavigation() {
-  let currSection = 1;
+  let currSection = 0;
   let maxSection = inputSections.length;
+  console.log(inputSections.length);
 
   const goToSection = (section) => {
     document.querySelector(`.input__row__${section}`).scrollIntoView({
@@ -16,8 +19,8 @@ function sectionNavigation() {
   };
 
   const nextSection = () => {
-    currSection === maxSection ? (currSection = 1) : currSection++;
-    if (currSection === 11) {
+    currSection === maxSection ? (currSection = 0) : currSection++;
+    if (currSection === 12) {
       nextBtn.classList.add("element-hidden");
       submitBtn.classList.remove("element-hidden");
     }
@@ -26,8 +29,8 @@ function sectionNavigation() {
   };
 
   const prevSection = () => {
-    currSection === 1 ? null : currSection--;
-    if (currSection === 1) {
+    currSection === 0 ? null : currSection--;
+    if (currSection === 0) {
       prevBtn.classList.add("element-hidden");
     }
     nextBtn.classList.remove("element-hidden");
@@ -59,17 +62,39 @@ function observerSubmit() {
     }
   }, options);
 
-  observer.observe(inputSections[10]);
+  observer.observe(inputSections[11]);
 }
+
+// function postRequest() {
+//   const form = document.querySelector("form");
+//   form.addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     let formData = new FormData(form);
+//     // ? checking key & values
+//     // for (var [key, value] of formData.entries()) {
+//     //   console.log(key + ":" + value);
+//     // }
+//     // const formProps = Object.fromEntries(formData);
+//     // ? post request
+//     axios.post("/upload", formData).then((res) => {
+//       console.log(res);
+//     });
+//   });
+// }
 
 function start() {
   observerSubmit();
   sectionNavigation();
+  // postRequest();
 }
 
 start();
 
-// ____________________Populate Form (Developer)_________________________________ //
+submitBtn.addEventListener("click", () => {
+  console.log("clicked");
+});
+
+// ____________________Populate Form (testing tools)_________________________________ //
 
 function placeholderVal() {
   const arr = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];

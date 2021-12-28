@@ -93,15 +93,16 @@ body {
         width: 100%;
         height: 30%;
 
+        label {
+          display: block;
+        }
+
         select,
         input {
           border: 2px solid $dark-grey;
           border-radius: 0.25em;
           background: $default-white;
-        }
-
-        input {
-          width: 10vw;
+          margin: 1em 0;
         }
 
         select {
@@ -195,7 +196,7 @@ body {
 }
 
 // ** Upload Page Styling ** //
-
+.input__row__0,
 .input__row__1,
 .input__row__2,
 .input__row__3,
@@ -211,6 +212,31 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
+
+  .section__border__credential {
+    @include flex-boiler;
+    flex-direction: column;
+    width: 50%;
+    border: 2px solid $dark-grey;
+    border-radius: 1em;
+    padding: 2em;
+
+    .set__user {
+      input {
+        width: 8vw;
+      }
+    }
+
+    .setter {
+      @include flex-boiler;
+      input {
+        border: 2px solid $dark-grey;
+        border-radius: 0.25em;
+        background: $default-white;
+        margin: 1em;
+      }
+    }
+  }
 
   .section__border {
     @include flex-boiler;
