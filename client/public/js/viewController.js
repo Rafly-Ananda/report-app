@@ -5,6 +5,7 @@ import Chart from "chart.js/auto";
 const findBtn = document.querySelector(".find__data__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
 const viewSection = document.querySelector(".view__section");
+const userSelectOptions = document.querySelector("#user");
 
 const generateChart = (label, dataset, chartId) => {
   const ctx = document.getElementById(`${chartId}`).getContext("2d");
@@ -82,9 +83,9 @@ const getData = async (user, period) => {
   ];
 
   try {
-    const resp = await axios.get(`/view/${user}/${period}`);
-    const entries = Object.entries(resp.data.dataset);
-    const values = Object.values(resp.data.dataset);
+    const response = await axios.get(`/view/data/${user}/${period}`);
+    const entries = Object.entries(response.data.dataset);
+    const values = Object.values(response.data.dataset);
     const heading = document.querySelectorAll(".PCP__1");
 
     // ? Calculate PCP
@@ -94,7 +95,7 @@ const getData = async (user, period) => {
         temp.reduce((prev, next) => {
           return prev + next;
         }) / temp.length;
-      heading[index].textContent = `PCP I = ${result.toFixed(1)}%`;
+      heading[index].textContent = `PCP I = ${result.toFixed(2)}%`;
       console.log(result);
     });
 
@@ -111,6 +112,22 @@ const getData = async (user, period) => {
   }
 };
 
+async function getUser() {
+  const response = await axios.get("/view/data/user");
+  const data = response.data;
+  const users = new Array();
+  for (const [_, value] of Object.entries(data)) {
+    users.push(value.username);
+  }
+
+  users.forEach((ele) => {
+    userSelectOptions.insertAdjacentHTML(
+      "beforeend",
+      `<option value="${ele}">${ele}</option>`
+    );
+  });
+}
+
 findBtn.addEventListener("click", () => {
   const user = document.querySelector("#user").value;
   const date = document.querySelector("#period").value;
@@ -121,3 +138,9 @@ findBtn.addEventListener("click", () => {
     alert("please choose a correct user and period");
   }
 });
+
+function start() {
+  getUser();
+}
+
+start();

@@ -10,7 +10,6 @@ const submitBtn = document.querySelector("#submit__btn");
 function sectionNavigation() {
   let currSection = 0;
   let maxSection = inputSections.length;
-  console.log(inputSections.length);
 
   const goToSection = (section) => {
     document.querySelector(`.input__row__${section}`).scrollIntoView({
@@ -65,22 +64,27 @@ function observerSubmit() {
   observer.observe(inputSections[11]);
 }
 
-// function postRequest() {
-//   const form = document.querySelector("form");
-//   form.addEventListener("submit", (e) => {
-//     e.preventDefault();
-//     let formData = new FormData(form);
-//     // ? checking key & values
-//     // for (var [key, value] of formData.entries()) {
-//     //   console.log(key + ":" + value);
-//     // }
-//     // const formProps = Object.fromEntries(formData);
-//     // ? post request
-//     axios.post("/upload", formData).then((res) => {
-//       console.log(res);
-//     });
-//   });
-// }
+function postRequest() {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let formData = new FormData(form);
+    const inputs = document.getElementsByTagName("input");
+
+    for (let key of inputs) {
+      console.log(key);
+    }
+    // ? checking key & values
+    // for (var [key, value] of formData.entries()) {
+    //   console.log(key + ":" + value);
+    // }
+    // const formProps = Object.fromEntries(formData);
+    // ? post request
+    // axios.post("/upload", formData).then((res) => {
+    //   console.log(res);
+    // });
+  });
+}
 
 function start() {
   observerSubmit();
@@ -90,9 +94,9 @@ function start() {
 
 start();
 
-submitBtn.addEventListener("click", () => {
-  console.log("clicked");
-});
+// submitBtn.addEventListener("click", () => {
+//   console.log("clicked");
+// });
 
 // ____________________Populate Form (testing tools)_________________________________ //
 
