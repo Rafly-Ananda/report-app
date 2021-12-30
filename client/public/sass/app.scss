@@ -174,44 +174,33 @@ body {
   }
 }
 
-.form__wrapper {
+.inputs__container {
   width: 85vw - $nav-width;
   height: 80vh;
   padding-right: 1.6em;
   overflow-y: scroll;
 }
 
-.form__wrapper::-webkit-scrollbar {
+.inputs__container::-webkit-scrollbar {
   width: 10px;
 }
 
-.form__wrapper::-webkit-scrollbar-track {
+.inputs__container::-webkit-scrollbar-track {
   background-color: darkgrey;
   border-radius: 1em;
 }
 
-.form__wrapper::-webkit-scrollbar-thumb {
+.inputs__container::-webkit-scrollbar-thumb {
   background-color: rgb(95, 95, 95);
   border-radius: 1em;
 }
 
 // ** Upload Page Styling ** //
-.input__row__0,
-.input__row__1,
-.input__row__2,
-.input__row__3,
-.input__row__4,
-.input__row__5,
-.input__row__6,
-.input__row__7,
-.input__row__8,
-.input__row__9,
-.input__row__10,
-.input__row__11 {
+.input__section {
   @include flex-boiler;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 
   .section__border__credential {
     @include flex-boiler;
@@ -246,14 +235,16 @@ body {
     border-radius: 1em;
     padding-bottom: 2em;
 
-    h1 {
-      font-weight: 600;
-      margin: 2em;
-      text-align: center;
+    .section__indicator {
+      color: $soft-red;
+      margin: 1em 0;
     }
 
-    .heading__container {
-      width: 60%;
+    .text__heading {
+      max-width: 50vw;
+      font-weight: 600;
+      text-align: center;
+      margin: 0 2em 1em 2em;
     }
 
     .input__wrapper {
@@ -265,11 +256,41 @@ body {
         margin: 1em;
       }
     }
-  }
 
-  .section__indicator {
-    color: $soft-red;
-    margin: 1em 0 0 0;
+    .descriptions {
+      @include flex-boiler;
+      margin: 1em 0 0 0;
+      width: 100%;
+
+      table {
+        max-width: 90%;
+
+        td,
+        th,
+        input,
+        textarea {
+          border: 1px solid $dark-grey;
+        }
+
+        td,
+        th {
+          text-align: center;
+          padding: 8px;
+        }
+
+        input {
+          width: 2vw;
+        }
+
+        .large__text__field {
+          width: 15vw;
+        }
+
+        .small__text__field {
+          width: 3vw;
+        }
+      }
+    }
   }
 }
 

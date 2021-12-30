@@ -10,6 +10,10 @@ const passport = require("passport");
 const initializePassport = require("./passport-config");
 const flash = require("express-flash");
 const session = require("express-session");
+// const formidable = require("express-formidable");
+
+// ? use to parse formData
+// router.use(formidable());
 
 router.use(express.urlencoded({ extended: false }));
 router.use(flash());
@@ -45,6 +49,10 @@ router.post("/upload", (req, res) => {
     const dataset = { ...info };
     delete dataset.user;
     delete dataset.period;
+
+    console.log(info);
+    // ? using formidable
+    // res.send(req.fields);
 
     pool.query(
       `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,

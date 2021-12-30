@@ -7,7 +7,6 @@ const app = express();
 const path = require("path");
 const cors = require("cors");
 const routes = require("./server/routes");
-const formidable = require("express-formidable");
 
 const PORT = process.env.PORT || 8080;
 const corsOptions = {
@@ -19,10 +18,6 @@ app.use(express.static(path.join(__dirname + "/client/public")));
 app.use(express.json({ limit: "50mb" }));
 app.use(cors(corsOptions));
 app.use("/", routes);
-
-// ? use to parse formData
-// app.use(formidable());
-// Use static files in client dir
 
 app.listen(PORT, () => {
   console.log(`App running on http://localhost:${PORT}`);

@@ -171,58 +171,36 @@ body {
   font-weight: 400;
 }
 
-.form__wrapper {
+.inputs__container {
   width: 72vw;
   height: 80vh;
   padding-right: 1.6em;
   overflow-y: scroll;
 }
 
-.form__wrapper::-webkit-scrollbar {
+.inputs__container::-webkit-scrollbar {
   width: 10px;
 }
 
-.form__wrapper::-webkit-scrollbar-track {
+.inputs__container::-webkit-scrollbar-track {
   background-color: darkgrey;
   border-radius: 1em;
 }
 
-.form__wrapper::-webkit-scrollbar-thumb {
+.inputs__container::-webkit-scrollbar-thumb {
   background-color: #5f5f5f;
   border-radius: 1em;
 }
 
-.input__row__0,
-.input__row__1,
-.input__row__2,
-.input__row__3,
-.input__row__4,
-.input__row__5,
-.input__row__6,
-.input__row__7,
-.input__row__8,
-.input__row__9,
-.input__row__10,
-.input__row__11 {
+.input__section {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
-.input__row__0 .section__border__credential,
-.input__row__1 .section__border__credential,
-.input__row__2 .section__border__credential,
-.input__row__3 .section__border__credential,
-.input__row__4 .section__border__credential,
-.input__row__5 .section__border__credential,
-.input__row__6 .section__border__credential,
-.input__row__7 .section__border__credential,
-.input__row__8 .section__border__credential,
-.input__row__9 .section__border__credential,
-.input__row__10 .section__border__credential,
-.input__row__11 .section__border__credential {
+.input__section .section__border__credential {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -232,65 +210,21 @@ body {
   border-radius: 1em;
   padding: 2em;
 }
-.input__row__0 .section__border__credential .set__user input,
-.input__row__1 .section__border__credential .set__user input,
-.input__row__2 .section__border__credential .set__user input,
-.input__row__3 .section__border__credential .set__user input,
-.input__row__4 .section__border__credential .set__user input,
-.input__row__5 .section__border__credential .set__user input,
-.input__row__6 .section__border__credential .set__user input,
-.input__row__7 .section__border__credential .set__user input,
-.input__row__8 .section__border__credential .set__user input,
-.input__row__9 .section__border__credential .set__user input,
-.input__row__10 .section__border__credential .set__user input,
-.input__row__11 .section__border__credential .set__user input {
+.input__section .section__border__credential .set__user input {
   width: 8vw;
 }
-.input__row__0 .section__border__credential .setter,
-.input__row__1 .section__border__credential .setter,
-.input__row__2 .section__border__credential .setter,
-.input__row__3 .section__border__credential .setter,
-.input__row__4 .section__border__credential .setter,
-.input__row__5 .section__border__credential .setter,
-.input__row__6 .section__border__credential .setter,
-.input__row__7 .section__border__credential .setter,
-.input__row__8 .section__border__credential .setter,
-.input__row__9 .section__border__credential .setter,
-.input__row__10 .section__border__credential .setter,
-.input__row__11 .section__border__credential .setter {
+.input__section .section__border__credential .setter {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.input__row__0 .section__border__credential .setter input,
-.input__row__1 .section__border__credential .setter input,
-.input__row__2 .section__border__credential .setter input,
-.input__row__3 .section__border__credential .setter input,
-.input__row__4 .section__border__credential .setter input,
-.input__row__5 .section__border__credential .setter input,
-.input__row__6 .section__border__credential .setter input,
-.input__row__7 .section__border__credential .setter input,
-.input__row__8 .section__border__credential .setter input,
-.input__row__9 .section__border__credential .setter input,
-.input__row__10 .section__border__credential .setter input,
-.input__row__11 .section__border__credential .setter input {
+.input__section .section__border__credential .setter input {
   border: 2px solid #222222;
   border-radius: 0.25em;
   background: #ffffff;
   margin: 1em;
 }
-.input__row__0 .section__border,
-.input__row__1 .section__border,
-.input__row__2 .section__border,
-.input__row__3 .section__border,
-.input__row__4 .section__border,
-.input__row__5 .section__border,
-.input__row__6 .section__border,
-.input__row__7 .section__border,
-.input__row__8 .section__border,
-.input__row__9 .section__border,
-.input__row__10 .section__border,
-.input__row__11 .section__border {
+.input__section .section__border {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -300,82 +234,55 @@ body {
   border-radius: 1em;
   padding-bottom: 2em;
 }
-.input__row__0 .section__border h1,
-.input__row__1 .section__border h1,
-.input__row__2 .section__border h1,
-.input__row__3 .section__border h1,
-.input__row__4 .section__border h1,
-.input__row__5 .section__border h1,
-.input__row__6 .section__border h1,
-.input__row__7 .section__border h1,
-.input__row__8 .section__border h1,
-.input__row__9 .section__border h1,
-.input__row__10 .section__border h1,
-.input__row__11 .section__border h1 {
+.input__section .section__border .section__indicator {
+  color: #dc143c;
+  margin: 1em 0;
+}
+.input__section .section__border .text__heading {
+  max-width: 50vw;
   font-weight: 600;
-  margin: 2em;
   text-align: center;
+  margin: 0 2em 1em 2em;
 }
-.input__row__0 .section__border .heading__container,
-.input__row__1 .section__border .heading__container,
-.input__row__2 .section__border .heading__container,
-.input__row__3 .section__border .heading__container,
-.input__row__4 .section__border .heading__container,
-.input__row__5 .section__border .heading__container,
-.input__row__6 .section__border .heading__container,
-.input__row__7 .section__border .heading__container,
-.input__row__8 .section__border .heading__container,
-.input__row__9 .section__border .heading__container,
-.input__row__10 .section__border .heading__container,
-.input__row__11 .section__border .heading__container {
-  width: 60%;
-}
-.input__row__0 .section__border .input__wrapper,
-.input__row__1 .section__border .input__wrapper,
-.input__row__2 .section__border .input__wrapper,
-.input__row__3 .section__border .input__wrapper,
-.input__row__4 .section__border .input__wrapper,
-.input__row__5 .section__border .input__wrapper,
-.input__row__6 .section__border .input__wrapper,
-.input__row__7 .section__border .input__wrapper,
-.input__row__8 .section__border .input__wrapper,
-.input__row__9 .section__border .input__wrapper,
-.input__row__10 .section__border .input__wrapper,
-.input__row__11 .section__border .input__wrapper {
+.input__section .section__border .input__wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.input__row__0 .section__border .input__wrapper input,
-.input__row__1 .section__border .input__wrapper input,
-.input__row__2 .section__border .input__wrapper input,
-.input__row__3 .section__border .input__wrapper input,
-.input__row__4 .section__border .input__wrapper input,
-.input__row__5 .section__border .input__wrapper input,
-.input__row__6 .section__border .input__wrapper input,
-.input__row__7 .section__border .input__wrapper input,
-.input__row__8 .section__border .input__wrapper input,
-.input__row__9 .section__border .input__wrapper input,
-.input__row__10 .section__border .input__wrapper input,
-.input__row__11 .section__border .input__wrapper input {
+.input__section .section__border .input__wrapper input {
   width: 10vw;
   border: 2px solid #222222;
   margin: 1em;
 }
-.input__row__0 .section__indicator,
-.input__row__1 .section__indicator,
-.input__row__2 .section__indicator,
-.input__row__3 .section__indicator,
-.input__row__4 .section__indicator,
-.input__row__5 .section__indicator,
-.input__row__6 .section__indicator,
-.input__row__7 .section__indicator,
-.input__row__8 .section__indicator,
-.input__row__9 .section__indicator,
-.input__row__10 .section__indicator,
-.input__row__11 .section__indicator {
-  color: #dc143c;
+.input__section .section__border .descriptions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 1em 0 0 0;
+  width: 100%;
+}
+.input__section .section__border .descriptions table {
+  max-width: 90%;
+}
+.input__section .section__border .descriptions table td,
+.input__section .section__border .descriptions table th,
+.input__section .section__border .descriptions table input,
+.input__section .section__border .descriptions table textarea {
+  border: 1px solid #222222;
+}
+.input__section .section__border .descriptions table td,
+.input__section .section__border .descriptions table th {
+  text-align: center;
+  padding: 8px;
+}
+.input__section .section__border .descriptions table input {
+  width: 2vw;
+}
+.input__section .section__border .descriptions table .large__text__field {
+  width: 15vw;
+}
+.input__section .section__border .descriptions table .small__text__field {
+  width: 3vw;
 }
 
 .element-hidden {

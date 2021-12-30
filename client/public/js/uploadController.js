@@ -69,20 +69,16 @@ function postRequest() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let formData = new FormData(form);
-    const inputs = document.getElementsByTagName("input");
 
-    for (let key of inputs) {
-      console.log(key);
-    }
     // ? checking key & values
     // for (var [key, value] of formData.entries()) {
     //   console.log(key + ":" + value);
     // }
     // const formProps = Object.fromEntries(formData);
     // ? post request
-    // axios.post("/upload", formData).then((res) => {
-    //   console.log(res);
-    // });
+    axios.post("/upload", formData).then((res) => {
+      console.log(res);
+    });
   });
 }
 
@@ -95,7 +91,8 @@ function start() {
 start();
 
 // submitBtn.addEventListener("click", () => {
-//   console.log("clicked");
+//   const input = document.getElementsByName("row__1__input[BO]");
+//   console.log(input[0].value);
 // });
 
 // ____________________Populate Form (testing tools)_________________________________ //
