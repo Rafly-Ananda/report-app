@@ -34,9 +34,10 @@ router.get("/upload", (req, res) => {
 });
 
 router.get("/view", (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname + "../../client/public/views/viewPage.html")
-  );
+  // res.sendFile(
+  //   path.resolve(__dirname + "../../client/public/views/viewPage.html")
+  // );
+  res.json("view");
 });
 
 // ** CRUD API ** //
@@ -50,16 +51,18 @@ router.post("/upload", (req, res) => {
     delete dataset.user;
     delete dataset.period;
 
-    console.log(info);
+    // console.log(info);
     // ? using formidable
     // res.send(req.fields);
 
-    pool.query(
-      `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-      [added_by, added_at, dataset]
-    );
+    // pool.query(
+    //   `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+    //   [added_by, added_at, dataset]
+    // );
 
-    res.redirect("/view");
+    res.json(info);
+
+    // res.redirect("/view");
   } catch (err) {
     console.log(err.message);
   }
@@ -88,7 +91,7 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
 
 router.get("*", (req, res) => {
   res.status(200);
-  res.redirect("/view");
+  res.redirect("/upload");
 });
 
 module.exports = router;

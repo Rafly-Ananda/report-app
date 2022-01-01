@@ -178,7 +178,7 @@ body {
   width: 85vw - $nav-width;
   height: 80vh;
   padding-right: 1.6em;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .inputs__container::-webkit-scrollbar {
@@ -201,6 +201,10 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100%;
+
+  input {
+    padding-left: 0.5em;
+  }
 
   .section__border__credential {
     @include flex-boiler;

@@ -6,6 +6,7 @@ const inputSections = document.querySelectorAll(".input__section");
 const nextBtn = document.querySelector("#next__btn");
 const prevBtn = document.querySelector("#prev__btn");
 const submitBtn = document.querySelector("#submit__btn");
+const nameInput = document.querySelector("#user");
 
 function sectionNavigation() {
   let currSection = 0;
@@ -85,6 +86,7 @@ function postRequest() {
 function start() {
   observerSubmit();
   sectionNavigation();
+  nameInput.focus();
   // postRequest();
 }
 

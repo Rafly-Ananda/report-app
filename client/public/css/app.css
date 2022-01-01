@@ -175,7 +175,7 @@ body {
   width: 72vw;
   height: 80vh;
   padding-right: 1.6em;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .inputs__container::-webkit-scrollbar {
@@ -199,6 +199,9 @@ body {
   flex-direction: column;
   width: 100%;
   min-height: 100%;
+}
+.input__section input {
+  padding-left: 0.5em;
 }
 .input__section .section__border__credential {
   display: flex;
