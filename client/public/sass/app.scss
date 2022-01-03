@@ -70,6 +70,113 @@ body {
   max-width: 70vw;
   max-height: 80vh;
 
+  .inputs__container {
+    width: 85vw - $nav-width;
+    height: 80vh;
+    padding-right: 1.6em;
+    overflow-y: scroll;
+
+    .table__inputs {
+      @include flex-boiler;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 3em;
+      margin-top: 3em;
+
+      table {
+        max-width: 60vw;
+
+        td,
+        th,
+        input {
+          border: 1px solid $dark-grey;
+        }
+
+        td,
+        th {
+          text-align: center;
+          padding: 8px;
+        }
+
+        input {
+          width: 4vw;
+          border-radius: 0.2em;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+        }
+
+        .large__text__field {
+          width: 15vw;
+        }
+
+        .small__text__field {
+          width: 3vw;
+        }
+      }
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: darkgrey;
+    border-radius: 1em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(95, 95, 95);
+    border-radius: 1em;
+  }
+
+  .credentials {
+    @include flex-boiler;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 2em;
+
+    .section__border__credential {
+      @include flex-boiler;
+      flex-direction: column;
+      width: 50%;
+      border: 2px solid $dark-grey;
+      border-radius: 1em;
+      padding: 2em;
+
+      .set__user {
+        input {
+          width: 8vw;
+        }
+      }
+
+      .setter {
+        @include flex-boiler;
+        input {
+          border: 2px solid $dark-grey;
+          border-radius: 0.25em;
+          background: $default-white;
+          margin: 1em;
+        }
+      }
+
+      .btn__container {
+        @include flex-boiler;
+        flex-direction: column;
+        width: 100%;
+        justify-content: space-evenly;
+        margin-top: 0.5em;
+
+        Button {
+          @include btn-style;
+        }
+      }
+    }
+  }
+
   .select__data__section {
     @include flex-boiler;
     width: 85vw - $nav-width;
@@ -157,147 +264,45 @@ body {
       }
     }
   }
-
-  .btn__container {
-    @include flex-boiler;
-    flex-direction: column;
-    height: 20vh;
-    width: 15vw;
-    justify-content: space-evenly;
-    position: fixed;
-    top: 63vh;
-    left: 76vw;
-
-    Button {
-      @include btn-style;
-    }
-  }
-}
-
-.inputs__container {
-  width: 85vw - $nav-width;
-  height: 80vh;
-  padding-right: 1.6em;
-  overflow-y: hidden;
-}
-
-.inputs__container::-webkit-scrollbar {
-  width: 10px;
-}
-
-.inputs__container::-webkit-scrollbar-track {
-  background-color: darkgrey;
-  border-radius: 1em;
-}
-
-.inputs__container::-webkit-scrollbar-thumb {
-  background-color: rgb(95, 95, 95);
-  border-radius: 1em;
 }
 
 // ** Upload Page Styling ** //
-.input__section {
-  @include flex-boiler;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100%;
-
-  input {
-    padding-left: 0.5em;
-  }
-
-  .section__border__credential {
-    @include flex-boiler;
-    flex-direction: column;
-    width: 50%;
-    border: 2px solid $dark-grey;
-    border-radius: 1em;
-    padding: 2em;
-
-    .set__user {
-      input {
-        width: 8vw;
-      }
-    }
-
-    .setter {
-      @include flex-boiler;
-      input {
-        border: 2px solid $dark-grey;
-        border-radius: 0.25em;
-        background: $default-white;
-        margin: 1em;
-      }
-    }
-  }
-
-  .section__border {
-    @include flex-boiler;
-    flex-direction: column;
-    width: 50%;
-    border: 2px solid $dark-grey;
-    border-radius: 1em;
-    padding-bottom: 2em;
-
-    .section__indicator {
-      color: $soft-red;
-      margin: 1em 0;
-    }
-
-    .text__heading {
-      max-width: 50vw;
-      font-weight: 600;
-      text-align: center;
-      margin: 0 2em 1em 2em;
-    }
-
-    .input__wrapper {
-      @include flex-boiler;
-
-      input {
-        width: 10vw;
-        border: 2px solid $dark-grey;
-        margin: 1em;
-      }
-    }
-
-    .descriptions {
-      @include flex-boiler;
-      margin: 1em 0 0 0;
-      width: 100%;
-
-      table {
-        max-width: 90%;
-
-        td,
-        th,
-        input,
-        textarea {
-          border: 1px solid $dark-grey;
-        }
-
-        td,
-        th {
-          text-align: center;
-          padding: 8px;
-        }
-
-        input {
-          width: 2vw;
-        }
-
-        .large__text__field {
-          width: 15vw;
-        }
-
-        .small__text__field {
-          width: 3vw;
-        }
-      }
-    }
-  }
-}
 
 .element-hidden {
   @include element-hidden;
+}
+
+.descriptions {
+  @include flex-boiler;
+  margin: 1em 0 0 0;
+  width: 100%;
+
+  table {
+    max-width: 90%;
+
+    td,
+    th,
+    input,
+    textarea {
+      border: 1px solid $dark-grey;
+    }
+
+    td,
+    th {
+      text-align: center;
+      padding: 8px;
+    }
+
+    input {
+      width: 2vw;
+    }
+
+    .large__text__field {
+      width: 15vw;
+    }
+
+    .small__text__field {
+      width: 3vw;
+    }
+  }
 }

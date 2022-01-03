@@ -50,12 +50,12 @@ const generateChart = (label, dataset, chartId) => {
           },
         },
       },
-      scales: {
-        y: {
-          min: 0,
-          max: 100,
-        },
-      },
+      // scales: {
+      //   y: {
+      //     min: 0,
+      //     max: 100,
+      //   },
+      // },
     },
   };
 
@@ -88,7 +88,16 @@ const getData = async (user, period) => {
     const values = Object.values(response.data.dataset);
     const heading = document.querySelectorAll(".PCP__1");
 
-    // ? Calculate PCP
+    // // ? Separate Array
+    // const dataInPercentage = values.filter((ele) => {
+    //   return !ele.includes("1");
+    // });
+
+    // const dataNotInPercentage = values.filter((ele) => {
+    //   return ele.includes("1");
+    // });
+
+    // ? Calculate PCP Percentage
     values.forEach((data, index) => {
       const temp = data.map((ele) => Number(ele)).filter((ele) => ele > 0);
       const result =
@@ -96,7 +105,6 @@ const getData = async (user, period) => {
           return prev + next;
         }) / temp.length;
       heading[index].textContent = `PCP I = ${result.toFixed(2)}%`;
-      console.log(result);
     });
 
     // ? Generate Chart

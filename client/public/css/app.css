@@ -69,6 +69,106 @@ body {
   max-width: 70vw;
   max-height: 80vh;
 }
+.outer__border .inputs__container {
+  width: 72vw;
+  height: 80vh;
+  padding-right: 1.6em;
+  overflow-y: scroll;
+}
+.outer__border .inputs__container .table__inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 3em;
+  margin-top: 3em;
+}
+.outer__border .inputs__container .table__inputs table {
+  max-width: 60vw;
+}
+.outer__border .inputs__container .table__inputs table td,
+.outer__border .inputs__container .table__inputs table th,
+.outer__border .inputs__container .table__inputs table input {
+  border: 1px solid #222222;
+}
+.outer__border .inputs__container .table__inputs table td,
+.outer__border .inputs__container .table__inputs table th {
+  text-align: center;
+  padding: 8px;
+}
+.outer__border .inputs__container .table__inputs table input {
+  width: 4vw;
+  border-radius: 0.2em;
+}
+.outer__border .inputs__container .table__inputs table input::-webkit-outer-spin-button,
+.outer__border .inputs__container .table__inputs table input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.outer__border .inputs__container .table__inputs table .large__text__field {
+  width: 15vw;
+}
+.outer__border .inputs__container .table__inputs table .small__text__field {
+  width: 3vw;
+}
+.outer__border ::-webkit-scrollbar {
+  width: 10px;
+}
+.outer__border ::-webkit-scrollbar-track {
+  background-color: darkgrey;
+  border-radius: 1em;
+}
+.outer__border ::-webkit-scrollbar-thumb {
+  background-color: #5f5f5f;
+  border-radius: 1em;
+}
+.outer__border .credentials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2em;
+}
+.outer__border .credentials .section__border__credential {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  border: 2px solid #222222;
+  border-radius: 1em;
+  padding: 2em;
+}
+.outer__border .credentials .section__border__credential .set__user input {
+  width: 8vw;
+}
+.outer__border .credentials .section__border__credential .setter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer__border .credentials .section__border__credential .setter input {
+  border: 2px solid #222222;
+  border-radius: 0.25em;
+  background: #ffffff;
+  margin: 1em;
+}
+.outer__border .credentials .section__border__credential .btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 0.5em;
+}
+.outer__border .credentials .section__border__credential .btn__container Button {
+  width: 8vw;
+  border-radius: 0.75em;
+  font-size: medium;
+  font-weight: 400;
+}
 .outer__border .select__data__section {
   display: flex;
   align-items: center;
@@ -152,144 +252,40 @@ body {
 .outer__border .chart__wrapper .chart__container canvas {
   margin: 2em;
 }
-.outer__border .btn__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 20vh;
-  width: 15vw;
-  justify-content: space-evenly;
-  position: fixed;
-  top: 63vh;
-  left: 76vw;
-}
-.outer__border .btn__container Button {
-  width: 8vw;
-  border-radius: 0.75em;
-  font-size: medium;
-  font-weight: 400;
+
+.element-hidden {
+  display: none;
 }
 
-.inputs__container {
-  width: 72vw;
-  height: 80vh;
-  padding-right: 1.6em;
-  overflow-y: hidden;
-}
-
-.inputs__container::-webkit-scrollbar {
-  width: 10px;
-}
-
-.inputs__container::-webkit-scrollbar-track {
-  background-color: darkgrey;
-  border-radius: 1em;
-}
-
-.inputs__container::-webkit-scrollbar-thumb {
-  background-color: #5f5f5f;
-  border-radius: 1em;
-}
-
-.input__section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100%;
-}
-.input__section input {
-  padding-left: 0.5em;
-}
-.input__section .section__border__credential {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  border: 2px solid #222222;
-  border-radius: 1em;
-  padding: 2em;
-}
-.input__section .section__border__credential .set__user input {
-  width: 8vw;
-}
-.input__section .section__border__credential .setter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.input__section .section__border__credential .setter input {
-  border: 2px solid #222222;
-  border-radius: 0.25em;
-  background: #ffffff;
-  margin: 1em;
-}
-.input__section .section__border {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  border: 2px solid #222222;
-  border-radius: 1em;
-  padding-bottom: 2em;
-}
-.input__section .section__border .section__indicator {
-  color: #dc143c;
-  margin: 1em 0;
-}
-.input__section .section__border .text__heading {
-  max-width: 50vw;
-  font-weight: 600;
-  text-align: center;
-  margin: 0 2em 1em 2em;
-}
-.input__section .section__border .input__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.input__section .section__border .input__wrapper input {
-  width: 10vw;
-  border: 2px solid #222222;
-  margin: 1em;
-}
-.input__section .section__border .descriptions {
+.descriptions {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 1em 0 0 0;
   width: 100%;
 }
-.input__section .section__border .descriptions table {
+.descriptions table {
   max-width: 90%;
 }
-.input__section .section__border .descriptions table td,
-.input__section .section__border .descriptions table th,
-.input__section .section__border .descriptions table input,
-.input__section .section__border .descriptions table textarea {
+.descriptions table td,
+.descriptions table th,
+.descriptions table input,
+.descriptions table textarea {
   border: 1px solid #222222;
 }
-.input__section .section__border .descriptions table td,
-.input__section .section__border .descriptions table th {
+.descriptions table td,
+.descriptions table th {
   text-align: center;
   padding: 8px;
 }
-.input__section .section__border .descriptions table input {
+.descriptions table input {
   width: 2vw;
 }
-.input__section .section__border .descriptions table .large__text__field {
+.descriptions table .large__text__field {
   width: 15vw;
 }
-.input__section .section__border .descriptions table .small__text__field {
+.descriptions table .small__text__field {
   width: 3vw;
-}
-
-.element-hidden {
-  display: none;
 }
 
 /*# sourceMappingURL=app.css.map */

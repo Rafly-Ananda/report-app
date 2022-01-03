@@ -1,69 +1,8 @@
 "use strict";
 
 import axios from "axios";
-
-const inputSections = document.querySelectorAll(".input__section");
-const nextBtn = document.querySelector("#next__btn");
-const prevBtn = document.querySelector("#prev__btn");
-const submitBtn = document.querySelector("#submit__btn");
 const nameInput = document.querySelector("#user");
-
-function sectionNavigation() {
-  let currSection = 0;
-  let maxSection = inputSections.length;
-
-  const goToSection = (section) => {
-    document.querySelector(`.input__row__${section}`).scrollIntoView({
-      behavior: "smooth",
-    });
-  };
-
-  const nextSection = () => {
-    currSection === maxSection ? (currSection = 0) : currSection++;
-    if (currSection === 12) {
-      nextBtn.classList.add("element-hidden");
-      submitBtn.classList.remove("element-hidden");
-    }
-    prevBtn.classList.remove("element-hidden");
-    goToSection(currSection);
-  };
-
-  const prevSection = () => {
-    currSection === 0 ? null : currSection--;
-    if (currSection === 0) {
-      prevBtn.classList.add("element-hidden");
-    }
-    nextBtn.classList.remove("element-hidden");
-    submitBtn.classList.add("element-hidden");
-    goToSection(currSection);
-  };
-
-  nextBtn.addEventListener("click", () => {
-    nextSection();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    prevSection();
-  });
-}
-
-function observerSubmit() {
-  const options = {
-    threshold: 0.25,
-  };
-
-  const observer = new IntersectionObserver((section) => {
-    if (section[0].isIntersecting) {
-      submitBtn.classList.remove("element-hidden");
-      nextBtn.classList.add("element-hidden");
-    } else {
-      submitBtn.classList.add("element-hidden");
-      nextBtn.classList.remove("element-hidden");
-    }
-  }, options);
-
-  observer.observe(inputSections[11]);
-}
+const focusedInput = document.querySelector("#row__1__input__1");
 
 function postRequest() {
   const form = document.querySelector("form");
@@ -84,18 +23,11 @@ function postRequest() {
 }
 
 function start() {
-  observerSubmit();
-  sectionNavigation();
-  nameInput.focus();
+  focusedInput.focus();
   // postRequest();
 }
 
 start();
-
-// submitBtn.addEventListener("click", () => {
-//   const input = document.getElementsByName("row__1__input[BO]");
-//   console.log(input[0].value);
-// });
 
 // ____________________Populate Form (testing tools)_________________________________ //
 
