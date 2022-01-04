@@ -274,11 +274,11 @@ body {
 
 .descriptions {
   @include flex-boiler;
-  margin: 1em 0 0 0;
+  margin: 1em 0 2em 0;
   width: 100%;
 
   table {
-    max-width: 90%;
+    width: 60vw;
 
     td,
     th,

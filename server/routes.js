@@ -70,7 +70,15 @@ router.post("/upload", (req, res) => {
 // ? get user data
 router.get("/view/data/user", async (req, res) => {
   const data = await pool.query("SELECT username FROM users");
-  res.json(data.rows);
+  const results = {
+    username: new Array(),
+  };
+
+  for (const [_, value] of Object.entries(data.rows)) {
+    results.username.push(value.username);
+  }
+
+  res.json(results);
 });
 
 // ? get dataset
@@ -82,7 +90,23 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
       [added_by, added_at]
     );
 
-    !data.rows[0] ? res.json(`Data doesn't exist!`) : res.json(data.rows[0]);
+    if (!data.rows[0]) return res.status(500).send();
+
+    const results = {
+      added_at: data.rows[0].added_at,
+      allData: Object.entries(data.rows[0].dataset),
+      dataInPercentage: new Object(),
+      dataNotInPercentage: new Object(),
+    };
+
+    for (const [key, value] of Object.entries(data.rows[0].dataset)) {
+      if (value.includes("1")) {
+        results.dataNotInPercentage[key] = value;
+      } else {
+        results.dataInPercentage[key] = value;
+      }
+    }
+    res.json(results);
   } catch (error) {
     console.log(error.message);
   }

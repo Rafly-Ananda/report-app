@@ -6,9 +6,31 @@ const findBtn = document.querySelector(".find__data__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
 const viewSection = document.querySelector(".view__section");
 const userSelectOptions = document.querySelector("#user");
+const headingPercentage = document.querySelectorAll(".PCP__1");
+const headingYear = document.querySelectorAll(".PCP__1__NP");
+
+const title = [
+  "Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi konsisten (Tepat Time To Market)",
+  "Mencapai target zero complain desain produk vs URS sampai 1 tahun",
+  [
+    ["Mencapai Jumlah kelulusan training prosedur pembuatan"],
+    // [
+    //   ", QC material dan produk manual book alat (NM assembly, instalasi & QC, ETC, FMS staff terkait)",
+    // ],
+  ],
+  "Ketersediaan tools data collection performa produk sesuai target",
+  "Mencapai target improvement product",
+  "Closing STCS (major) max 1 th & closing project",
+  "Memastikan proses kerja sesuai standar ISO (Menekan temuan audit status NC & PNC)",
+  "Memenuhi gap kompetensi sesuai target",
+  "Mencapai kebersihan bangunan 100%  dan 6S (5S & safety)",
+  "Mengikuti KS (3 Per semester)",
+  "CMM",
+];
 
 const generateChart = (label, dataset, chartId) => {
   const ctx = document.getElementById(`${chartId}`).getContext("2d");
+
   const chartConfig = {
     type: "bar",
     data: {
@@ -50,65 +72,57 @@ const generateChart = (label, dataset, chartId) => {
           },
         },
       },
-      // scales: {
-      //   y: {
-      //     min: 0,
-      //     max: 100,
-      //   },
-      // },
+      scales: {},
     },
   };
+
+  if (chartId === "myChart4" || chartId === "myChart10") {
+    chartConfig.options.scales = {
+      y: {
+        min: 0,
+        max: 1,
+      },
+    };
+  } else {
+    chartConfig.options.scales = {
+      y: {
+        min: 0,
+        max: 100,
+      },
+    };
+  }
 
   new Chart(ctx, chartConfig);
 };
 
 const getData = async (user, period) => {
-  const title = [
-    "Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi konsisten (Tepat Time To Market)",
-    "Mencapai target zero complain desain produk vs URS sampai 1 tahun",
-    [
-      ["Mencapai Jumlah kelulusan training prosedur pembuatan"],
-      // [
-      //   ", QC material dan produk manual book alat (NM assembly, instalasi & QC, ETC, FMS staff terkait)",
-      // ],
-    ],
-    "Ketersediaan tools data collection performa produk sesuai target",
-    "Mencapai target improvement product",
-    "Closing STCS (major) max 1 th & closing project",
-    "Memastikan proses kerja sesuai standar ISO (Menekan temuan audit status NC & PNC)",
-    "Memenuhi gap kompetensi sesuai target",
-    "Mencapai kebersihan bangunan 100%  dan 6S (5S & safety)",
-    "Mengikuti KS (3 Per semester)",
-    "CMM",
-  ];
-
   try {
     const response = await axios.get(`/view/data/${user}/${period}`);
-    const entries = Object.entries(response.data.dataset);
-    const values = Object.values(response.data.dataset);
-    const heading = document.querySelectorAll(".PCP__1");
-
-    // // ? Separate Array
-    // const dataInPercentage = values.filter((ele) => {
-    //   return !ele.includes("1");
-    // });
-
-    // const dataNotInPercentage = values.filter((ele) => {
-    //   return ele.includes("1");
-    // });
+    const data = response.data.allData;
+    const dataPercentage = Object.values(response.data.dataInPercentage);
+    const dataYear = Object.values(response.data.dataNotInPercentage);
 
     // ? Calculate PCP Percentage
-    values.forEach((data, index) => {
+    dataPercentage.forEach((data, index) => {
       const temp = data.map((ele) => Number(ele)).filter((ele) => ele > 0);
       const result =
         temp.reduce((prev, next) => {
           return prev + next;
         }) / temp.length;
-      heading[index].textContent = `PCP I = ${result.toFixed(2)}%`;
+      headingPercentage[index].textContent = `PCP I = ${result.toFixed(2)}%`;
+    });
+
+    // ? Calculate PCP Year
+    dataYear.forEach((data, index) => {
+      const temp = data.map((ele) => Number(ele));
+      const result = temp.reduce((prev, next) => {
+        return prev + next;
+      });
+      headingYear[index].textContent = `PCP I = ${result}`;
     });
 
     // ? Generate Chart
-    entries.forEach((element, index) => {
+    data.forEach((element, index) => {
       generateChart(title[index], element[1], `myChart${index + 1}`);
     });
 
@@ -122,13 +136,9 @@ const getData = async (user, period) => {
 
 async function getUser() {
   const response = await axios.get("/view/data/user");
-  const data = response.data;
-  const users = new Array();
-  for (const [_, value] of Object.entries(data)) {
-    users.push(value.username);
-  }
+  const data = Object.values(response.data);
 
-  users.forEach((ele) => {
+  data[0].forEach((ele) => {
     userSelectOptions.insertAdjacentHTML(
       "beforeend",
       `<option value="${ele}">${ele}</option>`
@@ -140,11 +150,9 @@ findBtn.addEventListener("click", () => {
   const user = document.querySelector("#user").value;
   const date = document.querySelector("#period").value;
 
-  if (user != "-" && date != "") {
-    getData(user, date);
-  } else {
-    alert("please choose a correct user and period");
-  }
+  user != "-" && date != ""
+    ? getData(user, date)
+    : alert("please choose a correct user and period");
 });
 
 function start() {
