@@ -101,6 +101,7 @@ body {
         input {
           width: 4vw;
           border-radius: 0.2em;
+          text-align: center;
         }
 
         input::-webkit-outer-spin-button,
@@ -114,6 +115,88 @@ body {
 
         .small__text__field {
           width: 3vw;
+        }
+      }
+    }
+
+    .descriptions__container {
+      @include flex-boiler;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 2em;
+
+      .descriptions {
+        @include flex-boiler;
+        flex-direction: column;
+        margin: 1em 0 0 0;
+        width: 100%;
+
+        .table__fields {
+          margin-bottom: 2em;
+          table {
+            width: 55vw;
+
+            td,
+            th,
+            input,
+            textarea {
+              border: 1px solid $dark-grey;
+            }
+
+            td,
+            th {
+              text-align: center;
+              padding: 8px;
+            }
+
+            input {
+              width: 2vw;
+              border-radius: 0.2em;
+              text-align: center;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+            }
+
+            textarea {
+              border-radius: 0.2em;
+            }
+
+            .large__text__field {
+              width: 15vw;
+            }
+
+            .small__text__field {
+              width: 3vw;
+            }
+          }
+        }
+      }
+
+      .flex__container {
+        @include flex-boiler;
+        flex-direction: column;
+        border: 2px solid $dark-grey;
+        border-radius: 0.5em;
+        min-width: 60vw;
+        margin: 0 0 1em 0;
+
+        h1 {
+          font-weight: 600;
+          margin: 1em;
+          text-align: center;
+          max-width: 40vw;
+        }
+
+        .plus__btn__container {
+          @include flex-boiler;
+          margin: 0 0 1em 0;
+          width: 100%;
+          button {
+            border: 2px solid;
+          }
         }
       }
     }
@@ -270,39 +353,4 @@ body {
 
 .element-hidden {
   @include element-hidden;
-}
-
-.descriptions {
-  @include flex-boiler;
-  margin: 1em 0 2em 0;
-  width: 100%;
-
-  table {
-    width: 60vw;
-
-    td,
-    th,
-    input,
-    textarea {
-      border: 1px solid $dark-grey;
-    }
-
-    td,
-    th {
-      text-align: center;
-      padding: 8px;
-    }
-
-    input {
-      width: 2vw;
-    }
-
-    .large__text__field {
-      width: 15vw;
-    }
-
-    .small__text__field {
-      width: 3vw;
-    }
-  }
 }

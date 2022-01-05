@@ -1,8 +1,86 @@
 "use strict";
 
 import axios from "axios";
-const nameInput = document.querySelector("#user");
 const focusedInput = document.querySelector("#row__1__input__1");
+const addBtn = document.querySelectorAll(".add__field");
+let counter = 0;
+
+// TODO - pindah row counter teteap sama misal udh klik sekali di row 1 = row__1__desc__1 pas klik ke row 2 jadi row 2 = row__2__desc__2, cari tau cara reset numbering di tiap row
+
+function addFields(selector) {
+  const descField = document.querySelector(`.desc__${selector}`);
+  counter++;
+
+  const html = `<div class="descriptions">
+  <div class="table__fields">
+    <table>
+      <tr>
+        <th>NO</th>
+        <th>Penyebab</th>
+        <th>Penyelesaian</th>
+        <th>PIC</th>
+        <th>UKT</th>
+        <th>DL</th>
+        <th>RL</th>
+      </tr>
+      <tr>
+        <td>
+          <input
+            name="row__${selector}__input__desc"
+            type="number"
+            min="1"
+            value="${counter}"
+            id="no__field"
+          />
+        </td>
+        <td>
+          <textarea
+            name="row__${selector}__input__desc"
+            id="cause__field"
+            class="large__text__field"
+          ></textarea>
+        </td>
+        <td>
+          <textarea
+            name="row__${selector}__input__desc"
+            id="solution__field"
+            class="large__text__field"
+          ></textarea>
+        </td>
+        <td>
+          <textarea
+            name="row__${selector}__input__desc"
+            id="PIC__field"
+            class="small__text__field"
+          ></textarea>
+        </td>
+        <td>
+          <textarea
+            name="row__${selector}__input__desc"
+            id="UKT__field"
+            class="small__text__field"
+          ></textarea>
+        </td>
+        <td>
+          <textarea
+            name="row__${selector}__input__desc"
+            id="DL__field"
+            class="small__text__field"
+          ></textarea>
+        </td>
+        <td>
+          <textarea
+            name="row__${selector}__input__desc"
+            id="RL__field"
+            class="small__text__field"
+          ></textarea>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>`;
+  descField.insertAdjacentHTML("beforeend", html);
+}
 
 function postRequest() {
   const form = document.querySelector("form");
@@ -21,6 +99,14 @@ function postRequest() {
     });
   });
 }
+
+addBtn.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const rowSelector = e.target.closest(".row").dataset.id;
+    // console.log(btn.closest(".row"));
+    addFields(rowSelector);
+  });
+});
 
 function start() {
   focusedInput.focus();

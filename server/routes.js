@@ -54,12 +54,12 @@ router.post("/upload", (req, res) => {
     // ? using formidable
     // res.send(req.fields);
 
-    pool.query(
-      `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-      [added_by, added_at, dataset]
-    );
+    // pool.query(
+    //   `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+    //   [added_by, added_at, dataset]
+    // );
 
-    // res.json(info);
+    res.json(info);
 
     res.redirect("/view");
   } catch (err) {

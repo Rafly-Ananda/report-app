@@ -100,6 +100,7 @@ body {
 .outer__border .inputs__container .table__inputs table input {
   width: 4vw;
   border-radius: 0.2em;
+  text-align: center;
 }
 .outer__border .inputs__container .table__inputs table input::-webkit-outer-spin-button,
 .outer__border .inputs__container .table__inputs table input::-webkit-inner-spin-button {
@@ -110,6 +111,83 @@ body {
 }
 .outer__border .inputs__container .table__inputs table .small__text__field {
   width: 3vw;
+}
+.outer__border .inputs__container .descriptions__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2em;
+}
+.outer__border .inputs__container .descriptions__container .descriptions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1em 0 0 0;
+  width: 100%;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields {
+  margin-bottom: 2em;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table {
+  width: 55vw;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table td,
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table th,
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input,
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table textarea {
+  border: 1px solid #222222;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table td,
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table th {
+  text-align: center;
+  padding: 8px;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input {
+  width: 2vw;
+  border-radius: 0.2em;
+  text-align: center;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input::-webkit-outer-spin-button,
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table textarea {
+  border-radius: 0.2em;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table .large__text__field {
+  width: 15vw;
+}
+.outer__border .inputs__container .descriptions__container .descriptions .table__fields table .small__text__field {
+  width: 3vw;
+}
+.outer__border .inputs__container .descriptions__container .flex__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #222222;
+  border-radius: 0.5em;
+  min-width: 60vw;
+  margin: 0 0 1em 0;
+}
+.outer__border .inputs__container .descriptions__container .flex__container h1 {
+  font-weight: 600;
+  margin: 1em;
+  text-align: center;
+  max-width: 40vw;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .plus__btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 1em 0;
+  width: 100%;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .plus__btn__container button {
+  border: 2px solid;
 }
 .outer__border ::-webkit-scrollbar {
   width: 10px;
@@ -255,37 +333,6 @@ body {
 
 .element-hidden {
   display: none;
-}
-
-.descriptions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 1em 0 2em 0;
-  width: 100%;
-}
-.descriptions table {
-  width: 60vw;
-}
-.descriptions table td,
-.descriptions table th,
-.descriptions table input,
-.descriptions table textarea {
-  border: 1px solid #222222;
-}
-.descriptions table td,
-.descriptions table th {
-  text-align: center;
-  padding: 8px;
-}
-.descriptions table input {
-  width: 2vw;
-}
-.descriptions table .large__text__field {
-  width: 15vw;
-}
-.descriptions table .small__text__field {
-  width: 3vw;
 }
 
 /*# sourceMappingURL=app.css.map */

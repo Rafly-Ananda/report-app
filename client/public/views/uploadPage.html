@@ -18,32 +18,14 @@
         <div class="links__container__top">
           <a href="/upload">
             <button
-              class="
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                border border-blue-700
-                rounded
-              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             >
               Input Data
             </button>
           </a>
           <a href="/view">
             <button
-              class="
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                border border-blue-700
-                rounded
-              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             >
               View Data
             </button>
@@ -52,16 +34,7 @@
         <div class="links__container__bot">
           <a href="#">
             <button
-              class="
-                bg-blue-500
-                hover:bg-blue-700
-                text-white
-                font-bold
-                py-2
-                px-4
-                border border-blue-700
-                rounded
-              "
+              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
             >
               Exit
             </button>
@@ -702,70 +675,40 @@
               </table>
             </div>
 
-            <div class="descriptions">
-              <table>
-                <tr>
-                  <th>NO</th>
-                  <th>Penyebab</th>
-                  <th>Penyelesaian</th>
-                  <th>PIC</th>
-                  <th>UKT</th>
-                  <th>DL</th>
-                  <th>RL</th>
-                </tr>
-                <tr>
-                  <td>
-                    <input
-                      name="row__1__input__desc"
-                      type="number"
-                      min="1"
-                      id="no__field"
-                    />
-                  </td>
-                  <td>
-                    <textarea
-                      name="row__1__input__desc"
-                      id="cause__field"
-                      class="large__text__field"
-                    ></textarea>
-                  </td>
-                  <td>
-                    <textarea
-                      name="row__1__input__desc"
-                      id="solution__field"
-                      class="large__text__field"
-                    ></textarea>
-                  </td>
-                  <td>
-                    <textarea
-                      name="row__1__input__desc"
-                      id="PIC__field"
-                      class="small__text__field"
-                    ></textarea>
-                  </td>
-                  <td>
-                    <textarea
-                      name="row__1__input__desc"
-                      id="UKT__field"
-                      class="small__text__field"
-                    ></textarea>
-                  </td>
-                  <td>
-                    <textarea
-                      name="row__1__input__desc"
-                      id="DL__field"
-                      class="small__text__field"
-                    ></textarea>
-                  </td>
-                  <td>
-                    <textarea
-                      name="row__1__input__desc"
-                      id="RL__field"
-                      class="small__text__field"
-                    ></textarea>
-                  </td>
-                </tr>
-              </table>
+            <div class="descriptions__container">
+              <div class="flex__container">
+                <h1 class="heading__KPI">
+                  Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi
+                  konsisten (Tepat Time To Market)
+                </h1>
+                <div class="row desc__1" data-id="1">
+                  <div class="plus__btn__container">
+                    <button
+                      class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex__container">
+                <h1 class="heading__KPI">
+                  Mencapai target zero complain desain produk vs URS sampai 1
+                  tahun
+                </h1>
+                <div class="row desc__2" data-id="2">
+                  <div class="plus__btn__container">
+                    <button
+                      class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="credentials">
@@ -784,16 +727,7 @@
                   <button
                     id="submit__btn"
                     type="submit"
-                    class="
-                      bg-green-500
-                      hover:bg-green-700
-                      text-white
-                      font-bold
-                      py-2
-                      px-4
-                      border border-blue-700
-                      rounded
-                    "
+                    class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
                   >
                     Submit
                   </button>
