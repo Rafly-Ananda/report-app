@@ -3,13 +3,10 @@
 import axios from "axios";
 const focusedInput = document.querySelector("#row__1__input__1");
 const addBtn = document.querySelectorAll(".add__field");
-let counter = 0;
-
-// TODO - pindah row counter teteap sama misal udh klik sekali di row 1 = row__1__desc__1 pas klik ke row 2 jadi row 2 = row__2__desc__2, cari tau cara reset numbering di tiap row
 
 function addFields(selector) {
   const descField = document.querySelector(`.desc__${selector}`);
-  counter++;
+  const identifier = descField.childElementCount;
 
   const html = `<div class="descriptions">
   <div class="table__fields">
@@ -26,51 +23,52 @@ function addFields(selector) {
       <tr>
         <td>
           <input
-            name="row__${selector}__input__desc"
+            name="row__${selector}__input__desc__${identifier + 1}"
             type="number"
             min="1"
-            value="${counter}"
+            value=${identifier + 1}
             id="no__field"
+            readonly
           />
         </td>
         <td>
           <textarea
-            name="row__${selector}__input__desc"
+            name="row__${selector}__input__desc__${identifier + 1}"
             id="cause__field"
             class="large__text__field"
           ></textarea>
         </td>
         <td>
           <textarea
-            name="row__${selector}__input__desc"
+            name="row__${selector}__input__desc__${identifier + 1}"
             id="solution__field"
             class="large__text__field"
           ></textarea>
         </td>
         <td>
           <textarea
-            name="row__${selector}__input__desc"
+            name="row__${selector}__input__desc__${identifier + 1}"
             id="PIC__field"
             class="small__text__field"
           ></textarea>
         </td>
         <td>
           <textarea
-            name="row__${selector}__input__desc"
+            name="row__${selector}__input__desc__${identifier + 1}"
             id="UKT__field"
             class="small__text__field"
           ></textarea>
         </td>
         <td>
           <textarea
-            name="row__${selector}__input__desc"
+            name="row__${selector}__input__desc__${identifier + 1}"
             id="DL__field"
             class="small__text__field"
           ></textarea>
         </td>
         <td>
           <textarea
-            name="row__${selector}__input__desc"
+            name="row__${selector}__input__desc__${identifier + 1}"
             id="RL__field"
             class="small__text__field"
           ></textarea>
@@ -83,27 +81,29 @@ function addFields(selector) {
 }
 
 function postRequest() {
-  const form = document.querySelector("form");
+  const form = document.querySelector("#form");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     let formData = new FormData(form);
+
+    console.log(form.elements);
 
     // ? checking key & values
     // for (var [key, value] of formData.entries()) {
     //   console.log(key + ":" + value);
     // }
     // const formProps = Object.fromEntries(formData);
+
     // ? post request
-    axios.post("/upload", formData).then((res) => {
-      console.log(res);
-    });
+    // axios.post("/upload", formData).then((res) => {
+    //   console.log(res);
+    // });
   });
 }
 
 addBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     const rowSelector = e.target.closest(".row").dataset.id;
-    // console.log(btn.closest(".row"));
     addFields(rowSelector);
   });
 });
