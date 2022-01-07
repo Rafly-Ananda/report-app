@@ -67,7 +67,7 @@ body {
   border: 2px solid #222222;
   border-radius: 1em;
   max-width: 70vw;
-  max-height: 80vh;
+  z-index: 99;
 }
 .outer__border .inputs__container {
   width: 72vw;
@@ -86,16 +86,34 @@ body {
 }
 .outer__border .inputs__container .table__inputs table {
   max-width: 60vw;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
 }
-.outer__border .inputs__container .table__inputs table td,
-.outer__border .inputs__container .table__inputs table th,
+.outer__border .inputs__container .table__inputs table .heading {
+  color: #ffffff;
+  padding: 0.75em 1em;
+}
+.outer__border .inputs__container .table__inputs table .heading,
+.outer__border .inputs__container .table__inputs table .spc_sm,
+.outer__border .inputs__container .table__inputs table .table__no {
+  text-align: center;
+}
+.outer__border .inputs__container .table__inputs table .th__heading {
+  background-color: #0c4a6e;
+}
+.outer__border .inputs__container .table__inputs table tr:nth-child(even) {
+  background-color: #e2e8f0;
+}
+.outer__border .inputs__container .table__inputs table tr:nth-child(odd):not(:first-child) {
+  background-color: #f1f5f9;
+}
 .outer__border .inputs__container .table__inputs table input {
   border: 1px solid #222222;
 }
-.outer__border .inputs__container .table__inputs table td,
-.outer__border .inputs__container .table__inputs table th {
-  text-align: center;
-  padding: 8px;
+.outer__border .inputs__container .table__inputs table td {
+  text-align: left;
+  padding: 0.5em;
 }
 .outer__border .inputs__container .table__inputs table input {
   width: 4vw;
@@ -106,11 +124,30 @@ body {
 .outer__border .inputs__container .table__inputs table input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+.outer__border .inputs__container .table__inputs table .last__input {
+  padding-right: 1.5em;
+}
 .outer__border .inputs__container .table__inputs table .large__text__field {
   width: 15vw;
 }
 .outer__border .inputs__container .table__inputs table .small__text__field {
   width: 3vw;
+}
+.outer__border .inputs__container .table__inputs table .heading__KPI {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.outer__border .inputs__container .table__inputs table .heading__KPI::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
 }
 .outer__border .inputs__container .descriptions__container {
   display: flex;
@@ -119,49 +156,6 @@ body {
   flex-direction: column;
   width: 100%;
   margin-bottom: 2em;
-}
-.outer__border .inputs__container .descriptions__container .descriptions {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 1em 0 0 0;
-  width: 100%;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields {
-  margin-bottom: 2em;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table {
-  width: 55vw;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table td,
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table th,
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input,
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table textarea {
-  border: 1px solid #222222;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table td,
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table th {
-  text-align: center;
-  padding: 8px;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input {
-  width: 2vw;
-  border-radius: 0.2em;
-  text-align: center;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input::-webkit-outer-spin-button,
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table textarea {
-  border-radius: 0.2em;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table .large__text__field {
-  width: 15vw;
-}
-.outer__border .inputs__container .descriptions__container .descriptions .table__fields table .small__text__field {
-  width: 3vw;
 }
 .outer__border .inputs__container .descriptions__container .flex__container {
   display: flex;
@@ -179,14 +173,65 @@ body {
   text-align: center;
   max-width: 40vw;
 }
-.outer__border .inputs__container .descriptions__container .flex__container .plus__btn__container {
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields {
+  margin-bottom: 1em;
+  background-color: #f1f5f9;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table {
+  width: 55vw;
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table th {
+  color: #ffffff;
+  padding: 1em;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table tr:first-child {
+  background-color: #0c4a6e;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table input,
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table textarea {
+  border: 1px solid #222222;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table td {
+  text-align: center;
+  padding: 1em 0;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table input {
+  width: 2vw;
+  border-radius: 0.2em;
+  text-align: center;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table input::-webkit-outer-spin-button,
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table textarea {
+  border-radius: 0.2em;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table .large__text__field {
+  width: 15vw;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table .small__text__field {
+  width: 3vw;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .plus__btn__container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 0 1em 0;
   width: 100%;
 }
-.outer__border .inputs__container .descriptions__container .flex__container .plus__btn__container button {
+.outer__border .inputs__container .descriptions__container .flex__container .row .plus__btn__container button {
+  margin: 0 0.5em;
   border: 2px solid;
 }
 .outer__border ::-webkit-scrollbar {

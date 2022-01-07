@@ -43,7 +43,7 @@
       </div>
     </nav>
     <main>
-      <button class="populateData" type="button">populate</button>
+      <button class="populateData" type="button">populate input</button>
       <div class="outer__border">
         <form
           name="dataset"
@@ -55,22 +55,24 @@
           <div class="inputs__container">
             <div class="table__inputs">
               <table>
-                <tr>
-                  <th>No.</th>
-                  <th>KPI</th>
-                  <th>SM</th>
-                  <th>BO1</th>
-                  <th>BO2</th>
-                  <th>BO3</th>
-                  <th>BO4</th>
-                  <th>BO5</th>
-                  <th>BO6</th>
+                <tr class="th__heading">
+                  <th class="heading">No.</th>
+                  <th class="heading">KPI</th>
+                  <th class="heading">SM</th>
+                  <th class="heading">BO1</th>
+                  <th class="heading">BO2</th>
+                  <th class="heading">BO3</th>
+                  <th class="heading">BO4</th>
+                  <th class="heading">BO5</th>
+                  <th class="heading">BO6</th>
                 </tr>
                 <tr class="row__1">
-                  <td>1</td>
-                  <td class="heading__KPI">
-                    Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi
-                    konsisten (Tepat Time To Market)
+                  <td class="table__no">1</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi
+                      konsisten (Tepat Time To Market)
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -113,7 +115,7 @@
                       required
                     />
                   </td>
-                  <td>
+                  <td class="last__input">
                     <input
                       name="row__1__input"
                       type="number"
@@ -123,10 +125,12 @@
                   </td>
                 </tr>
                 <tr class="row__2">
-                  <td>2</td>
-                  <td class="heading__KPI">
-                    Mencapai target zero complain desain produk vs URS sampai 1
-                    tahun
+                  <td class="table__no">2</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Mencapai target zero complain desain produk vs URS sampai
+                      1 tahun
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -179,11 +183,13 @@
                   </td>
                 </tr>
                 <tr class="row__3">
-                  <td>3</td>
+                  <td class="table__no">3</td>
                   <td>
-                    Mencapai Jumlah kelulusan training prosedur pembuatan, QC
-                    material dan produk, manual book alat (NM assembly,
-                    instalasi & QC, ETC, FMS staff terkait)
+                    <div class="heading__KPI">
+                      Mencapai Jumlah kelulusan training prosedur pembuatan, QC
+                      material dan produk, manual book alat (NM assembly,
+                      instalasi & QC, ETC, FMS staff terkait)
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -236,17 +242,22 @@
                   </td>
                 </tr>
                 <tr class="row__4">
-                  <td>4</td>
-                  <td class="heading__KPI">
-                    Ketersediaan tools data collection performa produk sesuai
-                    target
+                  <td class="table__no">4</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Ketersediaan tools data collection performa produk sesuai
+                      target
+                    </div>
                   </td>
-                  <td>3 / tahun</td>
+                  <td class="spc_sm">3 / tahun</td>
                   <td>
                     <input
                       name="row__4__input"
                       type="number"
-                      id="row__4__input__1"
+                      id="row__4__input__1__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -254,7 +265,10 @@
                     <input
                       name="row__4__input"
                       type="number"
-                      id="row__4__input__2"
+                      id="row__4__input__2__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -262,7 +276,10 @@
                     <input
                       name="row__4__input"
                       type="number"
-                      id="row__4__input__3"
+                      id="row__4__input__3__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -270,7 +287,10 @@
                     <input
                       name="row__4__input"
                       type="number"
-                      id="row__4__input__4"
+                      id="row__4__input__4__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -278,7 +298,10 @@
                     <input
                       name="row__4__input"
                       type="number"
-                      id="row__4__input__5"
+                      id="row__4__input__5__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -286,15 +309,20 @@
                     <input
                       name="row__4__input"
                       type="number"
-                      id="row__4__input__6"
+                      id="row__4__input__6__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
                 </tr>
                 <tr class="row__5">
-                  <td>5</td>
-                  <td class="heading__KPI">
-                    Mencapai target improvement product
+                  <td class="table__no">5</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Mencapai target improvement product
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -347,9 +375,11 @@
                   </td>
                 </tr>
                 <tr class="row__6">
-                  <td>6</td>
-                  <td class="heading__KPI">
-                    Closing STCS (major) max 1 th & closing project
+                  <td class="table__no">6</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Closing STCS (major) max 1 th & closing project
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -402,10 +432,12 @@
                   </td>
                 </tr>
                 <tr class="row__7">
-                  <td>7</td>
-                  <td class="heading__KPI">
-                    Memastikan proses kerja sesuai standar ISO (Menekan temuan
-                    audit status NC & PNC)
+                  <td class="table__no">7</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Memastikan proses kerja sesuai standar ISO (Menekan temuan
+                      audit status NC & PNC)
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -458,9 +490,11 @@
                   </td>
                 </tr>
                 <tr class="row__8">
-                  <td>8</td>
-                  <td class="heading__KPI">
-                    Memenuhi gap kompetensi sesuai target
+                  <td class="table__no">8</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Memenuhi gap kompetensi sesuai target
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -513,9 +547,11 @@
                   </td>
                 </tr>
                 <tr class="row__9">
-                  <td>9</td>
-                  <td class="heading__KPI">
-                    Mencapai kebersihan bangunan 100% dan 6S (5S & safety)
+                  <td class="table__no">9</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Mencapai kebersihan bangunan 100% dan 6S (5S & safety)
+                    </div>
                   </td>
                   <td>100.00%</td>
                   <td>
@@ -568,14 +604,21 @@
                   </td>
                 </tr>
                 <tr class="row__10">
-                  <td>10</td>
-                  <td class="heading__KPI">Mengikuti KS (3 Per semester)</td>
-                  <td>3 / tahun</td>
+                  <td class="table__no">10</td>
+                  <td>
+                    <div class="heading__KPI">
+                      Mengikuti KS (3 Per semester)
+                    </div>
+                  </td>
+                  <td class="spc_sm">3 / tahun</td>
                   <td>
                     <input
                       name="row__10__input"
                       type="number"
-                      id="row__10__input__1"
+                      id="row__10__input__1__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -583,7 +626,10 @@
                     <input
                       name="row__10__input"
                       type="number"
-                      id="row__10__input__2"
+                      id="row__10__input__2__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -591,7 +637,10 @@
                     <input
                       name="row__10__input"
                       type="number"
-                      id="row__10__input__3"
+                      id="row__10__input__3__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -599,7 +648,10 @@
                     <input
                       name="row__10__input"
                       type="number"
-                      id="row__10__input__4"
+                      id="row__10__input__4__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -607,7 +659,10 @@
                     <input
                       name="row__10__input"
                       type="number"
-                      id="row__10__input__5"
+                      id="row__10__input__5__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
@@ -615,14 +670,19 @@
                     <input
                       name="row__10__input"
                       type="number"
-                      id="row__10__input__6"
+                      id="row__10__input__6__spc"
+                      class="special__input"
+                      min="0"
+                      max="1"
                       required
                     />
                   </td>
                 </tr>
                 <tr class="row__11">
-                  <td>11</td>
-                  <td class="heading__KPI">CMM</td>
+                  <td class="table__no">11</td>
+                  <td>
+                    <div class="heading__KPI">CMM</div>
+                  </td>
                   <td>100.00%</td>
                   <td>
                     <input
@@ -686,6 +746,12 @@
                   <div class="desc__1"></div>
                   <div class="plus__btn__container">
                     <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
                     >
@@ -703,6 +769,12 @@
                 <div class="row" data-id="2">
                   <div class="desc__2"></div>
                   <div class="plus__btn__container">
+                    <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
                     <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
@@ -723,6 +795,12 @@
                   <div class="desc__3"></div>
                   <div class="plus__btn__container">
                     <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
                     >
@@ -741,6 +819,12 @@
                   <div class="desc__4"></div>
                   <div class="plus__btn__container">
                     <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
                     >
@@ -758,6 +842,12 @@
                   <div class="desc__5"></div>
                   <div class="plus__btn__container">
                     <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
                     >
@@ -774,6 +864,12 @@
                 <div class="row" data-id="6">
                   <div class="desc__6"></div>
                   <div class="plus__btn__container">
+                    <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
                     <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
@@ -793,6 +889,12 @@
                   <div class="desc__7"></div>
                   <div class="plus__btn__container">
                     <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
                     >
@@ -809,6 +911,12 @@
                 <div class="row" data-id="8">
                   <div class="desc__8"></div>
                   <div class="plus__btn__container">
+                    <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
                     <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
@@ -827,6 +935,12 @@
                   <div class="desc__9"></div>
                   <div class="plus__btn__container">
                     <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
                     >
@@ -842,6 +956,12 @@
                   <div class="desc__10"></div>
                   <div class="plus__btn__container">
                     <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"
                     >
@@ -856,6 +976,12 @@
                 <div class="row" data-id="11">
                   <div class="desc__11"></div>
                   <div class="plus__btn__container">
+                    <button
+                      class="delete__field element-hidden bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
+                      type="button"
+                    >
+                      -
+                    </button>
                     <button
                       class="add__field bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded-lg"
                       type="button"

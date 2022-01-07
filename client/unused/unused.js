@@ -54,3 +54,25 @@ function observerSubmit() {
 
   observer.observe(inputSections[1]);
 }
+
+// form post
+function postRequest() {
+  const form = document.querySelector("#form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let formData = new FormData(form);
+
+    console.log(form.elements);
+
+    // ? checking key & values
+    // for (var [key, value] of formData.entries()) {
+    //   console.log(key + ":" + value);
+    // }
+    // const formProps = Object.fromEntries(formData);
+
+    // ? post request
+    // axios.post("/upload", formData).then((res) => {
+    //   console.log(res);
+    // });
+  });
+}

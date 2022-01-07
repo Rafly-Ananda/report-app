@@ -1,8 +1,17 @@
 "use strict";
-
-import axios from "axios";
 const focusedInput = document.querySelector("#row__1__input__1");
-const addBtn = document.querySelectorAll(".add__field");
+const textFieldParent = document.querySelectorAll(".row");
+const specialInput = document.querySelectorAll(".special__input");
+
+function setSpecialInput(inputs) {
+  inputs.forEach((input) => {
+    input.setAttribute(
+      "oninvalid",
+      "this.setCustomValidity('Input ini hanya menerima parameter 0 atau 1')"
+    );
+    input.setAttribute("oninput", "this.setCustomValidity('')");
+  });
+}
 
 function addFields(selector) {
   const descField = document.querySelector(`.desc__${selector}`);
@@ -80,37 +89,30 @@ function addFields(selector) {
   descField.insertAdjacentHTML("beforeend", html);
 }
 
-function postRequest() {
-  const form = document.querySelector("#form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let formData = new FormData(form);
+function textFieldBtnHandler() {
+  textFieldParent.forEach((field) => {
+    field.addEventListener("click", (e) => {
+      const parentSelector = e.target.closest(".row").dataset.id;
+      const descField = document.querySelector(`.desc__${parentSelector}`);
 
-    console.log(form.elements);
+      if (e.target.classList.contains("add__field")) {
+        e.target.previousElementSibling.classList.remove("element-hidden");
+        addFields(parentSelector);
+      }
 
-    // ? checking key & values
-    // for (var [key, value] of formData.entries()) {
-    //   console.log(key + ":" + value);
-    // }
-    // const formProps = Object.fromEntries(formData);
-
-    // ? post request
-    // axios.post("/upload", formData).then((res) => {
-    //   console.log(res);
-    // });
+      if (e.target.classList.contains("delete__field")) {
+        descField.lastElementChild.remove();
+        if (!descField.lastElementChild)
+          e.target.classList.add("element-hidden");
+      }
+    });
   });
 }
 
-addBtn.forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    const rowSelector = e.target.closest(".row").dataset.id;
-    addFields(rowSelector);
-  });
-});
-
 function start() {
+  setSpecialInput(specialInput);
   focusedInput.focus();
-  // postRequest();
+  textFieldBtnHandler();
 }
 
 start();
@@ -123,12 +125,40 @@ function placeholderVal() {
   return arr[randomData];
 }
 
+function placeholderVal2() {
+  const arr = [0, 1];
+  const randomData = Math.floor(Math.random() * arr.length);
+  return arr[randomData];
+}
+
 const generateData = document.querySelector(".populateData");
 generateData.addEventListener("click", () => {
-  for (let i = 1; i <= 11; i++) {
-    for (let j = 1; j <= 6; j++) {
-      document.querySelector(`#row__${i}__input__${j}`).value =
-        placeholderVal();
+  function percentageRow() {
+    for (let i = 1; i <= 11; i++) {
+      for (let j = 1; j <= 6; j++) {
+        if (!document.querySelector(`#row__${i}__input__${j}`)) {
+          continue;
+        } else {
+          document.querySelector(`#row__${i}__input__${j}`).value =
+            placeholderVal();
+        }
+      }
     }
   }
+
+  function notPercentageRow() {
+    for (let i = 1; i <= 11; i++) {
+      for (let j = 1; j <= 6; j++) {
+        if (!document.querySelector(`#row__${i}__input__${j}__spc`)) {
+          continue;
+        } else {
+          document.querySelector(`#row__${i}__input__${j}__spc`).value =
+            placeholderVal2();
+        }
+      }
+    }
+  }
+
+  percentageRow();
+  notPercentageRow();
 });
