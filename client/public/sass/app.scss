@@ -91,7 +91,7 @@ body {
 
         .heading {
           color: $default-white;
-          padding: 0.75em 1em;
+          padding: 1em;
         }
 
         .heading,
@@ -100,7 +100,7 @@ body {
           text-align: center;
         }
 
-        .th__heading {
+        .tr__heading {
           background-color: rgb(12 74 110);
         }
 
@@ -188,7 +188,9 @@ body {
 
             .table__fields {
               margin-bottom: 1em;
-              background-color: rgb(241 245 249);
+              padding-bottom: 0.9em;
+              background-color: rgb(226 232 240);
+              border-radius: 1em;
 
               table {
                 width: 55vw;
@@ -201,7 +203,7 @@ body {
                   padding: 1em;
                 }
 
-                tr:first-child {
+                .tr__heading {
                   background-color: rgb(12 74 110);
                 }
 
@@ -212,7 +214,7 @@ body {
 
                 td {
                   text-align: center;
-                  padding: 1em 0;
+                  padding: 1em 0 0 0;
                 }
 
                 input {
@@ -231,11 +233,15 @@ body {
                 }
 
                 .large__text__field {
-                  width: 15vw;
+                  width: 13vw;
                 }
 
                 .small__text__field {
-                  width: 3vw;
+                  width: 4vw;
+                }
+
+                #RL__field {
+                  margin-right: 1em;
                 }
               }
             }

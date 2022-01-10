@@ -59,9 +59,11 @@ router.post("/upload", (req, res) => {
     //   [added_by, added_at, dataset]
     // );
 
-    res.json(info);
+    // ? Pretty formatting
+    res.header("Content-Type", "application/json");
+    res.send(JSON.stringify(info, null, 4));
 
-    res.redirect("/view");
+    // res.redirect("/view");
   } catch (err) {
     console.log(err.message);
   }
