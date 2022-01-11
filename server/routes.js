@@ -10,10 +10,6 @@ const passport = require("passport");
 const initializePassport = require("./passport-config");
 const flash = require("express-flash");
 const session = require("express-session");
-// const formidable = require("express-formidable");
-
-// ? use to parse formData
-// router.use(formidable());
 
 router.use(express.urlencoded({ extended: false }));
 router.use(flash());
@@ -50,20 +46,16 @@ router.post("/upload", (req, res) => {
     delete dataset.user;
     delete dataset.period;
 
-    // console.log(info);
-    // ? using formidable
-    // res.send(req.fields);
+    pool.query(
+      `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+      [added_by, added_at, dataset]
+    );
 
-    // pool.query(
-    //   `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-    //   [added_by, added_at, dataset]
-    // );
+    // // ? Pretty formatting
+    // res.header("Content-Type", "application/json");
+    // res.send(JSON.stringify(info, null, 4));
 
-    // ? Pretty formatting
-    res.header("Content-Type", "application/json");
-    res.send(JSON.stringify(info, null, 4));
-
-    // res.redirect("/view");
+    res.redirect("/view");
   } catch (err) {
     console.log(err.message);
   }
@@ -96,18 +88,49 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
 
     const results = {
       added_at: data.rows[0].added_at,
-      allData: Object.entries(data.rows[0].dataset),
-      dataInPercentage: new Object(),
-      dataNotInPercentage: new Object(),
+      chartData: new Object(),
+      numberFieldData: {
+        dataInPercentage: new Object(),
+        dataNotInPercentage: new Object(),
+      },
+      textFieldData: {
+        row__1: new Array(),
+        row__2: new Array(),
+        row__3: new Array(),
+        row__4: new Array(),
+        row__5: new Array(),
+        row__6: new Array(),
+        row__7: new Array(),
+        row__8: new Array(),
+        row__9: new Array(),
+        row__10: new Array(),
+        row__11: new Array(),
+      },
     };
 
     for (const [key, value] of Object.entries(data.rows[0].dataset)) {
-      if (value.includes("1")) {
-        results.dataNotInPercentage[key] = value;
-      } else {
-        results.dataInPercentage[key] = value;
+      if (value.length === 6) {
+        results.chartData[key] = value;
+        if (value.includes("1")) {
+          results.numberFieldData.dataNotInPercentage[key] = value;
+        } else {
+          results.numberFieldData.dataInPercentage[key] = value;
+        }
+      }
+
+      // ? First loop = iterate through all 11 inputs
+      // ? Second loop = it's actually hard defining how much text field is allowd in this case i made it to max 10 field
+      if (value.length === 7) {
+        for (let i = 1; i < 12; i++) {
+          for (let j = 0; j < 10; j++) {
+            if (key === `row__${i}__input__desc__${j}`) {
+              results.textFieldData[`row__${i}`].push(value);
+            }
+          }
+        }
       }
     }
+
     res.json(results);
   } catch (error) {
     console.log(error.message);

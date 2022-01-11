@@ -1,6 +1,6 @@
 "use strict";
 import axios from "axios";
-import Chart from "chart.js/auto";
+import { generateChart, title } from "./tools/generateChart";
 
 const findBtn = document.querySelector(".find__data__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
@@ -9,98 +9,18 @@ const userSelectOptions = document.querySelector("#user");
 const headingPercentage = document.querySelectorAll(".PCP__1");
 const headingYear = document.querySelectorAll(".PCP__1__NP");
 
-const title = [
-  "Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi konsisten (Tepat Time To Market)",
-  "Mencapai target zero complain desain produk vs URS sampai 1 tahun",
-  [
-    ["Mencapai Jumlah kelulusan training prosedur pembuatan"],
-    // [
-    //   ", QC material dan produk manual book alat (NM assembly, instalasi & QC, ETC, FMS staff terkait)",
-    // ],
-  ],
-  "Ketersediaan tools data collection performa produk sesuai target",
-  "Mencapai target improvement product",
-  "Closing STCS (major) max 1 th & closing project",
-  "Memastikan proses kerja sesuai standar ISO (Menekan temuan audit status NC & PNC)",
-  "Memenuhi gap kompetensi sesuai target",
-  "Mencapai kebersihan bangunan 100%  dan 6S (5S & safety)",
-  "Mengikuti KS (3 Per semester)",
-  "CMM",
-];
-
-const generateChart = (label, dataset, chartId) => {
-  const ctx = document.getElementById(`${chartId}`).getContext("2d");
-
-  const chartConfig = {
-    type: "bar",
-    data: {
-      labels: ["BO1", "BO2", "BO3", "BO4", "BO5", "BO6"],
-      datasets: [
-        {
-          label: label,
-          data: dataset,
-          backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(255, 206, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-          ],
-          borderColor: [
-            "rgba(255, 99, 132, 1)",
-            "rgba(54, 162, 235, 1)",
-            "rgba(255, 206, 86, 1)",
-            "rgba(75, 192, 192, 1)",
-            "rgba(153, 102, 255, 1)",
-            "rgba(255, 159, 64, 1)",
-          ],
-          borderWidth: 1,
-        },
-      ],
-    },
-    options: {
-      plugins: {
-        legend: {
-          position: "bottom",
-          labels: {
-            boxWidth: 0,
-            textAlign: "center",
-            font: {
-              size: 14,
-            },
-          },
-        },
-      },
-      scales: {},
-    },
-  };
-
-  if (chartId === "myChart4" || chartId === "myChart10") {
-    chartConfig.options.scales = {
-      y: {
-        min: 0,
-        max: 1,
-      },
-    };
-  } else {
-    chartConfig.options.scales = {
-      y: {
-        min: 0,
-        max: 100,
-      },
-    };
-  }
-
-  new Chart(ctx, chartConfig);
-};
-
 const getData = async (user, period) => {
   try {
     const response = await axios.get(`/view/data/${user}/${period}`);
-    const data = response.data.allData;
-    const dataPercentage = Object.values(response.data.dataInPercentage);
-    const dataYear = Object.values(response.data.dataNotInPercentage);
+    const { data: xoxo } = response;
+    console.log(xoxo);
+    const data = Object.entries(response.data.chartData);
+    const dataPercentage = Object.values(
+      response.data.numberFieldData.dataInPercentage
+    );
+    const dataYear = Object.values(
+      response.data.numberFieldData.dataNotInPercentage
+    );
 
     // ? Calculate PCP Percentage
     dataPercentage.forEach((data, index) => {

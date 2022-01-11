@@ -1,4 +1,5 @@
 "use strict";
+import { addFields } from "./tools/dynamicTable";
 
 const focusedInput = document.querySelector("#row__1__input__1");
 const textFieldParent = document.querySelectorAll(".row");
@@ -15,142 +16,6 @@ function setSpecialInput(inputs) {
   });
 }
 
-function addFields(selector, tableSelector) {
-  const descField = document.querySelector(`.desc__${selector}`);
-  let identifier = descField.childElementCount;
-  let html;
-
-  if (identifier === 0) {
-    html = `<div class="descriptions">
-  <div class="table__fields">
-    <table class="input__table">
-      <tr class="tr__heading">
-        <th>NO</th>
-        <th>Penyebab</th>
-        <th>Penyelesaian</th>
-        <th>PIC</th>
-        <th>UKT</th>
-        <th>DL</th>
-        <th>RL</th>
-      </tr>
-      <tr>
-        <td>
-          <input
-            name="row__${selector}__input__desc__${identifier + 1}"
-            type="number"
-            min="1"
-            value=${identifier + 1}
-            id="no__field"
-            readonly
-          />
-        </td>
-        <td>
-          <textarea
-            name="row__${selector}__input__desc__${identifier + 1}"
-            id="cause__field"
-            class="large__text__field"
-          ></textarea>
-        </td>
-        <td>
-          <textarea
-            name="row__${selector}__input__desc__${identifier + 1}"
-            id="solution__field"
-            class="large__text__field"
-          ></textarea>
-        </td>
-        <td>
-          <textarea
-            name="row__${selector}__input__desc__${identifier + 1}"
-            id="PIC__field"
-            class="small__text__field"
-          ></textarea>
-        </td>
-        <td>
-          <textarea
-            name="row__${selector}__input__desc__${identifier + 1}"
-            id="UKT__field"
-            class="small__text__field"
-          ></textarea>
-        </td>
-        <td>
-          <textarea
-            name="row__${selector}__input__desc__${identifier + 1}"
-            id="DL__field"
-            class="small__text__field"
-          ></textarea>
-        </td>
-        <td>
-          <textarea
-            name="row__${selector}__input__desc__${identifier + 1}"
-            id="RL__field"
-            class="small__text__field last"
-          ></textarea>
-        </td>
-      </tr>
-    </table>
-  </div>
-</div>`;
-    descField.insertAdjacentHTML("beforeend", html);
-  } else {
-    identifier = tableSelector.childElementCount;
-    html = `<tr>
-    <td>
-      <input
-        name="row__${selector}__input__desc__${identifier + 1}"
-        type="number"
-        min="1"
-        value=${identifier + 1}
-        id="no__field"
-        readonly
-      />
-    </td>
-    <td>
-      <textarea
-        name="row__${selector}__input__desc__${identifier + 1}"
-        id="cause__field"
-        class="large__text__field"
-      ></textarea>
-    </td>
-    <td>
-      <textarea
-        name="row__${selector}__input__desc__${identifier + 1}"
-        id="solution__field"
-        class="large__text__field"
-      ></textarea>
-    </td>
-    <td>
-      <textarea
-        name="row__${selector}__input__desc__${identifier + 1}"
-        id="PIC__field"
-        class="small__text__field"
-      ></textarea>
-    </td>
-    <td>
-      <textarea
-        name="row__${selector}__input__desc__${identifier + 1}"
-        id="UKT__field"
-        class="small__text__field"
-      ></textarea>
-    </td>
-    <td>
-      <textarea
-        name="row__${selector}__input__desc__${identifier + 1}"
-        id="DL__field"
-        class="small__text__field"
-      ></textarea>
-    </td>
-    <td>
-      <textarea
-        name="row__${selector}__input__desc__${identifier + 1}"
-        id="RL__field"
-        class="small__text__field"
-      ></textarea>
-    </td>
-  </tr>`;
-    tableSelector.insertAdjacentHTML("beforeend", html);
-  }
-}
-
 function textFieldBtnHandler() {
   textFieldParent.forEach((field) => {
     field.addEventListener("click", (e) => {
@@ -165,9 +30,16 @@ function textFieldBtnHandler() {
         tableSelector =
           e.target.parentElement.previousElementSibling.children[0].children[0]
             .children[0];
+
+        if (
+          e.target.parentElement.previousElementSibling.children[0].children[0]
+            .children[0].childElementCount === 10
+        )
+          e.target.classList.add("element-hidden");
       }
 
       if (e.target.classList.contains("delete__field")) {
+        e.target.nextElementSibling.classList.remove("element-hidden");
         const tableField = descField.children[0].children[0].children;
         tableField[0].children.length === 1
           ? descField.lastElementChild.remove()

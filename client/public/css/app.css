@@ -167,6 +167,9 @@ body {
   min-width: 60vw;
   margin: 0 0 1em 0;
 }
+.outer__border .inputs__container .descriptions__container .flex__container button {
+  border: 1px solid red;
+}
 .outer__border .inputs__container .descriptions__container .flex__container h1 {
   font-weight: 600;
   margin: 1em;

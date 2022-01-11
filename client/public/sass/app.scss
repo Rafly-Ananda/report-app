@@ -101,15 +101,15 @@ body {
         }
 
         .tr__heading {
-          background-color: rgb(12 74 110);
+          background-color: $sky-900;
         }
 
         tr:nth-child(even) {
-          background-color: rgb(226 232 240);
+          background-color: $slate-200;
         }
 
         tr:nth-child(odd):not(:first-child) {
-          background-color: rgb(241 245 249);
+          background-color: $slate-100;
         }
 
         input {
@@ -173,6 +173,10 @@ body {
         min-width: 60vw;
         margin: 0 0 1em 0;
 
+        button {
+          border: 1px solid red;
+        }
+
         h1 {
           font-weight: 600;
           margin: 1em;
@@ -189,7 +193,7 @@ body {
             .table__fields {
               margin-bottom: 1em;
               padding-bottom: 0.9em;
-              background-color: rgb(226 232 240);
+              background-color: $slate-200;
               border-radius: 1em;
 
               table {
@@ -204,7 +208,7 @@ body {
                 }
 
                 .tr__heading {
-                  background-color: rgb(12 74 110);
+                  background-color: $sky-900;
                 }
 
                 input,
