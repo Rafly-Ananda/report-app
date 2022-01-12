@@ -35,6 +35,12 @@ router.get("/view", (req, res) => {
   );
 });
 
+router.get("/login", (req, res) => {
+  res.sendFile(
+    path.resolve(__dirname + "../../client/public/views/login.html")
+  );
+});
+
 // ** CRUD API ** //
 
 router.post("/upload", (req, res) => {
@@ -46,14 +52,14 @@ router.post("/upload", (req, res) => {
     delete dataset.user;
     delete dataset.period;
 
-    pool.query(
-      `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-      [added_by, added_at, dataset]
-    );
+    // pool.query(
+    //   `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+    //   [added_by, added_at, dataset]
+    // );
 
-    // // ? Pretty formatting
-    // res.header("Content-Type", "application/json");
-    // res.send(JSON.stringify(info, null, 4));
+    // ? Pretty formatting
+    res.header("Content-Type", "application/json");
+    res.send(JSON.stringify(info, null, 4));
 
     res.redirect("/view");
   } catch (err) {
@@ -88,7 +94,7 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
 
     const results = {
       added_at: data.rows[0].added_at,
-      chartData: new Object(),
+      tableData: new Object(),
       numberFieldData: {
         dataInPercentage: new Object(),
         dataNotInPercentage: new Object(),
@@ -110,7 +116,7 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
 
     for (const [key, value] of Object.entries(data.rows[0].dataset)) {
       if (value.length === 6) {
-        results.chartData[key] = value;
+        results.tableData[key] = value;
         if (value.includes("1")) {
           results.numberFieldData.dataNotInPercentage[key] = value;
         } else {
@@ -119,7 +125,7 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
       }
 
       // ? First loop = iterate through all 11 inputs
-      // ? Second loop = it's actually hard defining how much text field is allowd in this case i made it to max 10 field
+      // ? Second loop = it's actually defining how much text field is allowed in this case max to 10 field
       if (value.length === 7) {
         for (let i = 1; i < 12; i++) {
           for (let j = 0; j < 10; j++) {

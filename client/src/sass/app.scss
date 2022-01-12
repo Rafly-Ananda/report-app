@@ -374,6 +374,7 @@ body {
     height: 80vh;
     padding-right: 1.6em;
     overflow-y: scroll;
+    padding-bottom: 4em;
   }
 
   .view__section::-webkit-scrollbar {
@@ -390,29 +391,87 @@ body {
     border-radius: 1em;
   }
 
-  .chart__wrapper {
+  .data__container {
     @include flex-boiler;
     min-height: 80vh;
     min-width: 65vw;
 
-    .chart__container {
+    .data__wrapper {
+      @include flex-boiler;
+      flex-direction: column;
+      margin-top: 4em;
+      width: 90%;
+      min-height: 100%;
       border: 2px solid $dark-grey;
       border-radius: 1em;
-      width: 50vw;
 
-      h1 {
-        margin: 2em;
-        font-weight: 300;
+      .section__heading {
+        margin: 3em 3em 0 3em;
+        font-weight: 600;
+        text-decoration: underline;
       }
 
-      canvas {
-        margin: 2em;
+      .chart__container {
+        width: 50vw;
+
+        .PCP__1,
+        .PCP__1__NP {
+          margin: 2em;
+          font-weight: 600;
+          text-decoration: underline;
+        }
+
+        canvas {
+          margin: 2em;
+        }
+      }
+
+      .descriptions {
+        @include flex-boiler;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 3em;
+
+        table {
+          background-color: $slate-200;
+          width: 60vw;
+          border-collapse: collapse;
+          border-radius: 0.5em;
+          overflow: hidden;
+
+          tr:not(:first-child):hover {
+            background-color: $slate-300;
+          }
+
+          td {
+            outline: 1.5px solid $soft-white;
+            padding: 1em;
+            text-align: center;
+          }
+
+          th {
+            color: $default-white;
+            padding: 1em;
+          }
+
+          .tr__heading {
+            background-color: $sky-900;
+          }
+
+          .large__field {
+            text-align: start;
+            width: 30%;
+          }
+
+          .no {
+            text-align: center;
+            width: 5%;
+          }
+        }
       }
     }
   }
 }
-
-// ** Upload Page Styling ** //
 
 .element-hidden {
   @include element-hidden;

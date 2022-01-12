@@ -1,6 +1,6 @@
 "use strict";
 
-function addFields(selector, tableSelector) {
+const addFields = (selector, tableSelector) => {
   const descField = document.querySelector(`.desc__${selector}`);
   let identifier = descField.childElementCount;
   let html;
@@ -134,6 +134,6 @@ function addFields(selector, tableSelector) {
     </tr>`;
     tableSelector.insertAdjacentHTML("beforeend", html);
   }
-}
+};
 
 export { addFields };

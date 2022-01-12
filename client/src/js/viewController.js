@@ -1,6 +1,7 @@
 "use strict";
 import axios from "axios";
-import { generateChart, title } from "./tools/generateChart";
+import { generateChart } from "./tools/generateChart";
+import { generateFields } from "./tools/generateViewInputField";
 
 const findBtn = document.querySelector(".find__data__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
@@ -11,16 +12,17 @@ const headingYear = document.querySelectorAll(".PCP__1__NP");
 
 const getData = async (user, period) => {
   try {
-    const response = await axios.get(`/view/data/${user}/${period}`);
-    const { data: xoxo } = response;
-    console.log(xoxo);
-    const data = Object.entries(response.data.chartData);
-    const dataPercentage = Object.values(
-      response.data.numberFieldData.dataInPercentage
-    );
-    const dataYear = Object.values(
-      response.data.numberFieldData.dataNotInPercentage
-    );
+    const {
+      data: {
+        tableData,
+        numberFieldData: { dataInPercentage, dataNotInPercentage },
+        textFieldData,
+      },
+    } = await axios.get(`/view/data/${user}/${period}`);
+    const tableEntries = Object.entries(tableData);
+    const dataPercentage = Object.values(dataInPercentage);
+    const dataYear = Object.values(dataNotInPercentage);
+    const dataText = Object.entries(textFieldData);
 
     // ? Calculate PCP Percentage
     dataPercentage.forEach((data, index) => {
@@ -42,9 +44,18 @@ const getData = async (user, period) => {
     });
 
     // ? Generate Chart
-    data.forEach((element, index) => {
-      generateChart(title[index], element[1], `myChart${index + 1}`);
+    tableEntries.forEach((element, index) => {
+      generateChart(element[1], `myChart${index + 1}`);
     });
+
+    // ? Generate Textfield Data
+    dataText.forEach((row) => {
+      row[1].forEach((field) => {
+        generateFields(row[0].slice(5), field);
+      });
+    });
+
+    // ? Generate Table Data
 
     selectDataSection.classList.add("element-hidden");
     viewSection.classList.remove("element-hidden");
@@ -80,3 +91,14 @@ function start() {
 }
 
 start();
+
+// ____________________Populate field (testing tools)_________________________________ //
+
+// function go() {
+//   const user = (document.querySelector("#user").value = "test");
+//   const date = (document.querySelector("#period").value = "2022-02");
+
+//   getData(user, date);
+// }
+
+// go();

@@ -1,9 +1,10 @@
 "use strict";
-import { addFields } from "./tools/dynamicTable";
+import { addFields } from "./tools/dynamicInputField";
 
 const focusedInput = document.querySelector("#row__1__input__1");
 const textFieldParent = document.querySelectorAll(".row");
 const specialInput = document.querySelectorAll(".special__input");
+const maxTextField = 5;
 let tableSelector;
 
 function setSpecialInput(inputs) {
@@ -31,10 +32,7 @@ function textFieldBtnHandler() {
           e.target.parentElement.previousElementSibling.children[0].children[0]
             .children[0];
 
-        if (
-          e.target.parentElement.previousElementSibling.children[0].children[0]
-            .children[0].childElementCount === 10
-        )
+        if (tableSelector.childElementCount === maxTextField)
           e.target.classList.add("element-hidden");
       }
 
