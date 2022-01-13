@@ -94,8 +94,8 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
 
     const results = {
       added_at: data.rows[0].added_at,
-      tableData: new Object(),
       numberFieldData: {
+        allTableData: new Object(),
         dataInPercentage: new Object(),
         dataNotInPercentage: new Object(),
       },
@@ -116,7 +116,7 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
 
     for (const [key, value] of Object.entries(data.rows[0].dataset)) {
       if (value.length === 6) {
-        results.tableData[key] = value;
+        results.numberFieldData.allTableData[key] = value;
         if (value.includes("1")) {
           results.numberFieldData.dataNotInPercentage[key] = value;
         } else {

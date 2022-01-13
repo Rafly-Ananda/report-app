@@ -27,10 +27,14 @@ const generateFields = (selector, ...data) => {
               ${data[0][0]}
             </td>
             <td class="large__field">
-              ${data[0][1]}
+            <div class="content__container">
+                <div class="content">${data[0][1]}</div>
+              </div>
             </td>
             <td class="large__field">
-              ${data[0][2]}
+              <div class="content__container">
+                <div class="content">${data[0][2]}</div>
+              </div>
             </td>
             <td>
               ${data[0][3]}
@@ -55,10 +59,14 @@ const generateFields = (selector, ...data) => {
             ${data[0][0]}
             </td>
             <td class="large__field">
-              ${data[0][1]}
-            </td>
+              <div class="content__container">
+                  <div class="content">${data[0][1]}</div>
+                </div>
+              </td>
             <td class="large__field">
-              ${data[0][2]}
+            <div class="content__container">
+            <div class="content">${data[0][2]}</div>
+          </div>
             </td>
             <td>
               ${data[0][3]}

@@ -65,8 +65,8 @@ body {
 // ** Wrapper Styling ** //
 
 .outer__border {
-  border: 2px solid $dark-grey;
-  border-radius: 1em;
+  border: 1px solid $dark-grey;
+  border-radius: 0.5em;
   max-width: 70vw;
   z-index: 99;
 
@@ -86,7 +86,7 @@ body {
       table {
         max-width: 60vw;
         border-collapse: collapse;
-        border-radius: 1em;
+        border-radius: 0.5em;
         overflow: hidden;
 
         .heading {
@@ -136,12 +136,8 @@ body {
           padding-right: 1.5em;
         }
 
-        .large__text__field {
-          width: 15vw;
-        }
-
-        .small__text__field {
-          width: 3vw;
+        .last__heading {
+          padding-right: 2vw;
         }
 
         .heading__KPI {
@@ -199,7 +195,7 @@ body {
               table {
                 width: 55vw;
                 border-collapse: collapse;
-                border-radius: 1em;
+                border-radius: 0.5em;
                 overflow: hidden;
 
                 th {
@@ -266,16 +262,16 @@ body {
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: darkgrey;
+    background-color: $slate-300;
     border-radius: 1em;
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: rgb(95, 95, 95);
+    background-color: $slate-500;
     border-radius: 1em;
   }
 
@@ -375,101 +371,234 @@ body {
     padding-right: 1.6em;
     overflow-y: scroll;
     padding-bottom: 4em;
-  }
 
-  .view__section::-webkit-scrollbar {
-    width: 10px;
-  }
-
-  .view__section::-webkit-scrollbar-track {
-    background-color: darkgrey;
-    border-radius: 1em;
-  }
-
-  .view__section::-webkit-scrollbar-thumb {
-    background-color: rgb(95, 95, 95);
-    border-radius: 1em;
-  }
-
-  .data__container {
-    @include flex-boiler;
-    min-height: 80vh;
-    min-width: 65vw;
-
-    .data__wrapper {
+    .date__id {
       @include flex-boiler;
-      flex-direction: column;
-      margin-top: 4em;
-      width: 90%;
-      min-height: 100%;
-      border: 2px solid $dark-grey;
-      border-radius: 1em;
+      background-color: $slate-200;
+      width: 40vw;
+      height: 10vh;
+      margin: 3em auto 0 auto;
+      padding: 1em;
+      border: 1px solid $dark-grey;
+      border-top-left-radius: 1em;
+      border-bottom-right-radius: 1em;
 
-      .section__heading {
-        margin: 3em 3em 0 3em;
-        font-weight: 600;
-        text-decoration: underline;
+      h1 {
+        display: inline;
+        font-weight: 400;
+        font-size: 1.25rem;
+
+        &.second {
+          font-weight: 500;
+          margin-left: 0.35em;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .data__container {
+      @include flex-boiler;
+      min-height: 80vh;
+      min-width: 65vw;
+
+      .data__wrapper__table {
+        @include flex-boiler;
+        flex-direction: column;
+        margin-top: 4em;
+        width: 90%;
+        min-height: 100%;
+        border: 1px solid $dark-grey;
+        border-radius: 1em;
+
+        .table__inputs {
+          @include flex-boiler;
+          flex-direction: column;
+          width: 100%;
+          margin: 1em;
+
+          table {
+            width: 60vw;
+            border-collapse: collapse;
+            border-radius: 0.5em;
+            overflow: hidden;
+
+            .heading {
+              color: $default-white;
+              padding: 1em;
+            }
+
+            .data {
+              @include flex-boiler;
+              width: 4vw;
+            }
+
+            .heading,
+            .spc_sm,
+            .table__no {
+              text-align: center;
+            }
+
+            .tr__heading {
+              background-color: $sky-900;
+            }
+
+            tr:nth-child(even) {
+              background-color: $slate-200;
+            }
+
+            tr:nth-child(odd):not(:first-child) {
+              background-color: $slate-100;
+            }
+
+            td {
+              text-align: left;
+              padding: 0.5em;
+            }
+
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+            }
+
+            .last__heading {
+              padding-right: 1vw;
+            }
+
+            .SM__ele {
+              padding-right: 1.85vw;
+            }
+
+            .BO {
+              padding-left: 1vw;
+            }
+
+            .heading__KPI {
+              @include flex-boiler;
+              height: 10vh;
+              width: 100%;
+              overflow-y: scroll;
+              -ms-overflow-style: none; /* IE and Edge */
+              scrollbar-width: none; /* Firefox */
+            }
+
+            .heading__KPI::-webkit-scrollbar {
+              display: none; /* Chrome, Safari and Opera */
+            }
+          }
+        }
       }
 
-      .chart__container {
-        width: 50vw;
+      .data__wrapper {
+        @include flex-boiler;
+        flex-direction: column;
+        margin-top: 4em;
+        width: 90%;
+        min-height: 100%;
+        border: 1px solid $dark-grey;
+        border-radius: 1em;
 
-        .PCP__1,
-        .PCP__1__NP {
-          margin: 2em;
+        .section__heading {
+          margin: 3em 3em 0 3em;
           font-weight: 600;
           text-decoration: underline;
         }
 
-        canvas {
-          margin: 2em;
+        .chart__container {
+          width: 50vw;
+
+          .PCP__1,
+          .PCP__1__NP {
+            margin: 2em;
+            font-weight: 600;
+            text-decoration: underline;
+          }
+
+          canvas {
+            margin: 2em;
+          }
         }
-      }
 
-      .descriptions {
-        @include flex-boiler;
-        flex-direction: column;
-        width: 100%;
-        margin-bottom: 3em;
+        .descriptions {
+          @include flex-boiler;
+          flex-direction: column;
+          width: 100%;
+          margin-bottom: 3em;
 
-        table {
-          background-color: $slate-200;
-          width: 60vw;
-          border-collapse: collapse;
-          border-radius: 0.5em;
-          overflow: hidden;
+          table {
+            background-color: $slate-200;
+            width: 60vw;
+            border-collapse: collapse;
+            border-radius: 0.5em;
+            overflow: hidden;
 
-          tr:not(:first-child):hover {
-            background-color: $slate-300;
-          }
+            td {
+              border-right: 1.5px solid $soft-white;
+              border-left: 1.5px solid $soft-white;
+              padding: 1em;
+              text-align: center;
+            }
 
-          td {
-            outline: 1.5px solid $soft-white;
-            padding: 1em;
-            text-align: center;
-          }
+            th {
+              color: $default-white;
+              padding: 1em;
+            }
 
-          th {
-            color: $default-white;
-            padding: 1em;
-          }
+            tr:nth-child(even) {
+              background-color: $slate-200;
+            }
 
-          .tr__heading {
-            background-color: $sky-900;
-          }
+            tr:nth-child(odd):not(:first-child) {
+              background-color: $slate-100;
+            }
 
-          .large__field {
-            text-align: start;
-            width: 30%;
-          }
+            .tr__heading {
+              background-color: $sky-900;
+            }
 
-          .no {
-            text-align: center;
-            width: 5%;
+            .large__field {
+              text-align: start;
+              width: 30%;
+              height: 100px;
+            }
+
+            .no {
+              text-align: center;
+              width: 5%;
+            }
+
+            .content__container {
+              @include flex-boiler;
+
+              .content {
+                height: 10vh;
+                width: 100%;
+                overflow-y: scroll;
+                -ms-overflow-style: none; /* IE and Edge */
+                scrollbar-width: none; /* Firefox */
+
+                &::-webkit-scrollbar {
+                  display: none; /* Chrome, Safari and Opera */
+                }
+              }
+            }
           }
         }
       }
     }
+  }
+
+  .view__section::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .view__section::-webkit-scrollbar-track {
+    background-color: $slate-300;
+    border-radius: 1em;
+  }
+
+  .view__section::-webkit-scrollbar-thumb {
+    background-color: $slate-500;
+    border-radius: 1em;
   }
 }
 

@@ -64,8 +64,8 @@ body {
 }
 
 .outer__border {
-  border: 2px solid #222222;
-  border-radius: 1em;
+  border: 1px solid #222222;
+  border-radius: 0.5em;
   max-width: 70vw;
   z-index: 99;
 }
@@ -87,7 +87,7 @@ body {
 .outer__border .inputs__container .table__inputs table {
   max-width: 60vw;
   border-collapse: collapse;
-  border-radius: 1em;
+  border-radius: 0.5em;
   overflow: hidden;
 }
 .outer__border .inputs__container .table__inputs table .heading {
@@ -127,11 +127,8 @@ body {
 .outer__border .inputs__container .table__inputs table .last__input {
   padding-right: 1.5em;
 }
-.outer__border .inputs__container .table__inputs table .large__text__field {
-  width: 15vw;
-}
-.outer__border .inputs__container .table__inputs table .small__text__field {
-  width: 3vw;
+.outer__border .inputs__container .table__inputs table .last__heading {
+  padding-right: 2vw;
 }
 .outer__border .inputs__container .table__inputs table .heading__KPI {
   display: flex;
@@ -192,7 +189,7 @@ body {
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table {
   width: 55vw;
   border-collapse: collapse;
-  border-radius: 1em;
+  border-radius: 0.5em;
   overflow: hidden;
 }
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table th {
@@ -243,14 +240,14 @@ body {
   border: 2px solid;
 }
 .outer__border ::-webkit-scrollbar {
-  width: 10px;
+  width: 4px;
 }
 .outer__border ::-webkit-scrollbar-track {
-  background-color: darkgrey;
+  background-color: #cbd5e1;
   border-radius: 1em;
 }
 .outer__border ::-webkit-scrollbar-thumb {
-  background-color: #5f5f5f;
+  background-color: #64748b;
   border-radius: 1em;
 }
 .outer__border .credentials {
@@ -354,25 +351,37 @@ body {
   overflow-y: scroll;
   padding-bottom: 4em;
 }
-.outer__border .view__section::-webkit-scrollbar {
-  width: 10px;
+.outer__border .view__section .date__id {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e2e8f0;
+  width: 40vw;
+  height: 10vh;
+  margin: 3em auto 0 auto;
+  padding: 1em;
+  border: 1px solid #222222;
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
 }
-.outer__border .view__section::-webkit-scrollbar-track {
-  background-color: darkgrey;
-  border-radius: 1em;
+.outer__border .view__section .date__id h1 {
+  display: inline;
+  font-weight: 400;
+  font-size: 1.25rem;
 }
-.outer__border .view__section::-webkit-scrollbar-thumb {
-  background-color: #5f5f5f;
-  border-radius: 1em;
+.outer__border .view__section .date__id h1.second {
+  font-weight: 500;
+  margin-left: 0.35em;
+  text-decoration: underline;
 }
-.outer__border .data__container {
+.outer__border .view__section .data__container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 80vh;
   min-width: 65vw;
 }
-.outer__border .data__container .data__wrapper {
+.outer__border .view__section .data__container .data__wrapper__table {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,27 +389,109 @@ body {
   margin-top: 4em;
   width: 90%;
   min-height: 100%;
-  border: 2px solid #222222;
+  border: 1px solid #222222;
   border-radius: 1em;
 }
-.outer__border .data__container .data__wrapper .section__heading {
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 1em;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table {
+  width: 60vw;
+  border-collapse: collapse;
+  border-radius: 0.5em;
+  overflow: hidden;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading {
+  color: #ffffff;
+  padding: 1em;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4vw;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading,
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .spc_sm,
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .table__no {
+  text-align: center;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .tr__heading {
+  background-color: #0c4a6e;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table tr:nth-child(even) {
+  background-color: #e2e8f0;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table tr:nth-child(odd):not(:first-child) {
+  background-color: #f1f5f9;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table td {
+  text-align: left;
+  padding: 0.5em;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table input::-webkit-outer-spin-button,
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .last__heading {
+  padding-right: 1vw;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .SM__ele {
+  padding-right: 1.85vw;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .BO {
+  padding-left: 1vw;
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 10vh;
+  width: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+.outer__border .view__section .data__container .data__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 4em;
+  width: 90%;
+  min-height: 100%;
+  border: 1px solid #222222;
+  border-radius: 1em;
+}
+.outer__border .view__section .data__container .data__wrapper .section__heading {
   margin: 3em 3em 0 3em;
   font-weight: 600;
   text-decoration: underline;
 }
-.outer__border .data__container .data__wrapper .chart__container {
+.outer__border .view__section .data__container .data__wrapper .chart__container {
   width: 50vw;
 }
-.outer__border .data__container .data__wrapper .chart__container .PCP__1,
-.outer__border .data__container .data__wrapper .chart__container .PCP__1__NP {
+.outer__border .view__section .data__container .data__wrapper .chart__container .PCP__1,
+.outer__border .view__section .data__container .data__wrapper .chart__container .PCP__1__NP {
   margin: 2em;
   font-weight: 600;
   text-decoration: underline;
 }
-.outer__border .data__container .data__wrapper .chart__container canvas {
+.outer__border .view__section .data__container .data__wrapper .chart__container canvas {
   margin: 2em;
 }
-.outer__border .data__container .data__wrapper .descriptions {
+.outer__border .view__section .data__container .data__wrapper .descriptions {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -408,35 +499,69 @@ body {
   width: 100%;
   margin-bottom: 3em;
 }
-.outer__border .data__container .data__wrapper .descriptions table {
+.outer__border .view__section .data__container .data__wrapper .descriptions table {
   background-color: #e2e8f0;
   width: 60vw;
   border-collapse: collapse;
   border-radius: 0.5em;
   overflow: hidden;
 }
-.outer__border .data__container .data__wrapper .descriptions table tr:not(:first-child):hover {
-  background-color: #cbd5e1;
-}
-.outer__border .data__container .data__wrapper .descriptions table td {
-  outline: 1.5px solid #f0ffff;
+.outer__border .view__section .data__container .data__wrapper .descriptions table td {
+  border-right: 1.5px solid #f0ffff;
+  border-left: 1.5px solid #f0ffff;
   padding: 1em;
   text-align: center;
 }
-.outer__border .data__container .data__wrapper .descriptions table th {
+.outer__border .view__section .data__container .data__wrapper .descriptions table th {
   color: #ffffff;
   padding: 1em;
 }
-.outer__border .data__container .data__wrapper .descriptions table .tr__heading {
+.outer__border .view__section .data__container .data__wrapper .descriptions table tr:nth-child(even) {
+  background-color: #e2e8f0;
+}
+.outer__border .view__section .data__container .data__wrapper .descriptions table tr:nth-child(odd):not(:first-child) {
+  background-color: #f1f5f9;
+}
+.outer__border .view__section .data__container .data__wrapper .descriptions table .tr__heading {
   background-color: #0c4a6e;
 }
-.outer__border .data__container .data__wrapper .descriptions table .large__field {
+.outer__border .view__section .data__container .data__wrapper .descriptions table .large__field {
   text-align: start;
   width: 30%;
+  height: 100px;
 }
-.outer__border .data__container .data__wrapper .descriptions table .no {
+.outer__border .view__section .data__container .data__wrapper .descriptions table .no {
   text-align: center;
   width: 5%;
+}
+.outer__border .view__section .data__container .data__wrapper .descriptions table .content__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer__border .view__section .data__container .data__wrapper .descriptions table .content__container .content {
+  height: 10vh;
+  width: 100%;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+.outer__border .view__section .data__container .data__wrapper .descriptions table .content__container .content::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari and Opera */
+}
+.outer__border .view__section::-webkit-scrollbar {
+  width: 4px;
+}
+.outer__border .view__section::-webkit-scrollbar-track {
+  background-color: #cbd5e1;
+  border-radius: 1em;
+}
+.outer__border .view__section::-webkit-scrollbar-thumb {
+  background-color: #64748b;
+  border-radius: 1em;
 }
 
 .element-hidden {
