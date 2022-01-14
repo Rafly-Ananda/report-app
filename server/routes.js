@@ -43,6 +43,21 @@ router.get("/login", (req, res) => {
 
 // ** CRUD API ** //
 
+router.post("/upload/validate", async (req, res) => {
+  const info = req.body;
+
+  const isValid = await pool.query(
+    `SELECT added_at FROM data_input WHERE added_at = $1`,
+    [info.month]
+  );
+
+  if (isValid.rows.length > 0) {
+    return res.status(409).send();
+  } else {
+    return res.status(200).send();
+  }
+});
+
 router.post("/upload", (req, res) => {
   try {
     const info = req.body;
@@ -61,15 +76,16 @@ router.post("/upload", (req, res) => {
     res.header("Content-Type", "application/json");
     res.send(JSON.stringify(info, null, 4));
 
-    res.redirect("/view");
+    // res.redirect("/view");
   } catch (err) {
-    console.log(err.message);
+    console.log(err);
   }
 });
 
 // ? get user data
 router.get("/view/data/user", async (req, res) => {
   const data = await pool.query("SELECT username FROM users");
+
   const results = {
     username: new Array(),
   };

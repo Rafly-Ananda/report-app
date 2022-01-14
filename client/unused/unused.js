@@ -76,3 +76,17 @@ function postRequest() {
     // });
   });
 }
+
+// function postRequest() {
+//   const form = document.querySelector("#form");
+//   form.addEventListener("submit", async (e) => {
+//     try {
+//       // e.preventDefault();
+//       form.submit().then((res) => {
+//         console.log(res);
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   });
+// }

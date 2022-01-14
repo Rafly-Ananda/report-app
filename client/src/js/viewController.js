@@ -65,15 +65,15 @@ const getData = async (user, period) => {
     // ? Generate Chart && Table Data
     tableEntries.forEach((element, index) => {
       generateChart(element[1], `myChart${index + 1}`);
-      generateTable(index + 1, Object.values(element[1]));
+      // generateTable(index + 1, Object.values(element[1]));
     });
 
-    // ? Generate Textfield Data
-    dataText.forEach((row) => {
-      row[1].forEach((field) => {
-        generateFields(row[0].slice(5), field);
-      });
-    });
+    // // ? Generate Textfield Data
+    // dataText.forEach((row) => {
+    //   row[1].forEach((field) => {
+    //     generateFields(row[0].slice(5), field);
+    //   });
+    // });
 
     selectDataSection.classList.add("element-hidden");
     viewSection.classList.remove("element-hidden");

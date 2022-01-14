@@ -1,4 +1,4 @@
--- CREATE DATABASE report_app;
+CREATE DATABASE report_app;
 
 CREATE TABLE users(
     id BIGSERIAL NOT NULL PRIMARY KEY,
@@ -10,7 +10,7 @@ CREATE TABLE users(
 CREATE TABLE data_input(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     added_by VARCHAR (255) NOT NULL REFERENCES users(username),
-    added_at VARCHAR (255) NOT NULL,
+    added_at VARCHAR (255) NOT NULL UNIQUE,
     dataset jsonb NOT NULL
 );
 

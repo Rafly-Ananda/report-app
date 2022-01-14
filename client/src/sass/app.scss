@@ -251,6 +251,7 @@ body {
             @include flex-boiler;
             margin: 0 0 1em 0;
             width: 100%;
+
             button {
               margin: 0 0.5em;
               border: 2px solid;
@@ -307,13 +308,18 @@ body {
 
       .btn__container {
         @include flex-boiler;
-        flex-direction: column;
-        width: 100%;
+        width: 70%;
         justify-content: space-evenly;
         margin-top: 0.5em;
 
         Button {
           @include btn-style;
+
+          &:disabled {
+            opacity: 50%;
+            cursor: not-allowed;
+            background-color: $dark-grey;
+          }
         }
       }
     }

@@ -1,9 +1,11 @@
 "use strict";
+import axios from "axios";
 import { addFields } from "./tools/dynamicInputField";
 
 const focusedInput = document.querySelector("#row__1__input__1");
 const textFieldParent = document.querySelectorAll(".row");
 const specialInput = document.querySelectorAll(".special__input");
+const submitBtn = document.querySelector("#submit__btn");
 const maxTextField = 5;
 let tableSelector;
 
@@ -19,7 +21,7 @@ function setSpecialInput(inputs) {
 
 function textFieldBtnHandler() {
   textFieldParent.forEach((field) => {
-    field.addEventListener("click", (e) => {
+    field.addEventListener("hover", (e) => {
       const parentSelector = e.target.closest(".row").dataset.id;
       const descField = document.querySelector(`.desc__${parentSelector}`);
 
@@ -50,9 +52,26 @@ function textFieldBtnHandler() {
   });
 }
 
+document.querySelector("#validate__btn").addEventListener("click", () => {
+  const data = document.querySelector("#period").value;
+  axios
+    .post("/upload/validate", {
+      month: data,
+    })
+    .then(() => {
+      alert("Validated");
+      submitBtn.disabled = false;
+      submitBtn.classList.add("hover:bg-green-700");
+    })
+    .catch((err) => {
+      alert("Data with that date already exist, please choose different date!");
+    });
+});
+
 function start() {
-  setSpecialInput(specialInput);
+  submitBtn.disabled = true;
   focusedInput.focus();
+  setSpecialInput(specialInput);
   textFieldBtnHandler();
 }
 
