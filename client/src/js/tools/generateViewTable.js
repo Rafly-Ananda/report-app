@@ -44,22 +44,22 @@ const generateTable = (index, ...data) => {
             </td>
             <td>${index === 4 || index === 10 ? "tahun" : "100.00%"}</td>
             <td>
-                <div class="data">${data[0][0]}</div>
+                <div class="data">${data[0][0] === "" ? "-" : data[0][0]}</div>
             </td>
             <td>
-                <div class="data">${data[0][1]}</div>
+                <div class="data">${data[0][1] === "" ? "-" : data[0][1]}</div>
             </td>
             <td>
-                <div class="data">${data[0][2]}</div>
+                <div class="data">${data[0][2] === "" ? "-" : data[0][2]}</div>
             </td>
             <td>
-                <div class="data">${data[0][3]}</div>
+                <div class="data">${data[0][3] === "" ? "-" : data[0][3]}</div>
             </td>
             <td>
-                <div class="data">${data[0][4]}</div>
+                <div class="data">${data[0][4] === "" ? "-" : data[0][4]}</div>
             </td>
             <td>
-                <div class="data">${data[0][5]}</div>
+                <div class="data">${data[0][5] === "" ? "-" : data[0][5]}</div>
             </td>
         </tr>
     </table>`;
@@ -75,22 +75,22 @@ const generateTable = (index, ...data) => {
         ${index === 4 || index === 10 ? "3/tahun" : "100.00%"}
         </td>
         <td>
-            <div class="data">${data[0][0]}</div>
+            <div class="data">${data[0][0] === "" ? "-" : data[0][0]}</div>
         </td>
         <td>
-            <div class="data">${data[0][1]}</div>
+            <div class="data">${data[0][1] === "" ? "-" : data[0][1]}</div>
         </td>
         <td>
-            <div class="data">${data[0][2]}</div>
+            <div class="data">${data[0][2] === "" ? "-" : data[0][2]}</div>
         </td>
         <td>
-            <div class="data">${data[0][3]}</div>
+            <div class="data">${data[0][3] === "" ? "-" : data[0][3]}</div>
         </td>
         <td>
-            <div class="data">${data[0][4]}</div>
+            <div class="data">${data[0][4] === "" ? "-" : data[0][4]}</div>
         </td>
         <td>
-            <div class="data">${data[0][5]}</div>
+            <div class="data">${data[0][5] === "" ? "-" : data[0][5]}</div>
         </td>
     </tr>`;
     htmlSelector.insertAdjacentHTML("beforeend", html);

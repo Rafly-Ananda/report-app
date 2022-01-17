@@ -12,7 +12,7 @@ const headingPercentage = document.querySelectorAll(".PCP__1");
 const headingYear = document.querySelectorAll(".PCP__1__NP");
 const addedAtText = document.querySelector(".added__at");
 
-const getData = async (user, period) => {
+const getData = async (user, date) => {
   try {
     const {
       data: {
@@ -24,7 +24,7 @@ const getData = async (user, period) => {
         },
         textFieldData,
       },
-    } = await axios.get(`/view/data/${user}/${period}`);
+    } = await axios.get(`/view/data/${user}/${date}`);
     const tableEntries = Object.entries(allTableData);
     const dataPercentage = Object.values(dataInPercentage);
     const dataYear = Object.values(dataNotInPercentage);
@@ -65,15 +65,15 @@ const getData = async (user, period) => {
     // ? Generate Chart && Table Data
     tableEntries.forEach((element, index) => {
       generateChart(element[1], `myChart${index + 1}`);
-      // generateTable(index + 1, Object.values(element[1]));
+      generateTable(index + 1, Object.values(element[1]));
     });
 
-    // // ? Generate Textfield Data
-    // dataText.forEach((row) => {
-    //   row[1].forEach((field) => {
-    //     generateFields(row[0].slice(5), field);
-    //   });
-    // });
+    // ? Generate Textfield Data
+    dataText.forEach((row) => {
+      Object.values(row[1]).forEach((field) => {
+        generateFields(row[0].slice(5), field);
+      });
+    });
 
     selectDataSection.classList.add("element-hidden");
     viewSection.classList.remove("element-hidden");

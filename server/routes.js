@@ -43,40 +43,29 @@ router.get("/login", (req, res) => {
 
 // ** CRUD API ** //
 
-router.post("/upload/validate", async (req, res) => {
-  const info = req.body;
-
-  const isValid = await pool.query(
-    `SELECT added_at FROM data_input WHERE added_at = $1`,
-    [info.month]
-  );
-
-  if (isValid.rows.length > 0) {
-    return res.status(409).send();
-  } else {
-    return res.status(200).send();
-  }
-});
-
-router.post("/upload", (req, res) => {
+router.post("/upload", async (req, res) => {
   try {
     const info = req.body;
-    const { period: added_at, user: added_by } = info;
+    const { added_at, added_by } = info;
 
     const dataset = { ...info };
-    delete dataset.user;
-    delete dataset.period;
+    delete dataset.added_at;
+    delete dataset.added_by;
 
-    // pool.query(
-    //   `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-    //   [added_by, added_at, dataset]
-    // );
+    const isValid = await pool.query(
+      `SELECT added_at FROM data_input WHERE added_at = $1`,
+      [added_at]
+    );
 
-    // ? Pretty formatting
-    res.header("Content-Type", "application/json");
-    res.send(JSON.stringify(info, null, 4));
-
-    // res.redirect("/view");
+    if (isValid.rows.length > 0) {
+      return res.status(409).send();
+    } else {
+      pool.query(
+        `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+        [added_by, added_at, dataset]
+      );
+      return res.status(200).send("OK");
+    }
   } catch (err) {
     console.log(err);
   }
@@ -99,14 +88,14 @@ router.get("/view/data/user", async (req, res) => {
 
 // ? get dataset
 router.get("/view/data/:added_by/:added_at", async (req, res) => {
-  const { added_by, added_at } = req.params;
   try {
+    const { added_by, added_at } = req.params;
     const data = await pool.query(
       `SELECT * FROM data_input WHERE added_by = $1 AND added_at = $2`,
       [added_by, added_at]
     );
 
-    if (!data.rows[0]) return res.status(500).send();
+    if (!data.rows[0]) return res.status(200).send();
 
     const results = {
       added_at: data.rows[0].added_at,
@@ -116,40 +105,28 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
         dataNotInPercentage: new Object(),
       },
       textFieldData: {
-        row__1: new Array(),
-        row__2: new Array(),
-        row__3: new Array(),
-        row__4: new Array(),
-        row__5: new Array(),
-        row__6: new Array(),
-        row__7: new Array(),
-        row__8: new Array(),
-        row__9: new Array(),
-        row__10: new Array(),
-        row__11: new Array(),
+        row__1: new Object(),
+        row__2: new Object(),
+        row__3: new Object(),
+        row__4: new Object(),
+        row__5: new Object(),
+        row__6: new Object(),
+        row__7: new Object(),
+        row__8: new Object(),
+        row__9: new Object(),
+        row__10: new Object(),
+        row__11: new Object(),
       },
     };
 
     for (const [key, value] of Object.entries(data.rows[0].dataset)) {
-      if (value.length === 6) {
-        results.numberFieldData.allTableData[key] = value;
-        if (value.includes("1")) {
-          results.numberFieldData.dataNotInPercentage[key] = value;
-        } else {
-          results.numberFieldData.dataInPercentage[key] = value;
-        }
-      }
+      results.numberFieldData.allTableData[key] = value.tableData;
+      results.textFieldData[key] = value.descData;
 
-      // ? First loop = iterate through all 11 inputs
-      // ? Second loop = it's actually defining how much text field is allowed in this case max to 10 field
-      if (value.length === 7) {
-        for (let i = 1; i < 12; i++) {
-          for (let j = 0; j < 10; j++) {
-            if (key === `row__${i}__input__desc__${j}`) {
-              results.textFieldData[`row__${i}`].push(value);
-            }
-          }
-        }
+      if (key === "row__4" || key === "row__10") {
+        results.numberFieldData.dataNotInPercentage[key] = value.tableData;
+      } else {
+        results.numberFieldData.dataInPercentage[key] = value.tableData;
       }
     }
 

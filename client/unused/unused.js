@@ -90,3 +90,49 @@ function postRequest() {
 //     }
 //   });
 // }
+
+// ____________________Populate Form (testing tools)_________________________________ //
+
+function placeholderVal() {
+  const arr = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  const randomData = Math.floor(Math.random() * arr.length);
+  return arr[randomData];
+}
+
+function placeholderVal2() {
+  const arr = [0, 1];
+  const randomData = Math.floor(Math.random() * arr.length);
+  return arr[randomData];
+}
+
+const generateData = document.querySelector(".populateData");
+generateData.addEventListener("click", () => {
+  function percentageRow() {
+    for (let i = 1; i <= 11; i++) {
+      for (let j = 1; j <= 6; j++) {
+        if (!document.querySelector(`#row__${i}__input__${j}`)) {
+          continue;
+        } else {
+          document.querySelector(`#row__${i}__input__${j}`).value =
+            placeholderVal();
+        }
+      }
+    }
+  }
+
+  function notPercentageRow() {
+    for (let i = 1; i <= 11; i++) {
+      for (let j = 1; j <= 6; j++) {
+        if (!document.querySelector(`#row__${i}__input__${j}__spc`)) {
+          continue;
+        } else {
+          document.querySelector(`#row__${i}__input__${j}__spc`).value =
+            placeholderVal2();
+        }
+      }
+    }
+  }
+
+  percentageRow();
+  notPercentageRow();
+});

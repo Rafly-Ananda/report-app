@@ -26,6 +26,7 @@ const addFields = (selector, tableSelector) => {
               min="1"
               value=${identifier + 1}
               id="no__field"
+              class="row__${selector}__input__desc__${identifier + 1}"
               readonly
             />
           </td>
@@ -33,42 +34,54 @@ const addFields = (selector, tableSelector) => {
             <textarea
               name="row__${selector}__input__desc__${identifier + 1}"
               id="cause__field"
-              class="large__text__field"
+              class="row__${selector}__input__desc__${
+      identifier + 1
+    } large__text__field"
             ></textarea>
           </td>
           <td>
             <textarea
               name="row__${selector}__input__desc__${identifier + 1}"
               id="solution__field"
-              class="large__text__field"
+              class="row__${selector}__input__desc__${
+      identifier + 1
+    } large__text__field"
             ></textarea>
           </td>
           <td>
             <textarea
               name="row__${selector}__input__desc__${identifier + 1}"
               id="PIC__field"
-              class="small__text__field"
+              class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field"
             ></textarea>
           </td>
           <td>
             <textarea
               name="row__${selector}__input__desc__${identifier + 1}"
               id="UKT__field"
-              class="small__text__field"
+              class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field"
             ></textarea>
           </td>
           <td>
             <textarea
               name="row__${selector}__input__desc__${identifier + 1}"
               id="DL__field"
-              class="small__text__field"
+              class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field"
             ></textarea>
           </td>
           <td>
             <textarea
               name="row__${selector}__input__desc__${identifier + 1}"
               id="RL__field"
-              class="small__text__field last"
+              class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field last"
             ></textarea>
           </td>
         </tr>
@@ -86,6 +99,7 @@ const addFields = (selector, tableSelector) => {
           min="1"
           value=${identifier + 1}
           id="no__field"
+          class="row__${selector}__input__desc__${identifier + 1}"
           readonly
         />
       </td>
@@ -93,42 +107,54 @@ const addFields = (selector, tableSelector) => {
         <textarea
           name="row__${selector}__input__desc__${identifier + 1}"
           id="cause__field"
-          class="large__text__field"
+          class="row__${selector}__input__desc__${
+      identifier + 1
+    } large__text__field"
         ></textarea>
       </td>
       <td>
         <textarea
           name="row__${selector}__input__desc__${identifier + 1}"
           id="solution__field"
-          class="large__text__field"
+          class="row__${selector}__input__desc__${
+      identifier + 1
+    } large__text__field"
         ></textarea>
       </td>
       <td>
         <textarea
           name="row__${selector}__input__desc__${identifier + 1}"
           id="PIC__field"
-          class="small__text__field"
+          class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field"
         ></textarea>
       </td>
       <td>
         <textarea
           name="row__${selector}__input__desc__${identifier + 1}"
           id="UKT__field"
-          class="small__text__field"
+          class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field"
         ></textarea>
       </td>
       <td>
         <textarea
           name="row__${selector}__input__desc__${identifier + 1}"
           id="DL__field"
-          class="small__text__field"
+          class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field"
         ></textarea>
       </td>
       <td>
         <textarea
           name="row__${selector}__input__desc__${identifier + 1}"
           id="RL__field"
-          class="small__text__field"
+          class="row__${selector}__input__desc__${
+      identifier + 1
+    } small__text__field"
         ></textarea>
       </td>
     </tr>`;

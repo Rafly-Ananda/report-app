@@ -75,6 +75,59 @@ body {
   padding-right: 1.6em;
   overflow-y: scroll;
 }
+.outer__border .inputs__container .credentials__container {
+  width: 100%;
+}
+.outer__border .inputs__container .credentials__container .credentials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+.outer__border .inputs__container .credentials__container .credentials .section__border__credential {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50%;
+  border: 1px solid #222222;
+  border-radius: 1em;
+  padding: 2em;
+}
+.outer__border .inputs__container .credentials__container .credentials .section__border__credential .set__user input {
+  width: 8vw;
+}
+.outer__border .inputs__container .credentials__container .credentials .section__border__credential .setter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.outer__border .inputs__container .credentials__container .credentials .section__border__credential .setter input {
+  border: 2px solid #222222;
+  border-radius: 0.25em;
+  background: #ffffff;
+  margin: 1em;
+}
+.outer__border .inputs__container .credentials__container .credentials .section__border__credential .btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  justify-content: space-evenly;
+  margin-top: 0.5em;
+}
+.outer__border .inputs__container .credentials__container .credentials .section__border__credential .btn__container Button {
+  width: 8vw;
+  border-radius: 0.75em;
+  font-size: medium;
+  font-weight: 400;
+}
+.outer__border .inputs__container .credentials__container .credentials .section__border__credential .btn__container Button:disabled {
+  opacity: 50%;
+  cursor: not-allowed;
+  background-color: #222222;
+}
 .outer__border .inputs__container .table__inputs {
   display: flex;
   align-items: center;
@@ -239,6 +292,12 @@ body {
   margin: 0 0.5em;
   border: 2px solid;
 }
+.outer__border .inputs__container .btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3em;
+}
 .outer__border ::-webkit-scrollbar {
   width: 4px;
 }
@@ -249,57 +308,6 @@ body {
 .outer__border ::-webkit-scrollbar-thumb {
   background-color: #64748b;
   border-radius: 1em;
-}
-.outer__border .credentials {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  margin-bottom: 2em;
-}
-.outer__border .credentials .section__border__credential {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 50%;
-  border: 2px solid #222222;
-  border-radius: 1em;
-  padding: 2em;
-}
-.outer__border .credentials .section__border__credential .set__user input {
-  width: 8vw;
-}
-.outer__border .credentials .section__border__credential .setter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.outer__border .credentials .section__border__credential .setter input {
-  border: 2px solid #222222;
-  border-radius: 0.25em;
-  background: #ffffff;
-  margin: 1em;
-}
-.outer__border .credentials .section__border__credential .btn__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70%;
-  justify-content: space-evenly;
-  margin-top: 0.5em;
-}
-.outer__border .credentials .section__border__credential .btn__container Button {
-  width: 8vw;
-  border-radius: 0.75em;
-  font-size: medium;
-  font-weight: 400;
-}
-.outer__border .credentials .section__border__credential .btn__container Button:disabled {
-  opacity: 50%;
-  cursor: not-allowed;
-  background-color: #222222;
 }
 .outer__border .select__data__section {
   display: flex;
@@ -570,6 +578,12 @@ body {
 
 .element-hidden {
   display: none;
+}
+
+.flex-set {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=app.css.map */
