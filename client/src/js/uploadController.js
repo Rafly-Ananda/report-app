@@ -1,14 +1,14 @@
 "use strict";
 import axios from "axios";
-import { addFields } from "./tools/dynamicInputField";
-import { generateUploadInputFields } from "./tools/generateUploadInput";
+import { addFields } from "./api/view-api/dynamicInputField";
+import { generateUploadInputFields } from "./api/view-api/generateUploadDesc";
 
 const focusedInput = document.querySelector("#row__1__input__1");
 const textFieldParent = document.querySelectorAll(".row");
 const specialInput = document.querySelectorAll(".special__input");
 const nextBtn = document.querySelector("#next__btn");
 const submitBtn = document.querySelector("#submit__btn");
-const maxTextField = 5;
+// let maxTextField = 5;
 let tableSelector;
 
 // ? Credentials Selector
@@ -41,8 +41,8 @@ function textFieldBtnHandler() {
           e.target.parentElement.previousElementSibling.children[0].children[0]
             .children[0];
 
-        if (tableSelector.childElementCount === maxTextField)
-          e.target.classList.add("element-hidden");
+        // if (tableSelector.childElementCount === maxTextField)
+        //   e.target.classList.add("element-hidden");
       }
 
       if (e.target.classList.contains("delete__field")) {
@@ -59,33 +59,43 @@ function textFieldBtnHandler() {
   });
 }
 
-function dateParser(date) {
+function getPrevMonth(date) {
   let currMonth;
   let prevMonth;
-  const getPrevMonth = date.slice(5);
-  getPrevMonth.startsWith("0")
-    ? (currMonth = +getPrevMonth.slice(1))
-    : (currMonth = +getPrevMonth);
+  const month = date.slice(5);
+  month.startsWith("0") ? (currMonth = +month.slice(1)) : (currMonth = +month);
 
-  if (currMonth - 1 < 10) {
-    if (currMonth === 1) {
-      prevMonth = String(currMonth).padStart(2, "0");
-    } else {
-      prevMonth = String(currMonth - 1).padStart(2, "0");
-    }
+  if (currMonth === 1) {
+    prevMonth = String(currMonth).padStart(2, "0");
   } else {
-    currMonth - 1;
+    prevMonth = String(currMonth - 1).padStart(2, "0");
   }
 
   return `${date.slice(0, 4)}-${prevMonth}`;
 }
 
+function getNextMonth(date) {
+  let currMonth;
+  let nextMonth;
+  let year = date.slice(0, 4);
+  const month = date.slice(5);
+  month.startsWith("0") ? (currMonth = +month.slice(1)) : (currMonth = +month);
+
+  if (currMonth === 12) {
+    nextMonth = String(currMonth).padStart(2, "0");
+  } else {
+    nextMonth = String(currMonth + 1).padStart(2, "0");
+  }
+
+  return `${year}-${nextMonth}`;
+}
+
 async function isValid(user, date) {
   try {
     const response = await axios.get(`/view/data/${user}/${date}`);
-    if (response.data.added_at.length > 0) return false;
+    return response;
   } catch (err) {
-    return true;
+    return false;
   }
 }
 
@@ -134,17 +144,15 @@ function submitHandler(user, period) {
 }
 
 async function fillData(user, date) {
-  const prevMonth = dateParser(date);
   const {
     data: {
       numberFieldData: { allTableData },
       textFieldData,
     },
-  } = await axios.get(`/view/data/${user}/${prevMonth}`);
+  } = await axios.get(`/view/data/${user}/${date}`);
 
   // ? Filling Table Inputs With Previous Data
   Object.values(allTableData).forEach((field, index) => {
-    console.log(field);
     let tableFieldInputs = document.querySelectorAll(
       `.row__${index + 1}__input`
     );
@@ -170,22 +178,41 @@ nextBtn.addEventListener("click", async () => {
   const user = document.querySelector("#user").value;
   const date = document.querySelector("#period").value;
 
-  // const user = (document.querySelector("#user").value = "test");
-  // const date = (document.querySelector("#period").value = "2022-02");
-
   if (user === "" || date === "") {
     alert("please choose a correct user and period");
     return;
   } else {
-    const response = await isValid(user, date);
-    if (response === false) {
-      alert("Data In This Month Is Already Filled, Select Different Month ! ");
-      return;
-    } else {
-      fillData(user, date);
+    // ? Checking Prev, Curr, & Next Month Status
+    const nextMonth = getNextMonth(date);
+    const prevMonth = getPrevMonth(date);
+    const prevMonthRes = await isValid(user, prevMonth);
+    const currMonthRes = await isValid(user, date);
+    const nextMonthRes = await isValid(user, nextMonth);
+
+    const { data: prevMonthStatus } = prevMonthRes;
+    const { data: currMonthStatus } = currMonthRes;
+    const { data: nextMonthStatus } = nextMonthRes;
+
+    if (prevMonthStatus && currMonthStatus && nextMonthStatus) {
+      alert("Error, Data In This Month Is Already Filled !");
+    }
+
+    if (prevMonthStatus && currMonthStatus && !nextMonthStatus) {
+      alert("Error, Data In This Month Is Already Filled !");
+    }
+
+    if (prevMonthStatus && !currMonthStatus && !nextMonthStatus) {
+      console.log("go");
+      fillData(user, prevMonth);
       inputField.classList.remove("element-hidden");
       inputsContainer.classList.remove("flex-set");
       credentialField.classList.add("element-hidden");
+    }
+
+    if (!prevMonthStatus && !currMonthStatus && !nextMonthStatus) {
+      alert(
+        "Error, Input Previous Month Data First, Cannot Input Data Before Previous Month is Filled !"
+      );
     }
   }
 });

@@ -5,6 +5,13 @@ const addFields = (selector, tableSelector) => {
   let identifier = descField.childElementCount;
   let html;
 
+  if (descField.children[0] === undefined) {
+    null;
+  } else {
+    tableSelector = descField.children[0].children[0].children[0];
+    identifier = tableSelector.childElementCount;
+  }
+
   if (identifier === 0) {
     html = `<div class="descriptions">
     <div class="table__fields">
@@ -90,7 +97,6 @@ const addFields = (selector, tableSelector) => {
   </div>`;
     descField.insertAdjacentHTML("beforeend", html);
   } else {
-    identifier = tableSelector.childElementCount;
     html = `<tr>
       <td>
         <input

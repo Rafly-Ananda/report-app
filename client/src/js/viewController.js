@@ -1,8 +1,8 @@
 "use strict";
 import axios from "axios";
-import { generateChart } from "./tools/generateChart";
-import { generateFields } from "./tools/generateViewInputField";
-import { generateTable } from "./tools/generateViewTable";
+import { generateChart } from "./api/view-api/generateViewChart";
+import { generateFields } from "./api/view-api/generateViewInputField";
+import { generateTable } from "./api/view-api/generateViewTable";
 
 const findBtn = document.querySelector(".find__data__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
