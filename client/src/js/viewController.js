@@ -3,8 +3,10 @@ import axios from "axios";
 import { generateChart } from "./api/view-api/generateViewChart";
 import { generateFields } from "./api/view-api/generateViewInputField";
 import { generateTable } from "./api/view-api/generateViewTable";
+import { exportToPdf } from "./api/view-api/exportToPdf";
 
 const findBtn = document.querySelector(".find__data__btn");
+const exportBtn = document.querySelector(".export__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
 const viewSection = document.querySelector(".view__section");
 const userSelectOptions = document.querySelector("#user");
@@ -25,6 +27,7 @@ const getData = async (user, date) => {
         textFieldData,
       },
     } = await axios.get(`/view/data/${user}/${date}`);
+
     const tableEntries = Object.entries(allTableData);
     const dataPercentage = Object.values(dataInPercentage);
     const dataYear = Object.values(dataNotInPercentage);
@@ -78,8 +81,8 @@ const getData = async (user, date) => {
     selectDataSection.classList.add("element-hidden");
     viewSection.classList.remove("element-hidden");
   } catch (err) {
-    alert("Data not found!");
-    console.error(err);
+    alert("Data Not Found, Try Other !");
+    throw "Data does not exist in database ..";
   }
 };
 
@@ -104,6 +107,10 @@ findBtn.addEventListener("click", () => {
     : alert("please choose a correct user and period");
 });
 
+exportBtn.addEventListener("click", () => {
+  exportToPdf();
+});
+
 function start() {
   getUser();
 }
@@ -112,11 +119,11 @@ start();
 
 // ____________________Populate field (testing tools)_________________________________ //
 
-// function go() {
-//   const user = (document.querySelector("#user").value = "test");
-//   const date = (document.querySelector("#period").value = "2022-02");
+function go() {
+  const user = (document.querySelector("#user").value = "test");
+  const date = (document.querySelector("#period").value = "2022-02");
 
-//   getData(user, date);
-// }
+  getData(user, date);
+}
 
-// go();
+go();
