@@ -24,7 +24,7 @@ const generateTable = (index, ...data) => {
 
   if (htmlSelector.childElementCount === 0) {
     html = `
-    <table>
+    <table id="dataTable">
         <tr class="tr__heading">
             <th class="heading">No.</th>
             <th class="heading KPI">KPI</th>

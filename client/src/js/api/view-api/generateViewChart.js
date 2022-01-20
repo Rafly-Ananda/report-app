@@ -48,6 +48,17 @@ const generateChart = (dataset, chartId) => {
       },
       scales: {},
     },
+    plugins: [
+      {
+        id: "bgColor",
+        beforeDraw: (chart, options) => {
+          const { ctx, width, height } = chart;
+          ctx.fillStyle = "#f0ffff";
+          ctx.fillRect(0, 0, width, height);
+          ctx.restore();
+        },
+      },
+    ],
   };
 
   if (chartId === "myChart4" || chartId === "myChart10") {

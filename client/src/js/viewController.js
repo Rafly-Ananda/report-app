@@ -14,6 +14,9 @@ const headingPercentage = document.querySelectorAll(".PCP__1");
 const headingYear = document.querySelectorAll(".PCP__1__NP");
 const addedAtText = document.querySelector(".added__at");
 
+// ** Canvas Selector
+const graph1 = document.querySelector("#myChart1");
+
 const getData = async (user, date) => {
   try {
     const {
@@ -108,7 +111,8 @@ findBtn.addEventListener("click", () => {
 });
 
 exportBtn.addEventListener("click", () => {
-  exportToPdf();
+  const tableInputs = document.querySelector("#dataTable");
+  exportToPdf(tableInputs, graph1);
 });
 
 function start() {
@@ -121,7 +125,7 @@ start();
 
 function go() {
   const user = (document.querySelector("#user").value = "test");
-  const date = (document.querySelector("#period").value = "2022-02");
+  const date = (document.querySelector("#period").value = "2022-03");
 
   getData(user, date);
 }

@@ -1,7 +1,7 @@
 "use strict";
 import axios from "axios";
-import { addFields } from "./api/view-api/dynamicInputField";
-import { generateUploadInputFields } from "./api/view-api/generateUploadDesc";
+import { addFields } from "./api/upload-api/dynamicInputField";
+import { generateUploadInputFields } from "./api/upload-api/generateUploadDesc";
 
 const focusedInput = document.querySelector("#row__1__input__1");
 const textFieldParent = document.querySelectorAll(".row");
