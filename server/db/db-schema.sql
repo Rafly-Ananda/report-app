@@ -10,7 +10,7 @@ CREATE TABLE users(
 CREATE TABLE data_input(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     added_by VARCHAR (255) NOT NULL REFERENCES users(username),
-    added_at VARCHAR (255) NOT NULL UNIQUE,
+    added_at VARCHAR (255) NOT NULL,
     dataset jsonb NOT NULL
 );
 

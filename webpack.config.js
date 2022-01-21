@@ -10,7 +10,13 @@ module.exports = {
       __dirname,
       "client/src/js/uploadController.js"
     ),
+
     viewController: path.resolve(__dirname, "client/src/js/viewController.js"),
+
+    loginController: path.resolve(
+      __dirname,
+      "client/src/js/loginController.js"
+    ),
   },
 
   devtool: "inline-source-map",

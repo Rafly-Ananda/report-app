@@ -5,9 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../css/app.css" />
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="#" />
+    <script defer src="../../dist/loginController.bundle.js"></script>
     <title>Report App</title>
   </head>
   <body>
-    <h1>Login Page</h1>
+    <div class="page__wrapper">
+      <div class="hero__img">
+        <img src="../static/logo.png" alt="logo" />
+      </div>
+      <form action="/login" method="POST">
+        <div class="login__container">
+          <label for="username"> Username </label>
+          <input
+            id="username"
+            class="login__input"
+            type="text"
+            placeholder="Username"
+            name="username"
+            required
+          />
+
+          <label for="password"> Password </label>
+          <input
+            id="password"
+            class="login__input"
+            type="password"
+            placeholder="Password"
+            name="password"
+            required
+          />
+
+          <button
+            type="submit"
+            class="login__btn bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-full"
+          >
+            Masuk
+          </button>
+        </div>
+      </form>
+    </div>
   </body>
 </html>

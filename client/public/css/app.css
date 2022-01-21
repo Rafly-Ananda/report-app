@@ -16,6 +16,36 @@ body {
   scroll-behavior: smooth;
 }
 
+.page__wrapper,
+.login__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.page__wrapper .hero__img,
+.login__container .hero__img {
+  margin: 0 0 1em 0;
+  max-width: 20vw;
+}
+.page__wrapper .login__container .login__input,
+.login__container .login__container .login__input {
+  text-align: center;
+  border-radius: 1em;
+  width: 80%;
+  padding: 0.5em;
+  margin: 0.5em;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+.page__wrapper .login__container .login__btn,
+.login__container .login__container .login__btn {
+  margin: 1em;
+  width: 10em;
+  font-size: 15px;
+  font-weight: 400;
+}
+
 .side__nav {
   position: fixed;
   background: #222222;
@@ -45,12 +75,22 @@ body {
   justify-content: center;
   justify-content: space-around;
   flex-direction: column;
-  margin: 8vh 0 0 0;
   height: 30vh;
 }
-.side__nav .links__container .links__container__top .links {
-  text-decoration: none;
-  margin: 1.5em;
+.side__nav .links__container .links__container__top .logged__user {
+  border: 1px solid #f0ffff;
+  border-radius: 0.5em;
+  max-width: 10vw;
+  padding: 1em;
+  word-wrap: break-word;
+}
+.side__nav .links__container .links__container__top .logged__user h1 {
+  color: #f0ffff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.side__nav .links__container .links__container__top .logged__user h1.second {
+  margin-top: 0.5em;
 }
 .side__nav .links__container .links__container__bot {
   display: flex;
@@ -76,7 +116,30 @@ body {
   overflow-y: scroll;
 }
 .outer__border .inputs__container .credentials__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
+}
+.outer__border .inputs__container .credentials__container .page__identifier {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  margin-top: 20vh;
+  border: 1px solid #222222;
+  width: 30vw;
+  height: 5vw;
+  padding: 1em;
+  border: 1px solid #222222;
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+.outer__border .inputs__container .credentials__container .page__identifier h1 {
+  font-size: 2rem;
+  font-weight: 400;
 }
 .outer__border .inputs__container .credentials__container .credentials {
   display: flex;
@@ -91,7 +154,6 @@ body {
   justify-content: center;
   flex-direction: column;
   width: 50%;
-  border: 1px solid #222222;
   border-radius: 1em;
   padding: 2em;
 }
@@ -336,8 +398,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 72vw;
   height: 80vh;
+}
+.outer__border .select__data__section .page__identifier {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  margin-top: 20vh;
+  border: 1px solid #222222;
+  width: 30vw;
+  height: 5vw;
+  padding: 1em;
+  border: 1px solid #222222;
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+.outer__border .select__data__section .page__identifier h1 {
+  font-size: 2rem;
+  font-weight: 400;
 }
 .outer__border .select__data__section .input__container {
   display: flex;

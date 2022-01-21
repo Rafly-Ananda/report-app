@@ -11,6 +11,8 @@ const initializePassport = require("./passport-config");
 const flash = require("express-flash");
 const session = require("express-session");
 
+initializePassport(passport);
+
 router.use(express.urlencoded({ extended: false }));
 router.use(flash());
 router.use(
@@ -20,76 +22,77 @@ router.use(
     saveUninitialized: false,
   })
 );
+router.use(passport.initialize());
+router.use(passport.session());
 
 // ** Rendering Views ** //
 
-router.get("/upload", (req, res) => {
+router.get("/upload", checkIsAuthenticated, (req, res) => {
   res.sendFile(
     path.resolve(__dirname + "../../client/public/views/uploadPage.html")
   );
 });
 
-router.get("/view", (req, res) => {
+router.get("/view", checkIsAuthenticated, (req, res) => {
   res.sendFile(
     path.resolve(__dirname + "../../client/public/views/viewPage.html")
   );
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", checkNotAuthenticated, (req, res) => {
   res.sendFile(
     path.resolve(__dirname + "../../client/public/views/login.html")
   );
 });
 
+router.get("/logged/user", checkIsAuthenticated, (req, res) => {
+  res.json(req.user.username);
+});
+
+router.get("/logout", (req, res) => {
+  req.logOut();
+  res.redirect("/login");
+});
+
+// ** LOGIN AUTH ** //
+
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/view",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
+);
+
 // ** CRUD API ** //
 
-router.post("/upload", async (req, res) => {
+router.post("/upload", checkIsAuthenticated, async (req, res) => {
   try {
     const info = req.body;
-    const { added_at, added_by } = info;
+    const { added_at } = info;
+    const added_by = req.user.username;
 
     const dataset = { ...info };
     delete dataset.added_at;
     delete dataset.added_by;
 
-    const isValid = await pool.query(
-      `SELECT added_at FROM data_input WHERE added_at = $1`,
-      [added_at]
+    pool.query(
+      `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+      [added_by, added_at, dataset]
     );
 
-    if (isValid.rows.length > 0) {
-      return res.status(409).send();
-    } else {
-      pool.query(
-        `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-        [added_by, added_at, dataset]
-      );
-      return res.status(200).send("OK");
-    }
+    return res.status(200).send("OK");
   } catch (err) {
     console.log(err);
   }
 });
 
-// ? get user data
-router.get("/view/data/user", async (req, res) => {
-  const data = await pool.query("SELECT username FROM users");
-
-  const results = {
-    username: new Array(),
-  };
-
-  for (const [_, value] of Object.entries(data.rows)) {
-    results.username.push(value.username);
-  }
-
-  res.json(results);
-});
-
 // ? get dataset
-router.get("/view/data/:added_by/:added_at", async (req, res) => {
+router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
   try {
-    const { added_by, added_at } = req.params;
+    const { added_at } = req.params;
+    const added_by = req.user.username;
     const data = await pool.query(
       `SELECT * FROM data_input WHERE added_by = $1 AND added_at = $2`,
       [added_by, added_at]
@@ -136,9 +139,21 @@ router.get("/view/data/:added_by/:added_at", async (req, res) => {
   }
 });
 
+// ** AUTH MIDDDLEWARE ** //
+
+function checkIsAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/login");
+}
+
+function checkNotAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) return res.redirect("/upload");
+  next();
+}
+
 router.get("*", (req, res) => {
   res.status(200);
-  res.redirect("/upload");
+  res.redirect("/view");
 });
 
 module.exports = router;

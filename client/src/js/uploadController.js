@@ -13,6 +13,7 @@ const inputsContainer = document.querySelector(".inputs__container");
 const credentialField = document.querySelector(".credentials__container");
 const dateIdentifier = document.querySelector(".date__identifier");
 const inputMonthText = document.querySelector(".added__at");
+const loggedUser = document.querySelector(".username");
 let maxTextField = 5;
 let tableSelector;
 
@@ -40,8 +41,6 @@ function textFieldBtnHandler() {
         tableSelector =
           e.target.parentElement.previousElementSibling.children[0].children[0]
             .children[0];
-
-        console.log(tableSelector.childElementCount);
 
         if (tableSelector.childElementCount > maxTextField)
           e.target.classList.add("element-hidden");
@@ -92,21 +91,20 @@ function getNextMonth(date) {
   return `${year}-${nextMonth}`;
 }
 
-async function isValid(user, date) {
+async function isValid(date) {
   try {
-    const response = await axios.get(`/view/data/${user}/${date}`);
+    const response = await axios.get(`/view/data/${date}`);
     return response;
   } catch (err) {
     return false;
   }
 }
 
-function submitHandler(user, period) {
+function submitHandler(period) {
   try {
     let temp = new Array();
     const dataset = {
       added_at: period,
-      added_by: user,
     };
 
     for (let i = 1; i <= 11; i++) {
@@ -145,13 +143,13 @@ function submitHandler(user, period) {
   }
 }
 
-async function fillData(user, date) {
+async function fillData(date) {
   const {
     data: {
       numberFieldData: { allTableData },
       textFieldData,
     },
-  } = await axios.get(`/view/data/${user}/${date}`);
+  } = await axios.get(`/view/data/${date}`);
 
   // ? Filling Table Inputs With Previous Data
   Object.values(allTableData).forEach((field, index) => {
@@ -177,12 +175,20 @@ async function fillData(user, date) {
   // });
 }
 
+async function getLoggedUser() {
+  try {
+    const response = await axios.get("logged/user");
+    loggedUser.textContent = response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 nextBtn.addEventListener("click", async () => {
-  const user = document.querySelector("#user").value;
   const date = document.querySelector("#period").value;
 
-  if (user === "" || date === "") {
-    alert("please choose a correct user and period");
+  if (date === "") {
+    alert("please choose a correct period");
     return;
   } else {
     // ? Format Input Month Text
@@ -201,9 +207,9 @@ nextBtn.addEventListener("click", async () => {
     const prevMonth = getPrevMonth(date);
     const currMonth = date;
     const nextMonth = getNextMonth(date);
-    const prevMonthRes = await isValid(user, prevMonth);
-    const currMonthRes = await isValid(user, currMonth);
-    const nextMonthRes = await isValid(user, nextMonth);
+    const prevMonthRes = await isValid(prevMonth);
+    const currMonthRes = await isValid(currMonth);
+    const nextMonthRes = await isValid(nextMonth);
 
     const { data: prevMonthStatus } = prevMonthRes;
     const { data: currMonthStatus } = currMonthRes;
@@ -228,7 +234,7 @@ nextBtn.addEventListener("click", async () => {
       }
 
       if (prevMonthStatus && !currMonthStatus && !nextMonthStatus) {
-        fillData(user, prevMonth);
+        fillData(prevMonth);
         dateIdentifier.classList.remove("element-hidden");
         inputField.classList.remove("element-hidden");
         inputsContainer.classList.remove("flex-set");
@@ -248,16 +254,15 @@ nextBtn.addEventListener("click", async () => {
 });
 
 submitBtn.addEventListener("click", () => {
-  const user = document.querySelector("#user").value;
   const date = document.querySelector("#period").value;
-
-  submitHandler(user, date);
+  submitHandler(date);
 });
 
 function start() {
   focusedInput.focus();
   setSpecialInput(specialInput);
   textFieldBtnHandler();
+  getLoggedUser();
 }
 
 start();

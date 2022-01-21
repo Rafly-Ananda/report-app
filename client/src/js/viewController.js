@@ -9,15 +9,15 @@ const findBtn = document.querySelector(".find__data__btn");
 const exportBtn = document.querySelector(".export__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
 const viewSection = document.querySelector(".view__section");
-const userSelectOptions = document.querySelector("#user");
 const headingPercentage = document.querySelectorAll(".PCP__1");
 const headingYear = document.querySelectorAll(".PCP__1__NP");
 const addedAtText = document.querySelector(".added__at");
+const loggedUser = document.querySelector(".username");
 
 // ** Canvas Selector
 const graph1 = document.querySelector("#myChart1");
 
-const getData = async (user, date) => {
+const getData = async (date) => {
   try {
     const {
       data: {
@@ -29,7 +29,7 @@ const getData = async (user, date) => {
         },
         textFieldData,
       },
-    } = await axios.get(`/view/data/${user}/${date}`);
+    } = await axios.get(`/view/data/${date}`);
 
     const tableEntries = Object.entries(allTableData);
     const dataPercentage = Object.values(dataInPercentage);
@@ -89,25 +89,19 @@ const getData = async (user, date) => {
   }
 };
 
-async function getUser() {
-  const response = await axios.get("/view/data/user");
-  const data = Object.values(response.data);
-
-  data[0].forEach((ele) => {
-    userSelectOptions.insertAdjacentHTML(
-      "beforeend",
-      `<option value="${ele}">${ele}</option>`
-    );
-  });
+async function getLoggedUser() {
+  try {
+    const response = await axios.get("logged/user");
+    loggedUser.textContent = response.data;
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 findBtn.addEventListener("click", () => {
-  const user = document.querySelector("#user").value;
   const date = document.querySelector("#period").value;
 
-  user != "-" && date != ""
-    ? getData(user, date)
-    : alert("please choose a correct user and period");
+  date != "" ? getData(date) : alert("please choose a correct user and period");
 });
 
 exportBtn.addEventListener("click", () => {
@@ -115,13 +109,11 @@ exportBtn.addEventListener("click", () => {
   exportToPdf(tableInputs, graph1);
 });
 
-function start() {
-  getUser();
-}
+const start = () => {
+  getLoggedUser();
+};
 
 start();
-
-// ____________________Populate field (testing tools)_________________________________ //
 
 function go() {
   const user = (document.querySelector("#user").value = "test");
@@ -130,4 +122,4 @@ function go() {
   getData(user, date);
 }
 
-go();
+// go();
