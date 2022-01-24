@@ -14,9 +14,6 @@ const headingYear = document.querySelectorAll(".PCP__1__NP");
 const addedAtText = document.querySelector(".added__at");
 const loggedUser = document.querySelector(".username");
 
-// ** Canvas Selector
-const graph1 = document.querySelector("#myChart1");
-
 const getData = async (date) => {
   try {
     const {
@@ -36,6 +33,8 @@ const getData = async (date) => {
     const dataYear = Object.values(dataNotInPercentage);
     const dataText = Object.entries(textFieldData);
     addedAtText.textContent = added_at;
+    const pcp = new Array();
+    const pcpYear = new Array();
 
     // ? Format AddedAtText
     const formatter = (data) => {
@@ -43,7 +42,6 @@ const getData = async (date) => {
       const date = new Date();
       date.setMonth(+str[1].slice(1) - 1);
       const month = date.toLocaleString("default", { month: "long" });
-
       addedAtText.textContent = `${month} ${str[0]}`;
     };
 
@@ -56,7 +54,8 @@ const getData = async (date) => {
         temp.reduce((prev, next) => {
           return prev + next;
         }) / temp.length;
-      headingPercentage[index].textContent = `PCP I = ${result.toFixed(2)}%`;
+      headingPercentage[index].textContent = `PCP = ${result.toFixed(2)}%`;
+      pcp.push(result.toFixed(2));
     });
 
     // ? Calculate PCP Year
@@ -65,13 +64,17 @@ const getData = async (date) => {
       const result = temp.reduce((prev, next) => {
         return prev + next;
       });
-      headingYear[index].textContent = `PCP I = ${result}`;
+      headingYear[index].textContent = `PCP = ${result}`;
+      pcpYear.push(result);
     });
+
+    pcp.splice(3, 0, pcpYear[0]);
+    pcp.splice(9, 0, pcpYear[1]);
 
     // ? Generate Chart && Table Data
     tableEntries.forEach((element, index) => {
       generateChart(element[1], `myChart${index + 1}`);
-      generateTable(index + 1, Object.values(element[1]));
+      generateTable(index + 1, pcp[index], Object.values(element[1]));
     });
 
     // ? Generate Textfield Data
@@ -105,21 +108,28 @@ findBtn.addEventListener("click", () => {
 });
 
 exportBtn.addEventListener("click", () => {
+  // ** Data Table Selector
   const tableInputs = document.querySelector("#dataTable");
-  exportToPdf(tableInputs, graph1);
+  // ** Canvas Selector
+  const graphs = document.querySelectorAll(".bar__chart");
+  // ** Desc Field Selector
+  const descs = document.querySelectorAll(".input__table");
+
+  // TODO change this ('test') to currently logged in user
+  exportToPdf(tableInputs, "test", graphs, descs);
 });
 
 const start = () => {
-  getLoggedUser();
+  // getLoggedUser();
 };
 
 start();
 
 function go() {
-  const user = (document.querySelector("#user").value = "test");
+  // const user = (document.querySelector("#user").value = "test");
   const date = (document.querySelector("#period").value = "2022-03");
 
-  getData(user, date);
+  getData(date);
 }
 
-// go();
+go();

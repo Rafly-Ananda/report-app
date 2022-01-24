@@ -78,7 +78,6 @@ body {
   height: 30vh;
 }
 .side__nav .links__container .links__container__top .logged__user {
-  border: 1px solid #f0ffff;
   border-radius: 0.5em;
   max-width: 10vw;
   padding: 1em;
@@ -116,12 +115,15 @@ body {
   overflow-y: scroll;
 }
 .outer__border .inputs__container .credentials__container {
+  width: 100%;
+}
+.outer__border .inputs__container .credentials__container .credentials__wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
-.outer__border .inputs__container .credentials__container .page__identifier {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .page__identifier {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,41 +139,42 @@ body {
   border-top-left-radius: 1em;
   border-bottom-right-radius: 1em;
 }
-.outer__border .inputs__container .credentials__container .page__identifier h1 {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .page__identifier h1 {
   font-size: 2rem;
   font-weight: 400;
 }
-.outer__border .inputs__container .credentials__container .credentials {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
 }
-.outer__border .inputs__container .credentials__container .credentials .section__border__credential {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 50%;
+  border: 1px solid #222222;
   border-radius: 1em;
   padding: 2em;
 }
-.outer__border .inputs__container .credentials__container .credentials .section__border__credential .set__user input {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .set__user input {
   width: 8vw;
 }
-.outer__border .inputs__container .credentials__container .credentials .section__border__credential .setter {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .setter {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.outer__border .inputs__container .credentials__container .credentials .section__border__credential .setter input {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .setter input {
   border: 2px solid #222222;
   border-radius: 0.25em;
   background: #ffffff;
   margin: 1em;
 }
-.outer__border .inputs__container .credentials__container .credentials .section__border__credential .btn__container {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .btn__container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,13 +182,13 @@ body {
   justify-content: space-evenly;
   margin-top: 0.5em;
 }
-.outer__border .inputs__container .credentials__container .credentials .section__border__credential .btn__container Button {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .btn__container Button {
   width: 8vw;
   border-radius: 0.75em;
   font-size: medium;
   font-weight: 400;
 }
-.outer__border .inputs__container .credentials__container .credentials .section__border__credential .btn__container Button:disabled {
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .btn__container Button:disabled {
   opacity: 50%;
   cursor: not-allowed;
   background-color: #222222;

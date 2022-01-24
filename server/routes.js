@@ -56,14 +56,14 @@ router.get("/logout", (req, res) => {
 
 // ** LOGIN AUTH ** //
 
-router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/view",
-    failureRedirect: "/login",
-    failureFlash: true,
-  })
-);
+// router.post(
+//   "/login",
+//   passport.authenticate("local", {
+//     successRedirect: "/view",
+//     failureRedirect: "/login",
+//     failureFlash: true,
+//   })
+// );
 
 // ** CRUD API ** //
 
@@ -92,7 +92,8 @@ router.post("/upload", checkIsAuthenticated, async (req, res) => {
 router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
   try {
     const { added_at } = req.params;
-    const added_by = req.user.username;
+    // const added_by = req.user.username;
+    const added_by = "test";
     const data = await pool.query(
       `SELECT * FROM data_input WHERE added_by = $1 AND added_at = $2`,
       [added_by, added_at]
@@ -142,12 +143,13 @@ router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
 // ** AUTH MIDDDLEWARE ** //
 
 function checkIsAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect("/login");
+  // if (req.isAuthenticated()) return next();
+  // res.redirect("/login");
+  next();
 }
 
 function checkNotAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) return res.redirect("/upload");
+  // if (req.isAuthenticated()) return res.redirect("/upload");
   next();
 }
 

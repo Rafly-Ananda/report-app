@@ -14,7 +14,7 @@ const title = [
   "CMM",
 ];
 
-const generateTable = (index, ...data) => {
+const generateTable = (index, pcp, ...data) => {
   let html;
   let htmlSelector = document.querySelector(`.table__inputs`);
 
@@ -34,7 +34,8 @@ const generateTable = (index, ...data) => {
             <th class="heading BO">BO3</th>
             <th class="heading BO">BO4</th>
             <th class="heading BO">BO5</th>
-            <th class="heading last__heading">BO6</th>
+            <th class="heading BO">BO6</th>
+            <th class="heading last__heading">PCP</th>
         </tr>
         <tr>
             <td class="table__no">${index}</td>
@@ -60,6 +61,9 @@ const generateTable = (index, ...data) => {
             </td>
             <td>
                 <div class="data">${data[0][5] === "" ? "-" : data[0][5]}</div>
+            </td>
+            <td>
+                <div class="data">${pcp < 6 ? pcp : pcp + "%"}</div>
             </td>
         </tr>
     </table>`;
@@ -91,6 +95,9 @@ const generateTable = (index, ...data) => {
         </td>
         <td>
             <div class="data">${data[0][5] === "" ? "-" : data[0][5]}</div>
+        </td>
+        <td>
+            <div class="data">${pcp < 6 ? pcp : pcp + "%"}</div>
         </td>
     </tr>`;
     htmlSelector.insertAdjacentHTML("beforeend", html);
