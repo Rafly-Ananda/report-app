@@ -52,7 +52,7 @@ body {
 // ** Navigaion Styling ** //
 .side__nav {
   position: fixed;
-  background: $dark-grey;
+  background-color: #0b3c58;
   top: 0;
   left: 0;
   width: $nav-width;
@@ -108,16 +108,26 @@ body {
 // ** Wrapper Styling ** //
 
 .outer__border {
-  border: 1px solid $dark-grey;
-  border-radius: 0.5em;
   max-width: 70vw;
   z-index: 99;
+
+  .goTopBtn {
+    position: absolute;
+    top: 83vh;
+    left: 89.9vw;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    img {
+      width: 2vw;
+    }
+  }
 
   .inputs__container {
     width: 85vw - $nav-width;
     height: 80vh;
     padding-right: 1.6em;
-    overflow-y: scroll;
+    overflow-y: hidden;
 
     .credentials__container {
       width: 100%;
@@ -127,18 +137,15 @@ body {
         width: 100%;
 
         .page__identifier {
+          @include glassmorphism;
           @include flex-boiler;
           flex-direction: column;
           position: absolute;
           top: 0;
           margin-top: 20vh;
-          border: 1px solid $dark-grey;
           width: 30vw;
           height: 5vw;
           padding: 1em;
-          border: 1px solid $dark-grey;
-          border-top-left-radius: 1em;
-          border-bottom-right-radius: 1em;
 
           h1 {
             font-size: 2rem;
@@ -152,43 +159,23 @@ body {
           width: 100%;
 
           .section__border__credential {
+            @include glassmorphism;
             @include flex-boiler;
             flex-direction: column;
-            width: 50%;
-            border: 1px solid $dark-grey;
             border-radius: 1em;
             padding: 2em;
-
-            .set__user {
-              input {
-                width: 8vw;
-              }
-            }
+            width: 30vw;
+            height: 30%;
 
             .setter {
               @include flex-boiler;
+              width: 30vw;
+              height: 30%;
               input {
                 border: 2px solid $dark-grey;
                 border-radius: 0.25em;
                 background: $default-white;
                 margin: 1em;
-              }
-            }
-
-            .btn__container {
-              @include flex-boiler;
-              width: 70%;
-              justify-content: space-evenly;
-              margin-top: 0.5em;
-
-              Button {
-                @include btn-style;
-
-                &:disabled {
-                  opacity: 50%;
-                  cursor: not-allowed;
-                  background-color: $dark-grey;
-                }
               }
             }
           }
@@ -197,13 +184,14 @@ body {
     }
 
     .date__id {
+      @include glassmorphism;
       @include flex-boiler;
-      background-color: $slate-200;
+      background-color: $soft-white;
       width: 40vw;
       height: 10vh;
       margin: 2em auto 2em auto;
+      scroll-margin-bottom: 200px;
       padding: 1em;
-      border: 1px solid $dark-grey;
       border-top-left-radius: 1em;
       border-bottom-right-radius: 1em;
 
@@ -228,7 +216,8 @@ body {
       margin-top: 3em;
 
       table {
-        max-width: 60vw;
+        @include glassmorphism;
+        width: 90%;
         border-collapse: collapse;
         border-radius: 0.5em;
         overflow: hidden;
@@ -308,16 +297,21 @@ body {
       .flex__container {
         @include flex-boiler;
         flex-direction: column;
-        border: 2px solid $dark-grey;
-        border-radius: 0.5em;
-        min-width: 60vw;
+        min-width: 90%;
         margin: 0 0 1em 0;
+        background: $soft-white;
+        box-shadow: 0 1px 10px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(12.5px);
+        -webkit-backdrop-filter: blur(12.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
 
         button {
           border: 1px solid red;
         }
 
         h1 {
+          padding: 1em 2em;
           font-weight: 600;
           margin: 1em;
           text-align: center;
@@ -331,6 +325,7 @@ body {
             width: 100%;
 
             .table__fields {
+              @include glassmorphism;
               margin-bottom: 1em;
               padding-bottom: 0.9em;
               background-color: $slate-200;
@@ -425,294 +420,300 @@ body {
     border-radius: 1em;
   }
 
-  .select__data__section {
-    @include flex-boiler;
-    flex-direction: column;
+  .view__data__container {
     width: 85vw - $nav-width;
     height: 80vh;
 
-    .page__identifier {
+    .select__data__section {
       @include flex-boiler;
       flex-direction: column;
-      position: absolute;
-      top: 0;
-      margin-top: 20vh;
-      border: 1px solid $dark-grey;
-      width: 30vw;
-      height: 5vw;
-      padding: 1em;
-      border: 1px solid $dark-grey;
-      border-top-left-radius: 1em;
-      border-bottom-right-radius: 1em;
+      width: 100%;
+      height: 80vh;
 
-      h1 {
-        font-size: 2rem;
-        font-weight: 400;
-      }
-    }
-
-    .input__container {
-      @include flex-boiler;
-      flex-direction: column;
-      justify-content: space-evenly;
-      width: 40%;
-      height: 30%;
-
-      Button {
-        @include btn-style;
-      }
-
-      .dropdown__container {
-        @include flex-boiler;
-        justify-content: space-evenly;
-        margin: 0 auto;
+      .credentials__container {
         width: 100%;
-        height: 30%;
 
-        label {
-          display: block;
-        }
-
-        select,
-        input {
-          border: 2px solid $dark-grey;
-          border-radius: 0.25em;
-          background: $default-white;
-          margin: 1em 0;
-        }
-
-        select {
-          width: 8vw;
-        }
-
-        option:not(:checked) {
-          background-color: $soft-white;
-        }
-      }
-    }
-  }
-
-  .view__section {
-    width: 85vw - $nav-width;
-    height: 80vh;
-    padding-right: 1.6em;
-    overflow-y: scroll;
-    padding-bottom: 4em;
-
-    .date__id {
-      @include flex-boiler;
-      background-color: $slate-200;
-      width: 40vw;
-      height: 10vh;
-      margin: 2em auto 2em auto;
-      padding: 1em;
-      border: 1px solid $dark-grey;
-      border-top-left-radius: 1em;
-      border-bottom-right-radius: 1em;
-
-      h1 {
-        display: inline;
-        font-weight: 400;
-        font-size: 1.25rem;
-
-        &.second {
-          font-weight: 500;
-          margin-left: 0.35em;
-          text-decoration: underline;
-        }
-      }
-    }
-
-    .export__btn__container {
-      @include flex-boiler;
-
-      .export__btn {
-        text-align: center;
-      }
-    }
-
-    .data__container {
-      @include flex-boiler;
-      min-height: 80vh;
-      min-width: 65vw;
-
-      .data__wrapper__table {
-        @include flex-boiler;
-        flex-direction: column;
-        margin-top: 2em;
-        width: 90%;
-        min-height: 100%;
-        border: 1px solid $dark-grey;
-        border-radius: 1em;
-
-        .table__inputs {
+        .credentials__wrapper {
           @include flex-boiler;
-          flex-direction: column;
           width: 100%;
-          margin: 1em;
 
-          table {
-            width: 60vw;
-            border-collapse: collapse;
-            border-radius: 0.5em;
-            overflow: hidden;
+          .page__identifier {
+            @include glassmorphism;
+            @include flex-boiler;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            margin-top: 20vh;
+            width: 30vw;
+            height: 5vw;
+            padding: 1em;
 
-            .heading {
-              color: $default-white;
-              padding: 1em;
+            h1 {
+              font-size: 2rem;
+              font-weight: 400;
             }
+          }
 
-            .data {
+          .credentials {
+            @include flex-boiler;
+            flex-direction: column;
+            width: 100%;
+
+            .section__border__credential {
+              @include glassmorphism;
               @include flex-boiler;
-              width: 4vw;
-            }
+              flex-direction: column;
+              border-radius: 1em;
+              padding: 2em;
+              width: 30vw;
+              height: 30%;
 
-            .heading,
-            .spc_sm,
-            .table__no {
-              text-align: center;
-            }
-
-            .tr__heading {
-              background-color: $sky-900;
-            }
-
-            tr:nth-child(even) {
-              background-color: $slate-200;
-            }
-
-            tr:nth-child(odd):not(:first-child) {
-              background-color: $slate-100;
-            }
-
-            td {
-              text-align: left;
-              padding: 0.5em;
-            }
-
-            input::-webkit-outer-spin-button,
-            input::-webkit-inner-spin-button {
-              -webkit-appearance: none;
-            }
-
-            .last__heading {
-              padding-right: 1vw;
-            }
-
-            .SM__ele {
-              padding-right: 1.85vw;
-            }
-
-            .BO {
-              padding-left: 1vw;
-            }
-
-            .heading__KPI {
-              @include flex-boiler;
-              height: 10vh;
-              width: 100%;
-              overflow-y: scroll;
-              -ms-overflow-style: none; /* IE and Edge */
-              scrollbar-width: none; /* Firefox */
-            }
-
-            .heading__KPI::-webkit-scrollbar {
-              display: none; /* Chrome, Safari and Opera */
+              .setter {
+                @include flex-boiler;
+                width: 30vw;
+                height: 30%;
+                input {
+                  border: 2px solid $dark-grey;
+                  border-radius: 0.25em;
+                  background: $default-white;
+                  margin: 1em;
+                }
+              }
             }
           }
         }
       }
+    }
 
-      .data__wrapper {
+    .view__section {
+      width: 85vw - $nav-width;
+      height: 80vh;
+      padding-right: 1.6em;
+      overflow-y: scroll;
+      padding-bottom: 4em;
+
+      .date__id {
+        @include glassmorphism;
         @include flex-boiler;
-        flex-direction: column;
-        margin-top: 4em;
-        width: 90%;
-        min-height: 100%;
-        border: 1px solid $dark-grey;
-        border-radius: 1em;
+        background-color: $soft-white;
+        width: 40vw;
+        height: 10vh;
+        margin: 2em auto 2em auto;
+        padding: 1em;
+        border-top-left-radius: 1em;
+        border-bottom-right-radius: 1em;
 
-        .section__heading {
-          margin: 3em 3em 0 3em;
-          font-weight: 600;
-          text-decoration: underline;
-        }
+        h1 {
+          display: inline;
+          font-weight: 400;
+          font-size: 1.25rem;
 
-        .chart__container {
-          width: 50vw;
-
-          .PCP__1,
-          .PCP__1__NP {
-            margin: 2em;
-            font-weight: 600;
+          &.second {
+            font-weight: 500;
+            margin-left: 0.35em;
             text-decoration: underline;
           }
-
-          canvas {
-            margin: 2em;
-          }
         }
+      }
 
-        .descriptions {
+      .export__btn__container {
+        @include flex-boiler;
+
+        .export__btn {
+          text-align: center;
+        }
+      }
+
+      .data__container {
+        @include flex-boiler;
+        min-height: 80vh;
+        min-width: 65vw;
+
+        .data__wrapper__table {
           @include flex-boiler;
           flex-direction: column;
-          width: 100%;
-          margin-bottom: 3em;
+          width: 85vw - $nav-width;
+          min-height: 100%;
 
-          table {
-            background-color: $slate-200;
-            width: 60vw;
-            border-collapse: collapse;
-            border-radius: 0.5em;
-            overflow: hidden;
+          .table__inputs {
+            @include flex-boiler;
+            flex-direction: column;
+            width: 100%;
+            margin: 1.5em 1em;
 
-            td {
-              border-right: 1.5px solid $soft-white;
-              border-left: 1.5px solid $soft-white;
-              padding: 1em;
-              text-align: center;
-            }
+            table {
+              @include glassmorphism;
+              width: 90%;
+              border-collapse: collapse;
+              border-radius: 0.5em;
+              overflow: hidden;
 
-            th {
-              color: $default-white;
-              padding: 1em;
-            }
+              th {
+                &:last-child {
+                  padding-right: 2.25em;
+                }
+              }
 
-            tr:nth-child(even) {
-              background-color: $slate-200;
-            }
+              td {
+                &:last-child {
+                  padding-right: 1.5em;
+                }
+              }
 
-            tr:nth-child(odd):not(:first-child) {
-              background-color: $slate-100;
-            }
+              .heading {
+                color: $default-white;
+                padding: 1em;
+              }
 
-            .tr__heading {
-              background-color: $sky-900;
-            }
+              .data {
+                @include flex-boiler;
+                width: 4vw;
+              }
 
-            .large__field {
-              text-align: start;
-              width: 30%;
-              height: 100px;
-            }
+              .heading,
+              .spc_sm,
+              .table__no {
+                text-align: center;
+              }
 
-            .no {
-              text-align: center;
-              width: 5%;
-            }
+              .tr__heading {
+                background-color: $sky-900;
+              }
 
-            .content__container {
-              @include flex-boiler;
+              tr:nth-child(even) {
+                background-color: $slate-200;
+              }
 
-              .content {
+              tr:nth-child(odd):not(:first-child) {
+                background-color: $slate-100;
+              }
+
+              td {
+                text-align: left;
+                padding: 0.5em;
+              }
+
+              input::-webkit-outer-spin-button,
+              input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+              }
+
+              .SM__ele {
+                padding-right: 1.85vw;
+              }
+
+              .BO {
+                padding-left: 1vw;
+              }
+
+              .heading__KPI {
+                @include flex-boiler;
                 height: 10vh;
                 width: 100%;
                 overflow-y: scroll;
                 -ms-overflow-style: none; /* IE and Edge */
                 scrollbar-width: none; /* Firefox */
+              }
 
-                &::-webkit-scrollbar {
-                  display: none; /* Chrome, Safari and Opera */
+              .heading__KPI::-webkit-scrollbar {
+                display: none; /* Chrome, Safari and Opera */
+              }
+            }
+          }
+        }
+
+        .data__wrapper {
+          @include flex-boiler;
+          @include glassmorphism;
+          flex-direction: column;
+          margin-top: 4em;
+          width: 90%;
+          min-height: 100%;
+
+          .section__heading {
+            margin: 3em 3em 0 3em;
+            font-weight: 600;
+            text-decoration: underline;
+          }
+
+          .chart__container {
+            @include glassmorphism;
+            width: 50vw;
+            margin: 2.25em 0 3em 0;
+
+            .PCP__1,
+            .PCP__1__NP {
+              margin: 2em;
+              font-weight: 600;
+              text-decoration: underline;
+            }
+
+            canvas {
+              margin: 2em;
+            }
+          }
+
+          .descriptions {
+            @include flex-boiler;
+            flex-direction: column;
+            width: 100%;
+            margin-bottom: 3em;
+
+            table {
+              background-color: $slate-200;
+              width: 60vw;
+              border-collapse: collapse;
+              border-radius: 0.5em;
+              overflow: hidden;
+
+              td {
+                border-right: 1.5px solid $soft-white;
+                border-left: 1.5px solid $soft-white;
+                padding: 1em;
+                text-align: center;
+              }
+
+              th {
+                color: $default-white;
+                padding: 1em;
+              }
+
+              tr:nth-child(even) {
+                background-color: $slate-200;
+              }
+
+              tr:nth-child(odd):not(:first-child) {
+                background-color: $slate-100;
+              }
+
+              .tr__heading {
+                background-color: $sky-900;
+              }
+
+              .large__field {
+                text-align: start;
+                width: 30%;
+                height: 100px;
+              }
+
+              .no {
+                text-align: center;
+                width: 5%;
+              }
+
+              .content__container {
+                @include flex-boiler;
+
+                .content {
+                  height: 10vh;
+                  width: 100%;
+                  overflow-y: scroll;
+                  -ms-overflow-style: none; /* IE and Edge */
+                  scrollbar-width: none; /* Firefox */
+
+                  &::-webkit-scrollbar {
+                    display: none; /* Chrome, Safari and Opera */
+                  }
                 }
               }
             }

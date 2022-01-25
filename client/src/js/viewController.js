@@ -9,10 +9,24 @@ const findBtn = document.querySelector(".find__data__btn");
 const exportBtn = document.querySelector(".export__btn");
 const selectDataSection = document.querySelector(".select__data__wrapper");
 const viewSection = document.querySelector(".view__section");
-const headingPercentage = document.querySelectorAll(".PCP__1");
-const headingYear = document.querySelectorAll(".PCP__1__NP");
 const addedAtText = document.querySelector(".added__at");
 const loggedUser = document.querySelector(".username");
+const goTopBtn = document.querySelector(".goTopBtn");
+const topSection = document.querySelector(".date__id");
+
+function observerSubmit() {
+  const observer = new IntersectionObserver((section) => {
+    if (section[0].isIntersecting) {
+      goTopBtn.style.opacity = "0";
+      goTopBtn.style.pointerEvents = "none";
+    } else {
+      goTopBtn.style.opacity = "1";
+      goTopBtn.style.pointerEvents = "initial";
+    }
+  });
+
+  observer.observe(topSection);
+}
 
 const getData = async (date) => {
   try {
@@ -54,7 +68,6 @@ const getData = async (date) => {
         temp.reduce((prev, next) => {
           return prev + next;
         }) / temp.length;
-      headingPercentage[index].textContent = `PCP = ${result.toFixed(2)}%`;
       pcp.push(result.toFixed(2));
     });
 
@@ -64,7 +77,6 @@ const getData = async (date) => {
       const result = temp.reduce((prev, next) => {
         return prev + next;
       });
-      headingYear[index].textContent = `PCP = ${result}`;
       pcpYear.push(result);
     });
 
@@ -73,7 +85,7 @@ const getData = async (date) => {
 
     // ? Generate Chart && Table Data
     tableEntries.forEach((element, index) => {
-      generateChart(element[1], `myChart${index + 1}`);
+      generateChart(element[1], `myChart${index + 1}`, index, pcp[index]);
       generateTable(index + 1, pcp[index], Object.values(element[1]));
     });
 
@@ -119,14 +131,21 @@ exportBtn.addEventListener("click", () => {
   exportToPdf(tableInputs, "test", graphs, descs);
 });
 
+goTopBtn.addEventListener("click", () => {
+  topSection.scrollIntoView({
+    behavior: "smooth",
+    block: "center",
+  });
+});
+
 const start = () => {
   // getLoggedUser();
+  observerSubmit();
 };
 
 start();
 
 function go() {
-  // const user = (document.querySelector("#user").value = "test");
   const date = (document.querySelector("#period").value = "2022-03");
 
   getData(date);

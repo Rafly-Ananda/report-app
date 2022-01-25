@@ -1,7 +1,7 @@
 "use strict";
 import Chart from "chart.js/auto";
 
-const generateChart = (dataset, chartId) => {
+const generateChart = (dataset, chartId, index, pcp) => {
   const ctx = document.getElementById(`${chartId}`).getContext("2d");
 
   const chartConfig = {
@@ -10,7 +10,6 @@ const generateChart = (dataset, chartId) => {
       labels: ["BO1", "BO2", "BO3", "BO4", "BO5", "BO6"],
       datasets: [
         {
-          // label: label,
           data: dataset,
           backgroundColor: [
             "rgba(255, 99, 132, 0.2)",
@@ -33,17 +32,42 @@ const generateChart = (dataset, chartId) => {
       ],
     },
     options: {
+      layout: {
+        padding: 10,
+      },
       plugins: {
+        title: {
+          display: true,
+          position: "top",
+          text: `KPI ${index + 1} Graph`,
+          padding: {
+            bottom: 30,
+          },
+          font: {
+            size: 15,
+            family: "sans-serif",
+            weight: "normal",
+          },
+          color: "rgb(0, 0, 0)",
+        },
+
+        subtitle: {
+          display: true,
+          position: "bottom",
+          text: `PCP = ${pcp < 6 ? pcp : pcp + "%"}`,
+          padding: {
+            top: 30,
+          },
+          font: {
+            size: 15,
+            family: "sans-serif",
+            weight: "600",
+          },
+          color: "rgb(0, 0, 0)",
+        },
+
         legend: {
           display: false,
-          position: "bottom",
-          labels: {
-            boxWidth: 0,
-            textAlign: "center",
-            font: {
-              size: 14,
-            },
-          },
         },
       },
       scales: {},
@@ -51,7 +75,7 @@ const generateChart = (dataset, chartId) => {
     plugins: [
       {
         id: "bgColor",
-        beforeDraw: (chart, options) => {
+        beforeDraw: (chart) => {
           const { ctx, width, height } = chart;
           ctx.fillStyle = "#f0ffff";
           ctx.fillRect(0, 0, width, height);

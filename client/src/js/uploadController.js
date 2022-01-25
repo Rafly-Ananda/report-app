@@ -222,6 +222,7 @@ nextBtn.addEventListener("click", async () => {
         dateIdentifier.classList.remove("element-hidden");
         inputField.classList.remove("element-hidden");
         inputsContainer.classList.remove("flex-set");
+        inputsContainer.style.overflowY = "scroll";
         credentialField.classList.add("element-hidden");
       }
     } else {
@@ -238,6 +239,7 @@ nextBtn.addEventListener("click", async () => {
         dateIdentifier.classList.remove("element-hidden");
         inputField.classList.remove("element-hidden");
         inputsContainer.classList.remove("flex-set");
+        inputsContainer.style.overflowY = "scroll";
         credentialField.classList.add("element-hidden");
       }
 
@@ -262,7 +264,7 @@ function start() {
   focusedInput.focus();
   setSpecialInput(specialInput);
   textFieldBtnHandler();
-  getLoggedUser();
+  // getLoggedUser();
 }
 
 start();

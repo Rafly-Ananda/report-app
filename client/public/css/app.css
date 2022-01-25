@@ -48,7 +48,7 @@ body {
 
 .side__nav {
   position: fixed;
-  background: #222222;
+  background-color: #0b3c58;
   top: 0;
   left: 0;
   width: 13vw;
@@ -103,16 +103,24 @@ body {
 }
 
 .outer__border {
-  border: 1px solid #222222;
-  border-radius: 0.5em;
   max-width: 70vw;
   z-index: 99;
+}
+.outer__border .goTopBtn {
+  position: absolute;
+  top: 83vh;
+  left: 89.9vw;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.outer__border .goTopBtn img {
+  width: 2vw;
 }
 .outer__border .inputs__container {
   width: 72vw;
   height: 80vh;
   padding-right: 1.6em;
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 .outer__border .inputs__container .credentials__container {
   width: 100%;
@@ -124,6 +132,12 @@ body {
   width: 100%;
 }
 .outer__border .inputs__container .credentials__container .credentials__wrapper .page__identifier {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,13 +145,9 @@ body {
   position: absolute;
   top: 0;
   margin-top: 20vh;
-  border: 1px solid #222222;
   width: 30vw;
   height: 5vw;
   padding: 1em;
-  border: 1px solid #222222;
-  border-top-left-radius: 1em;
-  border-bottom-right-radius: 1em;
 }
 .outer__border .inputs__container .credentials__container .credentials__wrapper .page__identifier h1 {
   font-size: 2rem;
@@ -151,22 +161,27 @@ body {
   width: 100%;
 }
 .outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 50%;
-  border: 1px solid #222222;
   border-radius: 1em;
   padding: 2em;
-}
-.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .set__user input {
-  width: 8vw;
+  width: 30vw;
+  height: 30%;
 }
 .outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .setter {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 30vw;
+  height: 30%;
 }
 .outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .setter input {
   border: 2px solid #222222;
@@ -174,35 +189,22 @@ body {
   background: #ffffff;
   margin: 1em;
 }
-.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .btn__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70%;
-  justify-content: space-evenly;
-  margin-top: 0.5em;
-}
-.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .btn__container Button {
-  width: 8vw;
-  border-radius: 0.75em;
-  font-size: medium;
-  font-weight: 400;
-}
-.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential .btn__container Button:disabled {
-  opacity: 50%;
-  cursor: not-allowed;
-  background-color: #222222;
-}
 .outer__border .inputs__container .date__id {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e2e8f0;
+  background-color: #f0ffff;
   width: 40vw;
   height: 10vh;
   margin: 2em auto 2em auto;
+  scroll-margin-bottom: 200px;
   padding: 1em;
-  border: 1px solid #222222;
   border-top-left-radius: 1em;
   border-bottom-right-radius: 1em;
 }
@@ -226,7 +228,13 @@ body {
   margin-top: 3em;
 }
 .outer__border .inputs__container .table__inputs table {
-  max-width: 60vw;
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 90%;
   border-collapse: collapse;
   border-radius: 0.5em;
   overflow: hidden;
@@ -300,15 +308,20 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  border: 2px solid #222222;
-  border-radius: 0.5em;
-  min-width: 60vw;
+  min-width: 90%;
   margin: 0 0 1em 0;
+  background: #f0ffff;
+  box-shadow: 0 1px 10px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .outer__border .inputs__container .descriptions__container .flex__container button {
   border: 1px solid red;
 }
 .outer__border .inputs__container .descriptions__container .flex__container h1 {
+  padding: 1em 2em;
   font-weight: 600;
   margin: 1em;
   text-align: center;
@@ -322,6 +335,12 @@ body {
   width: 100%;
 }
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   margin-bottom: 1em;
   padding-bottom: 0.9em;
   background-color: #e2e8f0;
@@ -397,15 +416,34 @@ body {
   background-color: #64748b;
   border-radius: 1em;
 }
-.outer__border .select__data__section {
+.outer__border .view__data__container {
+  width: 72vw;
+  height: 80vh;
+}
+.outer__border .view__data__container .select__data__section {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 72vw;
+  width: 100%;
   height: 80vh;
 }
-.outer__border .select__data__section .page__identifier {
+.outer__border .view__data__container .select__data__section .credentials__container {
+  width: 100%;
+}
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper .page__identifier {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -413,170 +451,173 @@ body {
   position: absolute;
   top: 0;
   margin-top: 20vh;
-  border: 1px solid #222222;
   width: 30vw;
   height: 5vw;
   padding: 1em;
-  border: 1px solid #222222;
-  border-top-left-radius: 1em;
-  border-bottom-right-radius: 1em;
 }
-.outer__border .select__data__section .page__identifier h1 {
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper .page__identifier h1 {
   font-size: 2rem;
   font-weight: 400;
 }
-.outer__border .select__data__section .input__container {
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper .credentials {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  justify-content: space-evenly;
-  width: 40%;
-  height: 30%;
+  width: 100%;
 }
-.outer__border .select__data__section .input__container Button {
-  width: 8vw;
-  border-radius: 0.75em;
-  font-size: medium;
-  font-weight: 400;
-}
-.outer__border .select__data__section .input__container .dropdown__container {
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper .credentials .section__border__credential {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: space-evenly;
-  margin: 0 auto;
-  width: 100%;
+  flex-direction: column;
+  border-radius: 1em;
+  padding: 2em;
+  width: 30vw;
   height: 30%;
 }
-.outer__border .select__data__section .input__container .dropdown__container label {
-  display: block;
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper .credentials .section__border__credential .setter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30vw;
+  height: 30%;
 }
-.outer__border .select__data__section .input__container .dropdown__container select,
-.outer__border .select__data__section .input__container .dropdown__container input {
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper .credentials .section__border__credential .setter input {
   border: 2px solid #222222;
   border-radius: 0.25em;
   background: #ffffff;
-  margin: 1em 0;
+  margin: 1em;
 }
-.outer__border .select__data__section .input__container .dropdown__container select {
-  width: 8vw;
-}
-.outer__border .select__data__section .input__container .dropdown__container option:not(:checked) {
-  background-color: #f0ffff;
-}
-.outer__border .view__section {
+.outer__border .view__data__container .view__section {
   width: 72vw;
   height: 80vh;
   padding-right: 1.6em;
   overflow-y: scroll;
   padding-bottom: 4em;
 }
-.outer__border .view__section .date__id {
+.outer__border .view__data__container .view__section .date__id {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #e2e8f0;
+  background-color: #f0ffff;
   width: 40vw;
   height: 10vh;
   margin: 2em auto 2em auto;
   padding: 1em;
-  border: 1px solid #222222;
   border-top-left-radius: 1em;
   border-bottom-right-radius: 1em;
 }
-.outer__border .view__section .date__id h1 {
+.outer__border .view__data__container .view__section .date__id h1 {
   display: inline;
   font-weight: 400;
   font-size: 1.25rem;
 }
-.outer__border .view__section .date__id h1.second {
+.outer__border .view__data__container .view__section .date__id h1.second {
   font-weight: 500;
   margin-left: 0.35em;
   text-decoration: underline;
 }
-.outer__border .view__section .export__btn__container {
+.outer__border .view__data__container .view__section .export__btn__container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.outer__border .view__section .export__btn__container .export__btn {
+.outer__border .view__data__container .view__section .export__btn__container .export__btn {
   text-align: center;
 }
-.outer__border .view__section .data__container {
+.outer__border .view__data__container .view__section .data__container {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 80vh;
   min-width: 65vw;
 }
-.outer__border .view__section .data__container .data__wrapper__table {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-top: 2em;
-  width: 90%;
+  width: 72vw;
   min-height: 100%;
-  border: 1px solid #222222;
-  border-radius: 1em;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  margin: 1em;
+  margin: 1.5em 1em;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table {
-  width: 60vw;
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 90%;
   border-collapse: collapse;
   border-radius: 0.5em;
   overflow: hidden;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table th:last-child {
+  padding-right: 2.25em;
+}
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table td:last-child {
+  padding-right: 1.5em;
+}
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading {
   color: #ffffff;
   padding: 1em;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .data {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .data {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 4vw;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading,
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .spc_sm,
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .table__no {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading,
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .spc_sm,
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .table__no {
   text-align: center;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .tr__heading {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .tr__heading {
   background-color: #0c4a6e;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table tr:nth-child(even) {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table tr:nth-child(even) {
   background-color: #e2e8f0;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table tr:nth-child(odd):not(:first-child) {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table tr:nth-child(odd):not(:first-child) {
   background-color: #f1f5f9;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table td {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table td {
   text-align: left;
   padding: 0.5em;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table input::-webkit-outer-spin-button,
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table input::-webkit-inner-spin-button {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table input::-webkit-outer-spin-button,
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .last__heading {
-  padding-right: 1vw;
-}
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .SM__ele {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .SM__ele {
   padding-right: 1.85vw;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .BO {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .BO {
   padding-left: 1vw;
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -588,39 +629,50 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
-.outer__border .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI::-webkit-scrollbar {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari and Opera */
 }
-.outer__border .view__section .data__container .data__wrapper {
+.outer__border .view__data__container .view__section .data__container .data__wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   flex-direction: column;
   margin-top: 4em;
   width: 90%;
   min-height: 100%;
-  border: 1px solid #222222;
-  border-radius: 1em;
 }
-.outer__border .view__section .data__container .data__wrapper .section__heading {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .section__heading {
   margin: 3em 3em 0 3em;
   font-weight: 600;
   text-decoration: underline;
 }
-.outer__border .view__section .data__container .data__wrapper .chart__container {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .chart__container {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   width: 50vw;
+  margin: 2.25em 0 3em 0;
 }
-.outer__border .view__section .data__container .data__wrapper .chart__container .PCP__1,
-.outer__border .view__section .data__container .data__wrapper .chart__container .PCP__1__NP {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .chart__container .PCP__1,
+.outer__border .view__data__container .view__section .data__container .data__wrapper .chart__container .PCP__1__NP {
   margin: 2em;
   font-weight: 600;
   text-decoration: underline;
 }
-.outer__border .view__section .data__container .data__wrapper .chart__container canvas {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .chart__container canvas {
   margin: 2em;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -628,47 +680,47 @@ body {
   width: 100%;
   margin-bottom: 3em;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table {
   background-color: #e2e8f0;
   width: 60vw;
   border-collapse: collapse;
   border-radius: 0.5em;
   overflow: hidden;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table td {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table td {
   border-right: 1.5px solid #f0ffff;
   border-left: 1.5px solid #f0ffff;
   padding: 1em;
   text-align: center;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table th {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table th {
   color: #ffffff;
   padding: 1em;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table tr:nth-child(even) {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table tr:nth-child(even) {
   background-color: #e2e8f0;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table tr:nth-child(odd):not(:first-child) {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table tr:nth-child(odd):not(:first-child) {
   background-color: #f1f5f9;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table .tr__heading {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table .tr__heading {
   background-color: #0c4a6e;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table .large__field {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table .large__field {
   text-align: start;
   width: 30%;
   height: 100px;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table .no {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table .no {
   text-align: center;
   width: 5%;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table .content__container {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table .content__container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table .content__container .content {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table .content__container .content {
   height: 10vh;
   width: 100%;
   overflow-y: scroll;
@@ -677,7 +729,7 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
-.outer__border .view__section .data__container .data__wrapper .descriptions table .content__container .content::-webkit-scrollbar {
+.outer__border .view__data__container .view__section .data__container .data__wrapper .descriptions table .content__container .content::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari and Opera */
 }

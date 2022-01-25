@@ -48,192 +48,195 @@
     </nav>
     <main>
       <div class="outer__border">
-        <div class="select__data__wrapper">
-          <div class="select__data__section">
-            <div class="page__identifier"><h1>View Data</h1></div>
+        <button class="goTopBtn">
+          <img src="../static/arrow.svg" alt="arrow" />
+        </button>
+        <div class="view__data__container">
+          <div class="select__data__wrapper">
+            <div class="select__data__section">
+              <div class="credentials__container">
+                <div class="credentials__wrapper">
+                  <div class="page__identifier"><h1>view report</h1></div>
+                  <div class="credentials">
+                    <div class="section__border__credential">
+                      <div class="setter set__period">
+                        <label for="period">Period :</label>
+                        <input
+                          type="month"
+                          name="period"
+                          id="period"
+                          required
+                        />
+                      </div>
 
-            <div class="input__container">
-              <div class="dropdown__container">
-                <div class="dropdown">
-                  <label for="period">Period :</label>
-                  <input type="month" name="period" id="period" />
+                      <button
+                        type="button"
+                        class="find__data__btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                      >
+                        Find
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
 
+          <section class="view__section element-hidden">
+            <div class="date__id">
+              <h1>Showing Report On</h1>
+              <h1 class="added__at second"></h1>
+            </div>
+
+            <div class="export__btn__container">
               <button
-                type="button"
-                class="find__data__btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
+                class="export__btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
               >
-                Find
+                export
               </button>
             </div>
-          </div>
+
+            <div class="data__container">
+              <div class="data__wrapper__table">
+                <div class="table__inputs"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi
+                  konsisten (Tepat Time To Market)
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart1"></canvas>
+                </div>
+                <div class="desc__1"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Mencapai target zero complain desain produk vs URS sampai 1
+                  tahun
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart2"></canvas>
+                </div>
+                <div class="desc__2"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Mencapai Jumlah kelulusan training prosedur pembuatan, QC
+                  material dan produk, manual book alat (NM assembly, instalasi
+                  & QC, ETC, FMS staff terkait)
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart3"></canvas>
+                </div>
+                <div class="desc__3"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Ketersediaan tools data collection performa produk sesuai
+                  target
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart4"></canvas>
+                </div>
+                <div class="desc__4"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Mencapai target improvement product
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart5"></canvas>
+                </div>
+                <div class="desc__5"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Closing STCS (major) max 1 th & closing project
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart6"></canvas>
+                </div>
+                <div class="desc__6"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Memastikan proses kerja sesuai standar ISO (Menekan temuan
+                  audit status NC & PNC)
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart7"></canvas>
+                </div>
+                <div class="desc__7"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Memenuhi gap kompetensi sesuai target
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart8"></canvas>
+                </div>
+                <div class="desc__8"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">
+                  Mencapai kebersihan bangunan 100% dan 6S (5S & safety)
+                </h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart9"></canvas>
+                </div>
+                <div class="desc__9"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">Mengikuti KS (3 Per semester)</h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart10"></canvas>
+                </div>
+                <div class="desc__10"></div>
+              </div>
+            </div>
+
+            <div class="data__container">
+              <div class="data__wrapper">
+                <h1 class="section__heading">CMM</h1>
+                <div class="chart__container">
+                  <canvas class="bar__chart" id="myChart11"></canvas>
+                </div>
+                <div class="desc__11"></div>
+              </div>
+            </div>
+          </section>
         </div>
-
-        <section class="view__section element-hidden">
-          <div class="date__id">
-            <h1>Showing Report On</h1>
-            <h1 class="added__at second"></h1>
-          </div>
-
-          <div class="export__btn__container">
-            <button
-              class="export__btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded"
-            >
-              export
-            </button>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper__table">
-              <div class="table__inputs"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Menyelesaikan Prototype dan dokumen GPDP serta 3x produksi
-                konsisten (Tepat Time To Market)
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart1"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__1"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Mencapai target zero complain desain produk vs URS sampai 1
-                tahun
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart2"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__2"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Mencapai Jumlah kelulusan training prosedur pembuatan, QC
-                material dan produk, manual book alat (NM assembly, instalasi &
-                QC, ETC, FMS staff terkait)
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart3"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__3"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Ketersediaan tools data collection performa produk sesuai target
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart4"></canvas>
-                <center><h1 class="PCP__1__NP"></h1></center>
-              </div>
-              <div class="desc__4"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Mencapai target improvement product
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart5"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__5"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Closing STCS (major) max 1 th & closing project
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart6"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__6"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Memastikan proses kerja sesuai standar ISO (Menekan temuan audit
-                status NC & PNC)
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart7"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__7"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Memenuhi gap kompetensi sesuai target
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart8"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__8"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">
-                Mencapai kebersihan bangunan 100% dan 6S (5S & safety)
-              </h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart9"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__9"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">Mengikuti KS (3 Per semester)</h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart10"></canvas>
-                <center><h1 class="PCP__1__NP"></h1></center>
-              </div>
-              <div class="desc__10"></div>
-            </div>
-          </div>
-
-          <div class="data__container">
-            <div class="data__wrapper">
-              <h1 class="section__heading">CMM</h1>
-              <div class="chart__container">
-                <canvas class="bar__chart" id="myChart11"></canvas>
-                <center><h1 class="PCP__1"></h1></center>
-              </div>
-              <div class="desc__11"></div>
-            </div>
-          </div>
-        </section>
       </div>
     </main>
   </body>
