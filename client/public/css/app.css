@@ -119,11 +119,11 @@ body {
 .outer__border .inputs__container {
   width: 72vw;
   height: 80vh;
-  padding-right: 1.6em;
   overflow-y: hidden;
 }
 .outer__border .inputs__container .credentials__container {
   width: 100%;
+  margin-top: 15vh;
 }
 .outer__border .inputs__container .credentials__container .credentials__wrapper {
   display: flex;
@@ -144,7 +144,7 @@ body {
   flex-direction: column;
   position: absolute;
   top: 0;
-  margin-top: 20vh;
+  margin-top: 32vh;
   width: 30vw;
   height: 5vw;
   padding: 1em;
@@ -188,6 +188,9 @@ body {
   border-radius: 0.25em;
   background: #ffffff;
   margin: 1em;
+}
+.outer__border .inputs__container .credentials__container .credentials__wrapper .credentials .section__border__credential button {
+  width: 5vw;
 }
 .outer__border .inputs__container .date__id {
   background: #f0ffff;
@@ -283,6 +286,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: flex-start;
   height: 10vh;
   width: 100%;
   overflow-y: scroll;
@@ -290,6 +294,9 @@ body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+.outer__border .inputs__container .table__inputs table .heading__KPI p {
+  margin: auto 0;
 }
 .outer__border .inputs__container .table__inputs table .heading__KPI::-webkit-scrollbar {
   display: none;
@@ -430,6 +437,7 @@ body {
 }
 .outer__border .view__data__container .select__data__section .credentials__container {
   width: 100%;
+  margin-top: 15vh;
 }
 .outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper {
   display: flex;
@@ -450,7 +458,7 @@ body {
   flex-direction: column;
   position: absolute;
   top: 0;
-  margin-top: 20vh;
+  margin-top: 32vh;
   width: 30vw;
   height: 5vw;
   padding: 1em;
@@ -494,6 +502,9 @@ body {
   border-radius: 0.25em;
   background: #ffffff;
   margin: 1em;
+}
+.outer__border .view__data__container .select__data__section .credentials__container .credentials__wrapper .credentials .section__border__credential button {
+  width: 5vw;
 }
 .outer__border .view__data__container .view__section {
   width: 72vw;
@@ -621,6 +632,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  justify-content: flex-start;
   height: 10vh;
   width: 100%;
   overflow-y: scroll;
@@ -628,6 +640,9 @@ body {
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI p {
+  margin: auto 0;
 }
 .outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI::-webkit-scrollbar {
   display: none;

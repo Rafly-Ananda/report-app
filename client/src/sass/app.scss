@@ -126,11 +126,11 @@ body {
   .inputs__container {
     width: 85vw - $nav-width;
     height: 80vh;
-    padding-right: 1.6em;
     overflow-y: hidden;
 
     .credentials__container {
       width: 100%;
+      margin-top: 15vh;
 
       .credentials__wrapper {
         @include flex-boiler;
@@ -142,7 +142,7 @@ body {
           flex-direction: column;
           position: absolute;
           top: 0;
-          margin-top: 20vh;
+          margin-top: 32vh;
           width: 30vw;
           height: 5vw;
           padding: 1em;
@@ -177,6 +177,10 @@ body {
                 background: $default-white;
                 margin: 1em;
               }
+            }
+
+            button {
+              width: 5vw;
             }
           }
         }
@@ -275,11 +279,16 @@ body {
 
         .heading__KPI {
           @include flex-boiler;
+          justify-content: flex-start;
           height: 10vh;
           width: 100%;
           overflow-y: scroll;
           -ms-overflow-style: none; /* IE and Edge */
           scrollbar-width: none; /* Firefox */
+
+          p {
+            margin: auto 0;
+          }
         }
 
         .heading__KPI::-webkit-scrollbar {
@@ -432,6 +441,7 @@ body {
 
       .credentials__container {
         width: 100%;
+        margin-top: 15vh;
 
         .credentials__wrapper {
           @include flex-boiler;
@@ -443,7 +453,7 @@ body {
             flex-direction: column;
             position: absolute;
             top: 0;
-            margin-top: 20vh;
+            margin-top: 32vh;
             width: 30vw;
             height: 5vw;
             padding: 1em;
@@ -478,6 +488,10 @@ body {
                   background: $default-white;
                   margin: 1em;
                 }
+              }
+
+              button {
+                width: 5vw;
               }
             }
           }
@@ -608,11 +622,16 @@ body {
 
               .heading__KPI {
                 @include flex-boiler;
+                justify-content: flex-start;
                 height: 10vh;
                 width: 100%;
                 overflow-y: scroll;
                 -ms-overflow-style: none; /* IE and Edge */
                 scrollbar-width: none; /* Firefox */
+
+                p {
+                  margin: auto 0;
+                }
               }
 
               .heading__KPI::-webkit-scrollbar {

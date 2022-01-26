@@ -98,6 +98,7 @@ const getData = async (date) => {
 
     selectDataSection.classList.add("element-hidden");
     viewSection.classList.remove("element-hidden");
+    observerSubmit();
   } catch (err) {
     alert("Data Not Found, Try Other !");
     throw "Data does not exist in database ..";
@@ -115,7 +116,6 @@ async function getLoggedUser() {
 
 findBtn.addEventListener("click", () => {
   const date = document.querySelector("#period").value;
-
   date != "" ? getData(date) : alert("please choose a correct user and period");
 });
 
@@ -140,13 +140,12 @@ goTopBtn.addEventListener("click", () => {
 
 const start = () => {
   // getLoggedUser();
-  observerSubmit();
 };
 
 start();
 
 function go() {
-  const date = (document.querySelector("#period").value = "2022-03");
+  const date = (document.querySelector("#period").value = "2022-02");
 
   getData(date);
 }

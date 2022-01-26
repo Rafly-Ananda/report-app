@@ -40,8 +40,9 @@ const generateTable = (index, pcp, ...data) => {
         <tr>
             <td class="table__no">${index}</td>
             <td clas="heading__td">
-            <div class="heading__KPI">
-            ${title[index - 1]}</div>
+                <div class="heading__KPI">
+                    <p>${title[index - 1]}</p>
+                </div>
             </td>
             <td>${index === 4 || index === 10 ? "tahun" : "100.00%"}</td>
             <td>
@@ -73,7 +74,9 @@ const generateTable = (index, pcp, ...data) => {
     <tr>
         <td class="table__no">${index}</td>
         <td>
-            <div class="heading__KPI">${title[index - 1]}</div>
+            <div class="heading__KPI">
+                <p>${title[index - 1]}</p>
+            </div>
         </td>
         <td>
         ${index === 4 || index === 10 ? "3/tahun" : "100.00%"}

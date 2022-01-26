@@ -71,7 +71,9 @@ router.post("/upload", checkIsAuthenticated, async (req, res) => {
   try {
     const info = req.body;
     const { added_at } = info;
-    const added_by = req.user.username;
+    // const added_by = req.user.username;
+    const added_by = "test";
+
 
     const dataset = { ...info };
     delete dataset.added_at;
