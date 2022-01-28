@@ -108,13 +108,15 @@ body {
 // ** Wrapper Styling ** //
 
 .outer__border {
+  border-radius: 10px;
+  background: #f0ffff;
+  box-shadow: inset 20px 20px 60px #ccd9d9, inset -20px -20px 60px #ffffff;
   max-width: 70vw;
-  z-index: 99;
 
   .goTopBtn {
     position: absolute;
-    top: 83vh;
-    left: 89.9vw;
+    top: 93.5vh;
+    left: 55vw;
     opacity: 0;
     transition: opacity 0.5s;
 
@@ -500,7 +502,7 @@ body {
     }
 
     .view__section {
-      width: 85vw - $nav-width;
+      // width: 85vw - $nav-width;
       height: 80vh;
       padding-right: 1.6em;
       overflow-y: scroll;

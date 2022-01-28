@@ -145,7 +145,7 @@ const start = () => {
 start();
 
 function go() {
-  const date = (document.querySelector("#period").value = "2022-02");
+  const date = (document.querySelector("#period").value = "2022-03");
 
   getData(date);
 }
