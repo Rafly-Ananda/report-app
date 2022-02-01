@@ -221,80 +221,105 @@ body {
       margin-bottom: 3em;
       margin-top: 3em;
 
-      table {
+      .table__container {
         @include glassmorphism;
-        width: 90%;
-        border-collapse: collapse;
-        border-radius: 0.5em;
-        overflow: hidden;
+        min-width: 90%;
+        padding: 3em;
 
-        .heading {
-          color: $default-white;
-          padding: 1em;
-        }
+        .table__wrapper {
+          @include glassmorphism;
+          width: 99%;
 
-        .heading,
-        .spc_sm,
-        .table__no {
-          text-align: center;
-        }
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 0.5em;
+            overflow: hidden;
 
-        .tr__heading {
-          background-color: $sky-900;
-        }
+            .heading {
+              color: $default-white;
+              padding: 1em;
+            }
 
-        tr:nth-child(even) {
-          background-color: $slate-200;
-        }
+            .heading,
+            .spc_sm,
+            .table__no {
+              text-align: center;
+            }
 
-        tr:nth-child(odd):not(:first-child) {
-          background-color: $slate-100;
-        }
+            .tr__heading {
+              background-color: $sky-900;
+            }
 
-        input {
-          border: 1px solid $dark-grey;
-        }
+            tr:nth-child(even) {
+              background-color: $slate-200;
+            }
 
-        td {
-          text-align: left;
-          padding: 0.5em;
-        }
+            tr:nth-child(odd):not(:first-child) {
+              background-color: $slate-100;
+            }
 
-        input {
-          width: 4vw;
-          border-radius: 0.2em;
-          text-align: center;
-        }
+            input {
+              border: 1px solid $dark-grey;
+            }
 
-        input::-webkit-outer-spin-button,
-        input::-webkit-inner-spin-button {
-          -webkit-appearance: none;
-        }
+            td {
+              text-align: left;
+              padding: 0.5em;
+            }
 
-        .last__input {
-          padding-right: 1.5em;
-        }
+            input {
+              width: 4vw;
+              border-radius: 0.2em;
+              text-align: center;
+            }
 
-        .last__heading {
-          padding-right: 2vw;
-        }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+            }
 
-        .heading__KPI {
-          @include flex-boiler;
-          justify-content: flex-start;
-          height: 10vh;
-          width: 100%;
-          overflow-y: scroll;
-          -ms-overflow-style: none; /* IE and Edge */
-          scrollbar-width: none; /* Firefox */
+            .last__input {
+              padding-right: 1.5em;
+            }
 
-          p {
-            margin: auto 0;
+            .last__heading {
+              padding-right: 2vw;
+            }
+
+            .heading__KPI {
+              @include flex-boiler;
+              justify-content: flex-start;
+              height: 10vh;
+              width: 100%;
+              padding: 0.5em;
+              overflow-y: scroll;
+              -ms-overflow-style: none; /* IE and Edge */
+              scrollbar-width: none; /* Firefox */
+
+              textarea {
+                width: 100%;
+                height: 100%;
+                border: 1px solid $dark-grey;
+                border-radius: 0.2em;
+                resize: none;
+              }
+            }
+
+            .heading__KPI::-webkit-scrollbar {
+              display: none; /* Chrome, Safari and Opera */
+            }
           }
         }
 
-        .heading__KPI::-webkit-scrollbar {
-          display: none; /* Chrome, Safari and Opera */
+        .dynamic__table__btn__container {
+          @include flex-boiler;
+          width: 100%;
+          margin: 2.5em 0 0 0;
+
+          button {
+            margin: 0 0.5em;
+          }
         }
       }
     }
@@ -306,20 +331,11 @@ body {
       margin-bottom: 2em;
 
       .flex__container {
+        @include glassmorphism;
         @include flex-boiler;
         flex-direction: column;
         min-width: 90%;
         margin: 0 0 1em 0;
-        background: $soft-white;
-        box-shadow: 0 1px 10px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(12.5px);
-        -webkit-backdrop-filter: blur(12.5px);
-        border-radius: 10px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
-
-        button {
-          border: 1px solid red;
-        }
 
         h1 {
           padding: 1em 2em;
@@ -337,13 +353,12 @@ body {
 
             .table__fields {
               @include glassmorphism;
-              margin-bottom: 1em;
-              padding-bottom: 0.9em;
+              margin-bottom: 1.5em;
               background-color: $slate-200;
               border-radius: 1em;
 
               table {
-                width: 55vw;
+                width: 100%;
                 border-collapse: collapse;
                 border-radius: 0.5em;
                 overflow: hidden;
@@ -357,14 +372,23 @@ body {
                   background-color: $sky-900;
                 }
 
+                tr:nth-child(even) {
+                  background-color: $slate-200;
+                }
+
+                tr:nth-child(odd):not(:first-child) {
+                  background-color: $slate-100;
+                }
+
                 input,
                 textarea {
                   border: 1px solid $dark-grey;
+                  margin: 1em;
                 }
 
                 td {
                   text-align: center;
-                  padding: 1em 0 0 0;
+                  // padding: 1em 0 0 0;
                 }
 
                 input {
@@ -397,14 +421,13 @@ body {
             }
           }
 
-          .plus__btn__container {
+          .dynamic__desc__btn__container {
             @include flex-boiler;
-            margin: 0 0 1em 0;
+            margin: 0 0 1.5em 0;
             width: 100%;
 
             button {
               margin: 0 0.5em;
-              border: 2px solid;
             }
           }
         }

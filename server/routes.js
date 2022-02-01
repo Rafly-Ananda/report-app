@@ -74,15 +74,16 @@ router.post("/upload", checkIsAuthenticated, async (req, res) => {
     // const added_by = req.user.username;
     const added_by = "test";
 
-
     const dataset = { ...info };
     delete dataset.added_at;
     delete dataset.added_by;
 
-    pool.query(
-      `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-      [added_by, added_at, dataset]
-    );
+    console.log(info);
+
+    // pool.query(
+    //   `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+    //   [added_by, added_at, dataset]
+    // );
 
     return res.status(200).send("OK");
   } catch (err) {

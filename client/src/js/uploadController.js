@@ -1,18 +1,15 @@
 "use strict";
 import axios from "axios";
 import { addFields } from "./api/upload-api/dynamicInputField";
-import { generateUploadInputFields } from "./api/upload-api/generateUploadDesc";
+import { addKpiTable } from "./api/upload-api/dynamicTableInput";
+import { inputAuth } from "./api/upload-api/inputAuth";
+import { addKpiDesc } from "./api/upload-api/newDescField";
 
-const focusedInput = document.querySelector("#row__1__input__1");
-const textFieldParent = document.querySelectorAll(".row");
+const tableContainer = document.querySelector(".table__container");
+const descContaniner = document.querySelector(".descriptions__container");
 const specialInput = document.querySelectorAll(".special__input");
 const nextBtn = document.querySelector("#next__btn");
 const submitBtn = document.querySelector("#submit__btn");
-const inputField = document.querySelector(".data__input");
-const inputsContainer = document.querySelector(".inputs__container");
-const credentialField = document.querySelector(".credentials__container");
-const dateIdentifier = document.querySelector(".date__identifier");
-const inputMonthText = document.querySelector(".added__at");
 const loggedUser = document.querySelector(".username");
 let maxTextField = 5;
 let tableSelector;
@@ -27,20 +24,42 @@ function setSpecialInput(inputs) {
   });
 }
 
-function textFieldBtnHandler() {
+function dynamicTableHandler() {
+  tableContainer.addEventListener("click", (e) => {
+    const tableField = tableContainer.children[0].children[0].children[0];
+
+    const fieldCount = tableField.childElementCount;
+
+    if (e.target.classList.contains("add__field")) {
+      e.target.previousElementSibling.classList.remove("element-hidden");
+      addKpiTable(tableField);
+      addKpiDesc(descContaniner, fieldCount, "test");
+    }
+
+    if (e.target.classList.contains("delete__field")) {
+      tableField.lastElementChild.remove();
+      descContaniner.lastElementChild.remove();
+      if (fieldCount === 2) e.target.classList.add("element-hidden");
+    }
+  });
+}
+
+function dynamicDescFieldHandler() {
+  const textFieldParent = document.querySelectorAll(".row");
   textFieldParent.forEach((field) => {
     field.addEventListener("click", (e) => {
       const parentSelector = e.target.closest(".row").dataset.id;
       const descField = document.querySelector(`.desc__${parentSelector}`);
 
       if (e.target.classList.contains("add__field")) {
+        console.log("clicked");
         e.target.previousElementSibling.classList.remove("element-hidden");
         !tableSelector
           ? addFields(parentSelector)
           : addFields(parentSelector, tableSelector);
         tableSelector =
           e.target.parentElement.previousElementSibling.children[0].children[0]
-            .children[0];
+            .children[0].children[0];
 
         if (tableSelector.childElementCount > maxTextField)
           e.target.classList.add("element-hidden");
@@ -48,56 +67,52 @@ function textFieldBtnHandler() {
 
       if (e.target.classList.contains("delete__field")) {
         e.target.nextElementSibling.classList.remove("element-hidden");
-        const tableField = descField.children[0].children[0].children;
-        tableField[0].children.length === 1
-          ? descField.lastElementChild.remove()
-          : tableField[0].removeChild(tableField[0].lastElementChild);
+        const tableField =
+          descField.children[0].children[0].children[0].children[0];
 
-        if (!descField.lastElementChild)
+        tableField.removeChild(tableField.lastElementChild);
+
+        if (tableField.childElementCount === 1) {
+          descField.lastElementChild.remove();
           e.target.classList.add("element-hidden");
+        }
       }
     });
   });
 }
 
-function getPrevMonth(date) {
-  let currMonth;
-  let prevMonth;
-  const month = date.slice(5);
-  month.startsWith("0") ? (currMonth = +month.slice(1)) : (currMonth = +month);
+function attachedEventToDynamicDesc() {
+  descContaniner.addEventListener("click", (e) => {
+    if (e.target.classList.contains("add__field")) {
+      const parentSelector = e.target.closest(".row").dataset.id;
+      e.target.previousElementSibling.classList.remove("element-hidden");
+      !tableSelector
+        ? addFields(parentSelector)
+        : addFields(parentSelector, tableSelector);
+      tableSelector =
+        e.target.parentElement.previousElementSibling.children[0].children[0]
+          .children[0].children[0];
 
-  if (currMonth === 1) {
-    prevMonth = String(currMonth).padStart(2, "0");
-  } else {
-    prevMonth = String(currMonth - 1).padStart(2, "0");
-  }
+      if (tableSelector.childElementCount > maxTextField)
+        e.target.classList.add("element-hidden");
+    }
 
-  return `${date.slice(0, 4)}-${prevMonth}`;
-}
+    if (e.target.classList.contains("delete__field")) {
+      const descField = document.querySelector(
+        `.desc__${e.target.closest(".row").dataset.id}`
+      );
+      e.target.nextElementSibling.classList.remove("element-hidden");
+      const tableField =
+        descField.children[0].children[0].children[0].children[0];
 
-function getNextMonth(date) {
-  let currMonth;
-  let nextMonth;
-  let year = date.slice(0, 4);
-  const month = date.slice(5);
-  month.startsWith("0") ? (currMonth = +month.slice(1)) : (currMonth = +month);
+      tableField.removeChild(tableField.lastElementChild);
 
-  if (currMonth === 12) {
-    nextMonth = String(currMonth).padStart(2, "0");
-  } else {
-    nextMonth = String(currMonth + 1).padStart(2, "0");
-  }
-
-  return `${year}-${nextMonth}`;
-}
-
-async function isValid(date) {
-  try {
-    const response = await axios.get(`/view/data/${date}`);
-    return response;
-  } catch (err) {
-    return false;
-  }
+      if (tableField.childElementCount === 1) {
+        descField.lastElementChild.remove();
+        e.target.classList.add("element-hidden");
+      }
+    }
+  });
 }
 
 function submitHandler(period) {
@@ -107,12 +122,24 @@ function submitHandler(period) {
       added_at: period,
     };
 
+    // TODO : FIX LATER TO MAKE LOOP BASED ON HOW MUCH FIELDS IS PRESENT
+    // ! MAX 11 FIELDS, ONLY CHECK TILL 11 FIELDS
     for (let i = 1; i <= 11; i++) {
       dataset[`row__${i}`] = new Object();
       dataset[`row__${i}`].tableData = new Array();
       dataset[`row__${i}`].descData = new Object();
+      dataset[`row__${i}`].rowTitle = new Object();
 
-      // ? To Get Table Data
+      // ? Get KPI Title
+      document.querySelectorAll(`.row__${i}__input__KPI`).forEach((ele) => {
+        if (ele.value === "") {
+          dataset[`row__${i}`].rowTitle.push("");
+        } else {
+          dataset[`row__${i}`].rowTitle = ele.value;
+        }
+      });
+
+      // ? Get Table Data
       document.querySelectorAll(`.row__${i}__input`).forEach((ele) => {
         if (ele.value === "") {
           dataset[`row__${i}`].tableData.push("");
@@ -121,7 +148,7 @@ function submitHandler(period) {
         }
       });
 
-      // ? To Get Desc Data ( max 10 fields )
+      // ? Get Desc Data ( max 10 fields )
       for (let j = 1; j <= 10; j++) {
         temp = [];
         let field = document.querySelectorAll(`.row__${i}__input__desc__${j}`);
@@ -134,45 +161,15 @@ function submitHandler(period) {
       }
     }
 
-    axios.post("/upload", dataset).then(() => {
-      alert("Finish uploading data ! ");
-      window.location = "/view";
-    });
+    console.log(dataset);
+
+    // axios.post("/upload", dataset).then(() => {
+    //   alert("Finish uploading data ! ");
+    //   window.location = "/view";
+    // });
   } catch (error) {
     console.log(error);
   }
-}
-
-async function fillData(date) {
-  const {
-    data: {
-      numberFieldData: { allTableData },
-      textFieldData,
-    },
-  } = await axios.get(`/view/data/${date}`);
-
-  // ? Filling Table Inputs With Previous Data
-  Object.values(allTableData).forEach((field, index) => {
-    let tableFieldInputs = document.querySelectorAll(
-      `.row__${index + 1}__input`
-    );
-    tableFieldInputs.forEach((input, inputIndex) => {
-      if (field[inputIndex] === "") {
-        null;
-      } else {
-        input.value = field[inputIndex];
-        input.readOnly = true;
-      }
-    });
-  });
-
-  // ! QUESTIONABLE FEATURE ?!?!?
-  // ? Filling Desc Inputs With Previous Data
-  // Object.entries(textFieldData).forEach((data) => {
-  //   Object.values(data[1]).forEach((field) => {
-  //     generateUploadInputFields(data[0].slice(5), field);
-  //   });
-  // });
 }
 
 async function getLoggedUser() {
@@ -191,67 +188,7 @@ nextBtn.addEventListener("click", async () => {
     alert("please choose a correct period");
     return;
   } else {
-    // ? Format Input Month Text
-    const formatter = (data) => {
-      const str = data.split("-");
-      const date = new Date();
-      date.setMonth(+str[1].slice(1) - 1);
-      const month = date.toLocaleString("default", { month: "long" });
-
-      inputMonthText.textContent = `${month} ${str[0]}`;
-    };
-
-    formatter(date);
-
-    // ? Checking Prev, Curr, & Next Month Status
-    const prevMonth = getPrevMonth(date);
-    const currMonth = date;
-    const nextMonth = getNextMonth(date);
-    const prevMonthRes = await isValid(prevMonth);
-    const currMonthRes = await isValid(currMonth);
-    const nextMonthRes = await isValid(nextMonth);
-
-    const { data: prevMonthStatus } = prevMonthRes;
-    const { data: currMonthStatus } = currMonthRes;
-    const { data: nextMonthStatus } = nextMonthRes;
-
-    if (currMonth.slice(5) === "01" || currMonth.slice(5) === "07") {
-      if (currMonthStatus) {
-        alert("Error, Data In This Month Is Already Filled !");
-      } else {
-        dateIdentifier.classList.remove("element-hidden");
-        inputField.classList.remove("element-hidden");
-        inputsContainer.classList.remove("flex-set");
-        inputsContainer.style.overflowY = "scroll";
-        credentialField.classList.add("element-hidden");
-      }
-    } else {
-      if (prevMonthStatus && currMonthStatus && nextMonthStatus) {
-        alert("Error, Data In This Month Is Already Filled !");
-      }
-
-      if (prevMonthStatus && currMonthStatus && !nextMonthStatus) {
-        alert("Error, Data In This Month Is Already Filled !");
-      }
-
-      if (prevMonthStatus && !currMonthStatus && !nextMonthStatus) {
-        fillData(prevMonth);
-        dateIdentifier.classList.remove("element-hidden");
-        inputField.classList.remove("element-hidden");
-        inputsContainer.classList.remove("flex-set");
-        inputsContainer.style.overflowY = "scroll";
-        credentialField.classList.add("element-hidden");
-      }
-
-      if (
-        (!prevMonthStatus && !currMonthStatus && !nextMonthStatus) ||
-        (!prevMonthStatus && !currMonthStatus && nextMonthStatus)
-      ) {
-        alert(
-          "Error, Input Previous Month Data First, Cannot Input Data Before Previous Month is Filled !"
-        );
-      }
-    }
+    inputAuth(date);
   }
 });
 
@@ -261,10 +198,19 @@ submitBtn.addEventListener("click", () => {
 });
 
 function start() {
-  focusedInput.focus();
   setSpecialInput(specialInput);
-  textFieldBtnHandler();
+  dynamicTableHandler();
+  dynamicDescFieldHandler();
+  attachedEventToDynamicDesc();
   // getLoggedUser();
 }
 
 start();
+
+function go() {
+  const date = (document.querySelector("#period").value = "2022-04");
+
+  inputAuth(date);
+}
+
+go();

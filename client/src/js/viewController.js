@@ -150,4 +150,4 @@ function go() {
   getData(date);
 }
 
-go();
+// go();

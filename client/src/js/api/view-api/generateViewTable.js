@@ -39,7 +39,7 @@ const generateTable = (index, pcp, ...data) => {
         </tr>
         <tr>
             <td class="table__no">${index}</td>
-            <td clas="heading__td">
+            <td>
                 <div class="heading__KPI">
                     <p>${title[index - 1]}</p>
                 </div>

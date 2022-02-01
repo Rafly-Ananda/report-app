@@ -232,77 +232,105 @@ body {
   margin-bottom: 3em;
   margin-top: 3em;
 }
-.outer__border .inputs__container .table__inputs table {
+.outer__border .inputs__container .table__inputs .table__container {
   background: #f0ffff;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(12.5px);
   -webkit-backdrop-filter: blur(12.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  width: 90%;
+  min-width: 90%;
+  padding: 3em;
+}
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 99%;
+}
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table {
+  width: 100%;
   border-collapse: collapse;
   border-radius: 0.5em;
   overflow: hidden;
 }
-.outer__border .inputs__container .table__inputs table .heading {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading {
   color: #ffffff;
   padding: 1em;
 }
-.outer__border .inputs__container .table__inputs table .heading,
-.outer__border .inputs__container .table__inputs table .spc_sm,
-.outer__border .inputs__container .table__inputs table .table__no {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading,
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .spc_sm,
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .table__no {
   text-align: center;
 }
-.outer__border .inputs__container .table__inputs table .tr__heading {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .tr__heading {
   background-color: #0c4a6e;
 }
-.outer__border .inputs__container .table__inputs table tr:nth-child(even) {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table tr:nth-child(even) {
   background-color: #e2e8f0;
 }
-.outer__border .inputs__container .table__inputs table tr:nth-child(odd):not(:first-child) {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table tr:nth-child(odd):not(:first-child) {
   background-color: #f1f5f9;
 }
-.outer__border .inputs__container .table__inputs table input {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table input {
   border: 1px solid #222222;
 }
-.outer__border .inputs__container .table__inputs table td {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table td {
   text-align: left;
   padding: 0.5em;
 }
-.outer__border .inputs__container .table__inputs table input {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table input {
   width: 4vw;
   border-radius: 0.2em;
   text-align: center;
 }
-.outer__border .inputs__container .table__inputs table input::-webkit-outer-spin-button,
-.outer__border .inputs__container .table__inputs table input::-webkit-inner-spin-button {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table input::-webkit-outer-spin-button,
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
-.outer__border .inputs__container .table__inputs table .last__input {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .last__input {
   padding-right: 1.5em;
 }
-.outer__border .inputs__container .table__inputs table .last__heading {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .last__heading {
   padding-right: 2vw;
 }
-.outer__border .inputs__container .table__inputs table .heading__KPI {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading__KPI {
   display: flex;
   align-items: center;
   justify-content: center;
   justify-content: flex-start;
   height: 10vh;
   width: 100%;
+  padding: 0.5em;
   overflow-y: scroll;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
 }
-.outer__border .inputs__container .table__inputs table .heading__KPI p {
-  margin: auto 0;
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading__KPI textarea {
+  width: 100%;
+  height: 100%;
+  border: 1px solid #222222;
+  border-radius: 0.2em;
+  resize: none;
 }
-.outer__border .inputs__container .table__inputs table .heading__KPI::-webkit-scrollbar {
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading__KPI::-webkit-scrollbar {
   display: none;
   /* Chrome, Safari and Opera */
+}
+.outer__border .inputs__container .table__inputs .table__container .dynamic__table__btn__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 2.5em 0 0 0;
+}
+.outer__border .inputs__container .table__inputs .table__container .dynamic__table__btn__container button {
+  margin: 0 0.5em;
 }
 .outer__border .inputs__container .descriptions__container {
   display: flex;
@@ -313,21 +341,18 @@ body {
   margin-bottom: 2em;
 }
 .outer__border .inputs__container .descriptions__container .flex__container {
+  background: #f0ffff;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(12.5px);
+  -webkit-backdrop-filter: blur(12.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   min-width: 90%;
   margin: 0 0 1em 0;
-  background: #f0ffff;
-  box-shadow: 0 1px 10px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(12.5px);
-  -webkit-backdrop-filter: blur(12.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-.outer__border .inputs__container .descriptions__container .flex__container button {
-  border: 1px solid red;
 }
 .outer__border .inputs__container .descriptions__container .flex__container h1 {
   padding: 1em 2em;
@@ -350,13 +375,12 @@ body {
   -webkit-backdrop-filter: blur(12.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  margin-bottom: 1em;
-  padding-bottom: 0.9em;
+  margin-bottom: 1.5em;
   background-color: #e2e8f0;
   border-radius: 1em;
 }
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table {
-  width: 55vw;
+  width: 100%;
   border-collapse: collapse;
   border-radius: 0.5em;
   overflow: hidden;
@@ -368,13 +392,19 @@ body {
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table .tr__heading {
   background-color: #0c4a6e;
 }
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table tr:nth-child(even) {
+  background-color: #e2e8f0;
+}
+.outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table tr:nth-child(odd):not(:first-child) {
+  background-color: #f1f5f9;
+}
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table input,
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table textarea {
   border: 1px solid #222222;
+  margin: 1em;
 }
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table td {
   text-align: center;
-  padding: 1em 0 0 0;
 }
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table input {
   width: 2vw;
@@ -397,16 +427,15 @@ body {
 .outer__border .inputs__container .descriptions__container .flex__container .row .descriptions .table__fields table #RL__field {
   margin-right: 1em;
 }
-.outer__border .inputs__container .descriptions__container .flex__container .row .plus__btn__container {
+.outer__border .inputs__container .descriptions__container .flex__container .row .dynamic__desc__btn__container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 0 1em 0;
+  margin: 0 0 1.5em 0;
   width: 100%;
 }
-.outer__border .inputs__container .descriptions__container .flex__container .row .plus__btn__container button {
+.outer__border .inputs__container .descriptions__container .flex__container .row .dynamic__desc__btn__container button {
   margin: 0 0.5em;
-  border: 2px solid;
 }
 .outer__border .inputs__container .btn__container {
   display: flex;
