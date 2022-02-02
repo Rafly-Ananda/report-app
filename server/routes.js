@@ -80,10 +80,10 @@ router.post("/upload", checkIsAuthenticated, async (req, res) => {
 
     console.log(info);
 
-    // pool.query(
-    //   `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
-    //   [added_by, added_at, dataset]
-    // );
+    pool.query(
+      `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
+      [added_by, added_at, dataset]
+    );
 
     return res.status(200).send("OK");
   } catch (err) {
@@ -106,29 +106,27 @@ router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
 
     const results = {
       added_at: data.rows[0].added_at,
+      kpi_title: new Array(),
       numberFieldData: {
         allTableData: new Object(),
         dataInPercentage: new Object(),
         dataNotInPercentage: new Object(),
       },
-      textFieldData: {
-        row__1: new Object(),
-        row__2: new Object(),
-        row__3: new Object(),
-        row__4: new Object(),
-        row__5: new Object(),
-        row__6: new Object(),
-        row__7: new Object(),
-        row__8: new Object(),
-        row__9: new Object(),
-        row__10: new Object(),
-        row__11: new Object(),
-      },
+      textFieldData: new Object(),
     };
 
+    for (let i = 1; i <= data.rows[0].dataset.dataset_length; i++) {
+      results.textFieldData[`row__${i}`] = new Object();
+      results.kpi_title.push(data.rows[0].dataset[`row__${i}`].rowTitle);
+    }
+
     for (const [key, value] of Object.entries(data.rows[0].dataset)) {
-      results.numberFieldData.allTableData[key] = value.tableData;
-      results.textFieldData[key] = value.descData;
+      if (key === "dataset_length") {
+        continue;
+      } else {
+        results.numberFieldData.allTableData[key] = value.tableData;
+        results.textFieldData[key] = value.descData;
+      }
 
       if (key === "row__4" || key === "row__10") {
         results.numberFieldData.dataNotInPercentage[key] = value.tableData;

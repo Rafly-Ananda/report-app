@@ -3,6 +3,7 @@ import axios from "axios";
 import { generateChart } from "./api/view-api/generateViewChart";
 import { generateFields } from "./api/view-api/generateViewInputField";
 import { generateTable } from "./api/view-api/generateViewTable";
+import { generateDOMContainer } from "./api/view-api/generateDOMContainer";
 import { exportToPdf } from "./api/view-api/exportToPdf";
 
 const findBtn = document.querySelector(".find__data__btn");
@@ -30,9 +31,15 @@ function observerSubmit() {
 
 const getData = async (date) => {
   try {
+    const response = await axios.get(`/view/data/${date}`);
+
+    if (response.data === "")
+      throw new Error(`Data ${date} does not exist in database ...`);
+
     const {
       data: {
         added_at,
+        kpi_title,
         numberFieldData: {
           allTableData,
           dataInPercentage,
@@ -40,15 +47,16 @@ const getData = async (date) => {
         },
         textFieldData,
       },
-    } = await axios.get(`/view/data/${date}`);
+    } = response;
 
     const tableEntries = Object.entries(allTableData);
     const dataPercentage = Object.values(dataInPercentage);
     const dataYear = Object.values(dataNotInPercentage);
     const dataText = Object.entries(textFieldData);
     addedAtText.textContent = added_at;
-    const pcp = new Array();
+    const pcpPercent = new Array();
     const pcpYear = new Array();
+    let pcpAll;
 
     // ? Format AddedAtText
     const formatter = (data) => {
@@ -61,32 +69,43 @@ const getData = async (date) => {
 
     formatter(added_at);
 
+    // ? Generate DOM Container for Chart and Desc Field
+    kpi_title.forEach((_, index) => {
+      generateDOMContainer(kpi_title[index], index);
+    });
+
     // ? Calculate PCP Percentage
-    dataPercentage.forEach((data, index) => {
+    dataPercentage.forEach((data) => {
       const temp = data.map((ele) => Number(ele)).filter((ele) => ele > 0);
       const result =
         temp.reduce((prev, next) => {
           return prev + next;
         }) / temp.length;
-      pcp.push(result.toFixed(2));
+      pcpPercent.push(result.toFixed(2));
     });
 
     // ? Calculate PCP Year
-    dataYear.forEach((data, index) => {
+    dataYear.forEach((data) => {
       const temp = data.map((ele) => Number(ele));
       const result = temp.reduce((prev, next) => {
         return prev + next;
       });
-      pcpYear.push(result);
+      pcpYear.push(result.toString());
     });
 
-    pcp.splice(3, 0, pcpYear[0]);
-    pcp.splice(9, 0, pcpYear[1]);
+    pcpAll = [...pcpPercent];
+    pcpAll.splice(3, 0, pcpYear[0]);
+    pcpAll.splice(9, 0, pcpYear[1]);
 
     // ? Generate Chart && Table Data
     tableEntries.forEach((element, index) => {
-      generateChart(element[1], `myChart${index + 1}`, index, pcp[index]);
-      generateTable(index + 1, pcp[index], Object.values(element[1]));
+      generateChart(element[1], `myChart${index + 1}`, index, pcpAll[index]);
+      generateTable(
+        index + 1,
+        pcpAll[index],
+        kpi_title,
+        Object.values(element[1])
+      );
     });
 
     // ? Generate Textfield Data
@@ -101,7 +120,7 @@ const getData = async (date) => {
     observerSubmit();
   } catch (err) {
     alert("Data Not Found, Try Other !");
-    throw "Data does not exist in database ..";
+    console.log(err.message);
   }
 };
 
@@ -145,7 +164,7 @@ const start = () => {
 start();
 
 function go() {
-  const date = (document.querySelector("#period").value = "2022-03");
+  const date = (document.querySelector("#period").value = "2022-01");
 
   getData(date);
 }

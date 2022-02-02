@@ -117,14 +117,15 @@ function attachedEventToDynamicDesc() {
 
 function submitHandler(period) {
   try {
+    const dataCount =
+      document.querySelector("table").children[0].childElementCount - 1;
     let temp = new Array();
     const dataset = {
       added_at: period,
+      dataset_length: dataCount,
     };
 
-    // TODO : FIX LATER TO MAKE LOOP BASED ON HOW MUCH FIELDS IS PRESENT
-    // ! MAX 11 FIELDS, ONLY CHECK TILL 11 FIELDS
-    for (let i = 1; i <= 11; i++) {
+    for (let i = 1; i <= dataCount; i++) {
       dataset[`row__${i}`] = new Object();
       dataset[`row__${i}`].tableData = new Array();
       dataset[`row__${i}`].descData = new Object();
@@ -148,7 +149,7 @@ function submitHandler(period) {
         }
       });
 
-      // ? Get Desc Data ( max 10 fields )
+      // ? Get Desc Data ( max 10 fields ) => safe value beacause we set max in DOM to 5
       for (let j = 1; j <= 10; j++) {
         temp = [];
         let field = document.querySelectorAll(`.row__${i}__input__desc__${j}`);
@@ -161,12 +162,10 @@ function submitHandler(period) {
       }
     }
 
-    console.log(dataset);
-
-    // axios.post("/upload", dataset).then(() => {
-    //   alert("Finish uploading data ! ");
-    //   window.location = "/view";
-    // });
+    axios.post("/upload", dataset).then(() => {
+      alert("Finish uploading data ! ");
+      window.location = "/view";
+    });
   } catch (error) {
     console.log(error);
   }
@@ -213,4 +212,4 @@ function go() {
   inputAuth(date);
 }
 
-go();
+// go();
