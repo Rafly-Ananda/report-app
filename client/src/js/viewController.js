@@ -39,6 +39,7 @@ const getData = async (date) => {
     const {
       data: {
         added_at,
+        dataset_length,
         kpi_title,
         numberFieldData: {
           allTableData,
@@ -70,9 +71,9 @@ const getData = async (date) => {
     formatter(added_at);
 
     // ? Generate DOM Container for Chart and Desc Field
-    kpi_title.forEach((_, index) => {
-      generateDOMContainer(kpi_title[index], index);
-    });
+    for (let i = 0; i < dataset_length; i++) {
+      generateDOMContainer(kpi_title[i], i);
+    }
 
     // ? Calculate PCP Percentage
     dataPercentage.forEach((data) => {
@@ -120,7 +121,7 @@ const getData = async (date) => {
     observerSubmit();
   } catch (err) {
     alert("Data Not Found, Try Other !");
-    console.log(err.message);
+    console.error(err.message);
   }
 };
 
@@ -129,7 +130,7 @@ async function getLoggedUser() {
     const response = await axios.get("logged/user");
     loggedUser.textContent = response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 }
 

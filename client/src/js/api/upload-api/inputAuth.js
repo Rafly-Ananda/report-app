@@ -1,27 +1,43 @@
 "use strict";
 
 import axios from "axios";
+import { addKpiTable } from "./dynamicTableInput";
+import { addKpiDesc } from "./newDescField";
 import { generateUploadInputFields } from "./generateUploadDesc";
 
 const inputField = document.querySelector(".data__input");
 const inputsContainer = document.querySelector(".inputs__container");
+const descContaniner = document.querySelector(".descriptions__container");
 const credentialField = document.querySelector(".credentials__container");
 const dateIdentifier = document.querySelector(".date__identifier");
 const inputMonthText = document.querySelector(".added__at");
+const table = document.querySelector("table").children[0];
+const addKPIField = document.querySelector(".add__field");
 
 async function fillData(date) {
+  addKPIField.classList.add("element-hidden");
+  let tableFieldKPI, tableFieldInputs;
+  const response = await axios.get(`/view/data/${date}`);
+
   const {
     data: {
+      kpi_title,
+      dataset_length,
       numberFieldData: { allTableData },
       textFieldData,
     },
-  } = await axios.get(`/view/data/${date}`);
+  } = response;
+
+  // ? Intitializing Table Fields & Desc Fields Before Being Filled
+  for (let i = 0; i < dataset_length; i++) {
+    addKpiTable(table, "fill"); // ? fill arg used to indicate whether this is a fill operation or just normal add field
+    addKpiDesc(descContaniner, i + 1);
+  }
 
   // ? Filling Table Inputs With Previous Data
   Object.values(allTableData).forEach((field, index) => {
-    let tableFieldInputs = document.querySelectorAll(
-      `.row__${index + 1}__input`
-    );
+    tableFieldInputs = document.querySelectorAll(`.row__${index + 1}__input`);
+
     tableFieldInputs.forEach((input, inputIndex) => {
       if (field[inputIndex] === "") {
         null;
@@ -30,6 +46,14 @@ async function fillData(date) {
         input.readOnly = true;
       }
     });
+  });
+
+  // ? Filling Table KPI Title Previous Data
+  tableFieldKPI = document.querySelectorAll("#KPI__title");
+  tableFieldKPI.forEach((input, inputIndex) => {
+    input.value = kpi_title[inputIndex];
+    input.textContent = kpi_title[inputIndex];
+    input.readOnly = true;
   });
 
   // ! QUESTIONABLE FEATURE ?!?!?

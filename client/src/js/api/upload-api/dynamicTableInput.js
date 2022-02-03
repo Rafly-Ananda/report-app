@@ -1,6 +1,6 @@
 "use strict";
 
-const addKpiTable = (tableSelector) => {
+const addKpiTable = (tableSelector, fillBefore) => {
   const identifier = tableSelector.childElementCount;
 
   const html = `
@@ -8,11 +8,19 @@ const addKpiTable = (tableSelector) => {
         <td class="table__no">${identifier}</td>
         <td>
             <div class="heading__KPI">
-            <textarea
-                name="row__${identifier}__input__KPI"
-                class="row__${identifier}__input__KPI"
-                id="KPI__title"
-            ></textarea>
+            ${
+              fillBefore
+                ? `
+                <h1 class="row__${identifier}__input__KPI" id="KPI__title"></h1>
+                `
+                : `
+                <textarea
+                    name="row__${identifier}__input__KPI"
+                    class="row__${identifier}__input__KPI"
+                    id="KPI__title"
+                ></textarea>`
+            }
+
             </div>
         </td>
         <td>${

@@ -1,6 +1,6 @@
 "use strict";
 import axios from "axios";
-import { addFields } from "./api/upload-api/dynamicInputField";
+import { addFields } from "./api/upload-api/dynamicDescInput";
 import { addKpiTable } from "./api/upload-api/dynamicTableInput";
 import { inputAuth } from "./api/upload-api/inputAuth";
 import { addKpiDesc } from "./api/upload-api/newDescField";
@@ -11,9 +11,11 @@ const specialInput = document.querySelectorAll(".special__input");
 const nextBtn = document.querySelector("#next__btn");
 const submitBtn = document.querySelector("#submit__btn");
 const loggedUser = document.querySelector(".username");
+
 let maxTextField = 5;
 let tableSelector;
 
+// ! need to implement this input auth
 function setSpecialInput(inputs) {
   inputs.forEach((input) => {
     input.setAttribute(
@@ -120,6 +122,7 @@ function submitHandler(period) {
     const dataCount =
       document.querySelector("table").children[0].childElementCount - 1;
     let temp = new Array();
+
     const dataset = {
       added_at: period,
       dataset_length: dataCount,
@@ -166,6 +169,7 @@ function submitHandler(period) {
       alert("Finish uploading data ! ");
       window.location = "/view";
     });
+    console.log(dataset);
   } catch (error) {
     console.log(error);
   }
@@ -207,7 +211,7 @@ function start() {
 start();
 
 function go() {
-  const date = (document.querySelector("#period").value = "2022-04");
+  const date = (document.querySelector("#period").value = "2022-02");
 
   inputAuth(date);
 }

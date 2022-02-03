@@ -78,8 +78,6 @@ router.post("/upload", checkIsAuthenticated, async (req, res) => {
     delete dataset.added_at;
     delete dataset.added_by;
 
-    console.log(info);
-
     pool.query(
       `INSERT INTO data_input (added_by, added_at, dataset) VALUES ($1, $2, $3) RETURNING *`,
       [added_by, added_at, dataset]
@@ -107,6 +105,7 @@ router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
     const results = {
       added_at: data.rows[0].added_at,
       kpi_title: new Array(),
+      dataset_length: data.rows[0].dataset.dataset_length,
       numberFieldData: {
         allTableData: new Object(),
         dataInPercentage: new Object(),

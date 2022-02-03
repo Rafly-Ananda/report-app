@@ -239,7 +239,7 @@ body {
   -webkit-backdrop-filter: blur(12.5px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  min-width: 90%;
+  width: 90%;
   padding: 3em;
 }
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper {
@@ -301,15 +301,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: flex-start;
   height: 10vh;
   width: 100%;
-  padding: 0.5em;
   overflow-y: scroll;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
   /* Firefox */
+}
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading__KPI h1 {
+  margin: auto 0;
 }
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading__KPI textarea {
   width: 100%;
@@ -583,6 +584,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  align-items: flex-start;
   min-height: 80vh;
   min-width: 65vw;
 }
@@ -662,7 +664,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  justify-content: flex-start;
   height: 10vh;
   width: 100%;
   overflow-y: scroll;
@@ -671,7 +672,7 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
-.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI p {
+.outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI h1 {
   margin: auto 0;
 }
 .outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI::-webkit-scrollbar {

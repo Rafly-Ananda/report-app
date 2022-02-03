@@ -223,7 +223,7 @@ body {
 
       .table__container {
         @include glassmorphism;
-        min-width: 90%;
+        width: 90%;
         padding: 3em;
 
         .table__wrapper {
@@ -289,13 +289,15 @@ body {
 
             .heading__KPI {
               @include flex-boiler;
-              justify-content: flex-start;
               height: 10vh;
               width: 100%;
-              padding: 0.5em;
               overflow-y: scroll;
               -ms-overflow-style: none; /* IE and Edge */
               scrollbar-width: none; /* Firefox */
+
+              h1 {
+                margin: auto 0;
+              }
 
               textarea {
                 width: 100%;
@@ -565,6 +567,7 @@ body {
 
       .data__container {
         @include flex-boiler;
+        align-items: flex-start;
         min-height: 80vh;
         min-width: 65vw;
 
@@ -647,14 +650,13 @@ body {
 
               .heading__KPI {
                 @include flex-boiler;
-                justify-content: flex-start;
                 height: 10vh;
                 width: 100%;
                 overflow-y: scroll;
                 -ms-overflow-style: none; /* IE and Edge */
                 scrollbar-width: none; /* Firefox */
 
-                p {
+                h1 {
                   margin: auto 0;
                 }
               }
