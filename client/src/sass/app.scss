@@ -258,11 +258,6 @@ body {
             tr:nth-child(odd):not(:first-child) {
               background-color: $slate-100;
             }
-
-            input {
-              border: 1px solid $dark-grey;
-            }
-
             td {
               text-align: left;
               padding: 0.5em;
@@ -270,8 +265,13 @@ body {
 
             input {
               width: 4vw;
+            }
+
+            select,
+            input {
               border-radius: 0.2em;
               text-align: center;
+              border: 1px solid $dark-grey;
             }
 
             input::-webkit-outer-spin-button,

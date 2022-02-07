@@ -16,7 +16,7 @@ const addKPIField = document.querySelector(".add__field");
 
 async function fillData(date) {
   addKPIField.classList.add("element-hidden");
-  let tableFieldKPI, tableFieldInputs;
+  let tableFieldInputs;
   const response = await axios.get(`/view/data/${date}`);
 
   const {
@@ -28,13 +28,13 @@ async function fillData(date) {
     },
   } = response;
 
-  // ? Intitializing Table Fields & Desc Fields Before Being Filled
+  // ? Intitializing table fields & desc fields before being filled
   for (let i = 0; i < dataset_length; i++) {
     addKpiTable(table, "fill"); // ? fill arg used to indicate whether this is a fill operation or just normal add field
     addKpiDesc(descContaniner, i + 1);
   }
 
-  // ? Filling Table Inputs With Previous Data
+  // ? Filling table inputs with previous data
   Object.values(allTableData).forEach((field, index) => {
     tableFieldInputs = document.querySelectorAll(`.row__${index + 1}__input`);
 
@@ -48,12 +48,20 @@ async function fillData(date) {
     });
   });
 
-  // ? Filling Table KPI Title Previous Data
-  tableFieldKPI = document.querySelectorAll("#KPI__title");
+  // ? Filling table KPI title with previous state
+  const tableFieldKPI = document.querySelectorAll("#KPI__title");
   tableFieldKPI.forEach((input, inputIndex) => {
     input.value = kpi_title[inputIndex];
     input.textContent = kpi_title[inputIndex];
     input.readOnly = true;
+  });
+
+  // ? Filling SM field with previous state
+  const tableFieldSM = document.querySelectorAll("#SM__field");
+  tableFieldSM.forEach((sm, inputIndex) => {
+    // TODO : check if data given is in percentage or year and adjust it here (100.00% / 3/tahun)
+    sm.textContent = "percentage";
+    sm.readOnly = true;
   });
 
   // ! QUESTIONABLE FEATURE ?!?!?
@@ -163,7 +171,7 @@ async function inputAuth(date) {
       (!prevMonthStatus && !currMonthStatus && nextMonthStatus)
     ) {
       alert(
-        "Error, Input Previous Month Data First, Cannot Input Data Before Previous Month is Filled !"
+        "Error, Input Data In Previous Month First, Cannot Input Data Before Previous Month is Filled !"
       );
     }
   }

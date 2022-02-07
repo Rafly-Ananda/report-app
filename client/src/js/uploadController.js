@@ -121,8 +121,8 @@ function submitHandler(period) {
   try {
     const dataCount =
       document.querySelector("table").children[0].childElementCount - 1;
-    let temp = new Array();
 
+    let temp = new Array();
     const dataset = {
       added_at: period,
       dataset_length: dataCount,
@@ -132,18 +132,25 @@ function submitHandler(period) {
       dataset[`row__${i}`] = new Object();
       dataset[`row__${i}`].tableData = new Array();
       dataset[`row__${i}`].descData = new Object();
-      dataset[`row__${i}`].rowTitle = new Object();
 
-      // ? Get KPI Title
+      // ? Get KPI title
       document.querySelectorAll(`.row__${i}__input__KPI`).forEach((ele) => {
         if (ele.value === "") {
-          dataset[`row__${i}`].rowTitle.push("");
+          throw new Error("All KPI field must be filled!");
         } else {
           dataset[`row__${i}`].rowTitle = ele.value;
         }
       });
 
-      // ? Get Table Data
+      // ? Check if data in perceentage or year
+      let SM__Selector = document.querySelector(`.SM__selector__${i}`).value;
+      if (SM__Selector === "-") {
+        throw new Error("All all SM field type must be filled! ");
+      } else {
+        dataset[`row__${i}`].data_type = SM__Selector;
+      }
+
+      // ? Get table data
       document.querySelectorAll(`.row__${i}__input`).forEach((ele) => {
         if (ele.value === "") {
           dataset[`row__${i}`].tableData.push("");
@@ -152,7 +159,7 @@ function submitHandler(period) {
         }
       });
 
-      // ? Get Desc Data ( max 10 fields ) => safe value beacause we set max in DOM to 5
+      // ? Get desc data ( max 10 fields ) => safe value beacause we set max in DOM to 5
       for (let j = 1; j <= 10; j++) {
         temp = [];
         let field = document.querySelectorAll(`.row__${i}__input__desc__${j}`);
@@ -165,13 +172,14 @@ function submitHandler(period) {
       }
     }
 
-    axios.post("/upload", dataset).then(() => {
-      alert("Finish uploading data ! ");
-      window.location = "/view";
-    });
+    // axios.post("/upload", dataset).then(() => {
+    //   alert("Finish uploading data ! ");
+    //   window.location = "/view";
+    // });
     console.log(dataset);
   } catch (error) {
-    console.log(error);
+    console.error(error.message);
+    alert(error.message);
   }
 }
 

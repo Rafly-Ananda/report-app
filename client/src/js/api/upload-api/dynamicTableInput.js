@@ -23,9 +23,20 @@ const addKpiTable = (tableSelector, fillBefore) => {
 
             </div>
         </td>
-        <td>${
-          identifier === 4 || identifier === 10 ? "3/tahun" : "100.00%"
-        }</td>
+        <td>
+            ${
+              fillBefore
+                ? `<h1 class="SM__selector__${identifier}" id="SM__field"></h1>`
+                : `
+            <select class="SM__selector__${identifier}" id="SM__field">
+                <option>-</option>
+                <option value="percentage">100.00%</option>
+                <option value="year">3/tahun</option>
+            </select>
+            `
+            }
+
+        </td>
         <td>
             <input
             name="row__${identifier}__input"

@@ -275,17 +275,18 @@ body {
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table tr:nth-child(odd):not(:first-child) {
   background-color: #f1f5f9;
 }
-.outer__border .inputs__container .table__inputs .table__container .table__wrapper table input {
-  border: 1px solid #222222;
-}
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table td {
   text-align: left;
   padding: 0.5em;
 }
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table input {
   width: 4vw;
+}
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table select,
+.outer__border .inputs__container .table__inputs .table__container .table__wrapper table input {
   border-radius: 0.2em;
   text-align: center;
+  border: 1px solid #222222;
 }
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table input::-webkit-outer-spin-button,
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table input::-webkit-inner-spin-button {

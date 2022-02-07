@@ -5,6 +5,7 @@ import { generateFields } from "./api/view-api/generateViewInputField";
 import { generateTable } from "./api/view-api/generateViewTable";
 import { generateDOMContainer } from "./api/view-api/generateDOMContainer";
 import { exportToPdf } from "./api/view-api/exportToPdf";
+import { exportPdfMake } from "./api/view-api/exportPdfMake";
 
 const findBtn = document.querySelector(".find__data__btn");
 const exportBtn = document.querySelector(".export__btn");
@@ -140,6 +141,13 @@ findBtn.addEventListener("click", () => {
 });
 
 exportBtn.addEventListener("click", () => {
+  // ? -------- jsPDF --------
+  // ** KPI Title Selector
+  let titleArr = new Array();
+  const titles = document.querySelectorAll(".heading__KPI");
+  titles.forEach((title) => {
+    titleArr.push(title.children[0].textContent.trim());
+  });
   // ** Data Table Selector
   const tableInputs = document.querySelector("#dataTable");
   // ** Canvas Selector
@@ -148,7 +156,10 @@ exportBtn.addEventListener("click", () => {
   const descs = document.querySelectorAll(".input__table");
 
   // TODO change this ('test') to currently logged in user
-  exportToPdf(tableInputs, "test", graphs, descs);
+  exportToPdf(tableInputs, "test", graphs, descs, titleArr);
+
+  // ? -------- pdfMake --------
+  // exportPdfMake();
 });
 
 goTopBtn.addEventListener("click", () => {
