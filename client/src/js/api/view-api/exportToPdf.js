@@ -1,7 +1,6 @@
 "use strict";
 
 import { jsPDF } from "jspdf";
-import html2canvas from "html2canvas";
 import "jspdf-autotable";
 
 const imgUrl = require("../../../../public/static/img-url.json");
@@ -52,11 +51,10 @@ pdf.line(150, 22.5, 204, 22.5); // mengetahui - menyetujui horizontal separator
 const drawGraph = (prevLength, title, canvas) => {
   const imgWidth = 112;
   const imgHeight = (canvas.height * imgWidth) / canvas.width;
-  const splitTitle = pdf.splitTextToSize(title, 115);
   // ** KPI TITLE
   pdf.setFont("times", "bold");
   pdf.setFontSize(10);
-  pdf.text(38, (prevLength += 10), splitTitle);
+  pdf.text(37, (prevLength += 10), pdf.splitTextToSize(title, 135));
   pdf.setFont("times", "normal");
   // ** Graphs
   pdf.addImage(
@@ -92,12 +90,13 @@ const drawTable = (table, startY = 40) => {
     },
     bodyStyles: { lineColor: [0, 0, 0] },
     didDrawPage: function (data) {
-      console.log(data.cursor.y);
+      // console.log(data.cursor.y);
     },
   });
 };
 
 const exportToPdf = (tableData, username, canvases, descs, titleArr) => {
+  let pages = new Array();
   const date = new Date();
   const formattedDate = date.toLocaleDateString("id-ID", {
     day: "numeric",
@@ -109,7 +108,7 @@ const exportToPdf = (tableData, username, canvases, descs, titleArr) => {
 
   let lastPage;
   drawTable(tableData);
-  titleArr.forEach((title, index) => {
+  titleArr.forEach((_, index) => {
     pdf.addPage();
     lastPage = index;
   });
@@ -129,9 +128,20 @@ const exportToPdf = (tableData, username, canvases, descs, titleArr) => {
     pdf.rect(5, 6, 200, 285);
     // ** Draw Graph
     drawGraph(10, titleArr[i], canvases[i]);
-    // ** Draw Table
-    drawTable(descs[i], 95);
   }
+
+  // ? Getting which page has desc
+  descs.forEach((ele) => {
+    pages.push(ele.closest(".desc__container").dataset.descId);
+  });
+
+  // ? Attached desc table to respective graph data
+
+  pages.forEach((page, index) => {
+    // ** Draw Table
+    pdf.setPage(+page + 1);
+    drawTable(descs[index], 95);
+  });
 
   pdf.setPage(lastPage + 2);
 

@@ -10,7 +10,9 @@ const generateDOMContainer = (title, index) => {
       <div class="chart__container">
         <canvas class="bar__chart" id="myChart${index + 1}"></canvas>
       </div>
-      <div class="desc__${index + 1}"></div>
+      <div class="desc__container desc__${index + 1} " data-desc-id=${
+    index + 1
+  }></div>
     </div>
   </div>`;
 

@@ -35,7 +35,7 @@ function dynamicTableHandler() {
     if (e.target.classList.contains("add__field")) {
       e.target.previousElementSibling.classList.remove("element-hidden");
       addKpiTable(tableField);
-      addKpiDesc(descContaniner, fieldCount, "test");
+      addKpiDesc(descContaniner, fieldCount);
     }
 
     if (e.target.classList.contains("delete__field")) {
@@ -172,11 +172,10 @@ function submitHandler(period) {
       }
     }
 
-    // axios.post("/upload", dataset).then(() => {
-    //   alert("Finish uploading data ! ");
-    //   window.location = "/view";
-    // });
-    console.log(dataset);
+    axios.post("/upload", dataset).then(() => {
+      alert("Finish uploading data ! ");
+      window.location = "/view";
+    });
   } catch (error) {
     console.error(error.message);
     alert(error.message);
@@ -213,7 +212,7 @@ function start() {
   dynamicTableHandler();
   dynamicDescFieldHandler();
   attachedEventToDynamicDesc();
-  // getLoggedUser();
+  getLoggedUser();
 }
 
 start();

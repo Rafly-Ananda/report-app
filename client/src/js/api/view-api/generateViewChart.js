@@ -1,7 +1,7 @@
 "use strict";
 import Chart from "chart.js/auto";
 
-const generateChart = (dataset, chartId, index, pcp) => {
+const generateChart = (dataset, chartId, index, pcp, pcpType) => {
   const ctx = document.getElementById(`${chartId}`).getContext("2d");
 
   const chartConfig = {
@@ -85,7 +85,7 @@ const generateChart = (dataset, chartId, index, pcp) => {
     ],
   };
 
-  if (chartId === "myChart4" || chartId === "myChart10") {
+  if (pcpType === "year") {
     chartConfig.options.scales = {
       y: {
         min: 0,

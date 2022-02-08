@@ -5,7 +5,6 @@ import { generateFields } from "./api/view-api/generateViewInputField";
 import { generateTable } from "./api/view-api/generateViewTable";
 import { generateDOMContainer } from "./api/view-api/generateDOMContainer";
 import { exportToPdf } from "./api/view-api/exportToPdf";
-import { exportPdfMake } from "./api/view-api/exportPdfMake";
 
 const findBtn = document.querySelector(".find__data__btn");
 const exportBtn = document.querySelector(".export__btn");
@@ -38,74 +37,41 @@ const getData = async (date) => {
       throw new Error(`Data ${date} does not exist in database ...`);
 
     const {
-      data: {
-        added_at,
-        dataset_length,
-        kpi_title,
-        numberFieldData: {
-          allTableData,
-          dataInPercentage,
-          dataNotInPercentage,
-        },
-        textFieldData,
-      },
+      data: { added_at, dataset_length, allTableData, textFieldData, dataset },
     } = response;
 
     const tableEntries = Object.entries(allTableData);
-    const dataPercentage = Object.values(dataInPercentage);
-    const dataYear = Object.values(dataNotInPercentage);
     const dataText = Object.entries(textFieldData);
     addedAtText.textContent = added_at;
-    const pcpPercent = new Array();
-    const pcpYear = new Array();
-    let pcpAll;
 
-    // ? Format AddedAtText
-    const formatter = (data) => {
+    // ? Format AddedAtText ( IFFE )
+    ((data) => {
       const str = data.split("-");
       const date = new Date();
       date.setMonth(+str[1].slice(1) - 1);
       const month = date.toLocaleString("default", { month: "long" });
       addedAtText.textContent = `${month} ${str[0]}`;
-    };
+    })(added_at);
 
-    formatter(added_at);
-
-    // ? Generate DOM Container for Chart and Desc Field
+    // ? Generate DOM container or chart and desc field
     for (let i = 0; i < dataset_length; i++) {
-      generateDOMContainer(kpi_title[i], i);
+      generateDOMContainer(dataset[`row__${i + 1}`].rowTitle, i);
     }
 
-    // ? Calculate PCP Percentage
-    dataPercentage.forEach((data) => {
-      const temp = data.map((ele) => Number(ele)).filter((ele) => ele > 0);
-      const result =
-        temp.reduce((prev, next) => {
-          return prev + next;
-        }) / temp.length;
-      pcpPercent.push(result.toFixed(2));
-    });
-
-    // ? Calculate PCP Year
-    dataYear.forEach((data) => {
-      const temp = data.map((ele) => Number(ele));
-      const result = temp.reduce((prev, next) => {
-        return prev + next;
-      });
-      pcpYear.push(result.toString());
-    });
-
-    pcpAll = [...pcpPercent];
-    pcpAll.splice(3, 0, pcpYear[0]);
-    pcpAll.splice(9, 0, pcpYear[1]);
-
-    // ? Generate Chart && Table Data
+    // ? Generate chart & table data
     tableEntries.forEach((element, index) => {
-      generateChart(element[1], `myChart${index + 1}`, index, pcpAll[index]);
+      generateChart(
+        element[1],
+        `myChart${index + 1}`,
+        index,
+        dataset[`row__${index + 1}`].pcp,
+        dataset[`row__${index + 1}`].data_type
+      );
       generateTable(
         index + 1,
-        pcpAll[index],
-        kpi_title,
+        dataset[`row__${index + 1}`].pcp,
+        dataset[`row__${index + 1}`].data_type,
+        dataset[`row__${index + 1}`].rowTitle,
         Object.values(element[1])
       );
     });
@@ -130,6 +96,7 @@ async function getLoggedUser() {
   try {
     const response = await axios.get("logged/user");
     loggedUser.textContent = response.data;
+    return response.data;
   } catch (error) {
     console.error(error);
   }
@@ -140,8 +107,8 @@ findBtn.addEventListener("click", () => {
   date != "" ? getData(date) : alert("please choose a correct user and period");
 });
 
-exportBtn.addEventListener("click", () => {
-  // ? -------- jsPDF --------
+exportBtn.addEventListener("click", async () => {
+  const LoggedUsername = await getLoggedUser();
   // ** KPI Title Selector
   let titleArr = new Array();
   const titles = document.querySelectorAll(".heading__KPI");
@@ -155,11 +122,7 @@ exportBtn.addEventListener("click", () => {
   // ** Desc Field Selector
   const descs = document.querySelectorAll(".input__table");
 
-  // TODO change this ('test') to currently logged in user
-  exportToPdf(tableInputs, "test", graphs, descs, titleArr);
-
-  // ? -------- pdfMake --------
-  // exportPdfMake();
+  exportToPdf(tableInputs, LoggedUsername, graphs, descs, titleArr);
 });
 
 goTopBtn.addEventListener("click", () => {
@@ -170,7 +133,7 @@ goTopBtn.addEventListener("click", () => {
 });
 
 const start = () => {
-  // getLoggedUser();
+  getLoggedUser();
 };
 
 start();

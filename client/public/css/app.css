@@ -312,6 +312,7 @@ body {
 }
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading__KPI h1 {
   margin: auto 0;
+  text-align: left;
 }
 .outer__border .inputs__container .table__inputs .table__container .table__wrapper table .heading__KPI textarea {
   width: 100%;
@@ -675,6 +676,7 @@ body {
 }
 .outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI h1 {
   margin: auto 0;
+  text-align: left;
 }
 .outer__border .view__data__container .view__section .data__container .data__wrapper__table .table__inputs table .heading__KPI::-webkit-scrollbar {
   display: none;

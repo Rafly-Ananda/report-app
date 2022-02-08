@@ -20,12 +20,7 @@ async function fillData(date) {
   const response = await axios.get(`/view/data/${date}`);
 
   const {
-    data: {
-      kpi_title,
-      dataset_length,
-      numberFieldData: { allTableData },
-      textFieldData,
-    },
+    data: { dataset_length, allTableData, textFieldData, dataset },
   } = response;
 
   // ? Intitializing table fields & desc fields before being filled
@@ -51,8 +46,8 @@ async function fillData(date) {
   // ? Filling table KPI title with previous state
   const tableFieldKPI = document.querySelectorAll("#KPI__title");
   tableFieldKPI.forEach((input, inputIndex) => {
-    input.value = kpi_title[inputIndex];
-    input.textContent = kpi_title[inputIndex];
+    input.value = dataset[`row__${inputIndex + 1}`].rowTitle;
+    input.textContent = dataset[`row__${inputIndex + 1}`].rowTitle;
     input.readOnly = true;
   });
 
@@ -60,7 +55,14 @@ async function fillData(date) {
   const tableFieldSM = document.querySelectorAll("#SM__field");
   tableFieldSM.forEach((sm, inputIndex) => {
     // TODO : check if data given is in percentage or year and adjust it here (100.00% / 3/tahun)
-    sm.textContent = "percentage";
+
+    if (dataset[`row__${inputIndex + 1}`].data_type === "percentage") {
+      sm.value = "percentage";
+      sm.textContent = "100.00%";
+    } else {
+      sm.value = "year";
+      sm.textContent = "3/tahun";
+    }
     sm.readOnly = true;
   });
 

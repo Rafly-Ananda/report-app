@@ -56,14 +56,14 @@ router.get("/logout", (req, res) => {
 
 // ** LOGIN AUTH ** //
 
-// router.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "/view",
-//     failureRedirect: "/login",
-//     failureFlash: true,
-//   })
-// );
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/view",
+    failureRedirect: "/login",
+    failureFlash: true,
+  })
+);
 
 // ** CRUD API ** //
 
@@ -71,9 +71,7 @@ router.post("/upload", checkIsAuthenticated, async (req, res) => {
   try {
     const info = req.body;
     const { added_at } = info;
-    // const added_by = req.user.username;
-    const added_by = "test";
-
+    const added_by = req.user.username;
     const dataset = { ...info };
     delete dataset.added_at;
     delete dataset.added_by;
@@ -93,8 +91,7 @@ router.post("/upload", checkIsAuthenticated, async (req, res) => {
 router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
   try {
     const { added_at } = req.params;
-    // const added_by = req.user.username;
-    const added_by = "test";
+    const added_by = req.user.username;
     const data = await pool.query(
       `SELECT * FROM data_input WHERE added_by = $1 AND added_at = $2`,
       [added_by, added_at]
@@ -104,33 +101,41 @@ router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
 
     const results = {
       added_at: data.rows[0].added_at,
-      kpi_title: new Array(),
       dataset_length: data.rows[0].dataset.dataset_length,
-      numberFieldData: {
-        allTableData: new Object(),
-        dataInPercentage: new Object(),
-        dataNotInPercentage: new Object(),
-      },
+      allTableData: new Object(),
       textFieldData: new Object(),
+      dataset: data.rows[0].dataset,
     };
 
     for (let i = 1; i <= data.rows[0].dataset.dataset_length; i++) {
       results.textFieldData[`row__${i}`] = new Object();
-      results.kpi_title.push(data.rows[0].dataset[`row__${i}`].rowTitle);
     }
 
     for (const [key, value] of Object.entries(data.rows[0].dataset)) {
+      // ? Set number field and text field data
       if (key === "dataset_length") {
         continue;
       } else {
-        results.numberFieldData.allTableData[key] = value.tableData;
+        results.allTableData[key] = value.tableData;
         results.textFieldData[key] = value.descData;
       }
 
-      if (key === "row__4" || key === "row__10") {
-        results.numberFieldData.dataNotInPercentage[key] = value.tableData;
+      // ? Set and calculate PCP
+      if (value.data_type === "year") {
+        const temp = value.tableData.map((ele) => Number(ele));
+        const result = temp.reduce((prev, next) => {
+          return prev + next;
+        });
+        results.dataset[key].pcp = result;
       } else {
-        results.numberFieldData.dataInPercentage[key] = value.tableData;
+        const temp = value.tableData
+          .map((ele) => Number(ele))
+          .filter((ele) => ele > 0);
+        const result =
+          temp.reduce((prev, next) => {
+            return prev + next;
+          }) / temp.length;
+        results.dataset[key].pcp = result.toFixed(2);
       }
     }
 
@@ -143,13 +148,12 @@ router.get("/view/data/:added_at", checkIsAuthenticated, async (req, res) => {
 // ** AUTH MIDDDLEWARE ** //
 
 function checkIsAuthenticated(req, res, next) {
-  // if (req.isAuthenticated()) return next();
-  // res.redirect("/login");
-  next();
+  if (req.isAuthenticated()) return next();
+  res.redirect("/login");
 }
 
 function checkNotAuthenticated(req, res, next) {
-  // if (req.isAuthenticated()) return res.redirect("/upload");
+  if (req.isAuthenticated()) return res.redirect("/upload");
   next();
 }
 

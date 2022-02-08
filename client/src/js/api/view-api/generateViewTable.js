@@ -1,6 +1,6 @@
 "use strict";
 
-const generateTable = (index, pcp, title, ...data) => {
+const generateTable = (index, pcp, pcpType, title, ...data) => {
   let html;
   let htmlSelector = document.querySelector(`.table__inputs`);
 
@@ -27,10 +27,12 @@ const generateTable = (index, pcp, title, ...data) => {
               <td class="table__no">${index}</td>
               <td>
                   <div class="heading__KPI">
-                      <h1>${title[index - 1]}</h1>
+                      <h1>${title}</h1>
                   </div>
               </td>
-              <td>${index === 4 || index === 10 ? "tahun" : "100.00%"}</td>
+              <td>
+              ${pcpType === "percentage" ? "100.00%" : "3/tahun"}
+              </td>
               <td>
                   <div class="data">${
                     data[0][0] === "" ? "-" : data[0][0]
@@ -72,12 +74,12 @@ const generateTable = (index, pcp, title, ...data) => {
       <tr>
           <td class="table__no">${index}</td>
           <td>
-              <div class="heading__KPI">
-                  <p>${title[index - 1]}</p>
-              </div>
+            <div class="heading__KPI">
+                <h1>${title}</h1>
+            </div>
           </td>
           <td>
-          ${index === 4 || index === 10 ? "3/tahun" : "100.00%"}
+          ${pcpType === "percentage" ? "100.00%" : "3/tahun"}
           </td>
           <td>
               <div class="data">${data[0][0] === "" ? "-" : data[0][0]}</div>
