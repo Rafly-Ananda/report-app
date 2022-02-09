@@ -46,7 +46,7 @@ const getData = async (date) => {
     const dataText = Object.entries(textFieldData);
     addedAtText.textContent = added_at;
 
-    // ? Format AddedAtText ( IFFE )
+    // ? Format AddedAtText ( IIFE )
     ((data) => {
       const str = data.split("-");
       const date = new Date();
