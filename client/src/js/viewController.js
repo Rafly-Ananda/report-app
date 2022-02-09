@@ -13,7 +13,9 @@ const viewSection = document.querySelector(".view__section");
 const addedAtText = document.querySelector(".added__at");
 const loggedUser = document.querySelector(".username");
 const goTopBtn = document.querySelector(".goTopBtn");
-const topSection = document.querySelector(".date__id");
+const topSection = document.querySelector(".export__btn");
+const dateIdentifier = document.querySelector(".date__identifier");
+const outerBorder = document.querySelector(".outer__border");
 
 function observerSubmit() {
   const observer = new IntersectionObserver((section) => {
@@ -83,8 +85,10 @@ const getData = async (date) => {
       });
     });
 
+    outerBorder.style.marginTop = "8vh";
     selectDataSection.classList.add("element-hidden");
     viewSection.classList.remove("element-hidden");
+    dateIdentifier.classList.remove("element-hidden");
     observerSubmit();
   } catch (err) {
     alert("Data Not Found, Try Other !");

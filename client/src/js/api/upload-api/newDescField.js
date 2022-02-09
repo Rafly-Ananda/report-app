@@ -3,7 +3,7 @@
 const addKpiDesc = (container, identifier) => {
   const html = `
     <div class="flex__container">
-        <h1 class="heading__KPI">Description KPI ${identifier}</h1>
+        <h1 class="heading__KPI">KPI ${identifier} Description</h1>
         <div class="row" data-id="${identifier}">
             <div class="desc__${identifier}"></div>
             <div class="dynamic__desc__btn__container">

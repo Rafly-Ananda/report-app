@@ -12,7 +12,9 @@ const nextBtn = document.querySelector("#next__btn");
 const submitBtn = document.querySelector("#submit__btn");
 const loggedUser = document.querySelector(".username");
 
-let maxTextField = 5;
+let minTableField = 4;
+let maxTableField = 10;
+let maxDescField = 5;
 let tableSelector;
 
 // ! need to implement this input auth
@@ -29,19 +31,20 @@ function setSpecialInput(inputs) {
 function dynamicTableHandler() {
   tableContainer.addEventListener("click", (e) => {
     const tableField = tableContainer.children[0].children[0].children[0];
-
     const fieldCount = tableField.childElementCount;
 
     if (e.target.classList.contains("add__field")) {
       e.target.previousElementSibling.classList.remove("element-hidden");
       addKpiTable(tableField);
       addKpiDesc(descContaniner, fieldCount);
+      if (fieldCount > maxTableField) e.target.classList.add("element-hidden");
     }
 
     if (e.target.classList.contains("delete__field")) {
+      e.target.nextElementSibling.classList.remove("element-hidden");
       tableField.lastElementChild.remove();
       descContaniner.lastElementChild.remove();
-      if (fieldCount === 2) e.target.classList.add("element-hidden");
+      if (fieldCount < minTableField) e.target.classList.add("element-hidden");
     }
   });
 }
@@ -63,7 +66,7 @@ function dynamicDescFieldHandler() {
           e.target.parentElement.previousElementSibling.children[0].children[0]
             .children[0].children[0];
 
-        if (tableSelector.childElementCount > maxTextField)
+        if (tableSelector.childElementCount > maxDescField)
           e.target.classList.add("element-hidden");
       }
 
@@ -95,7 +98,7 @@ function attachedEventToDynamicDesc() {
         e.target.parentElement.previousElementSibling.children[0].children[0]
           .children[0].children[0];
 
-      if (tableSelector.childElementCount > maxTextField)
+      if (tableSelector.childElementCount > maxDescField)
         e.target.classList.add("element-hidden");
     }
 

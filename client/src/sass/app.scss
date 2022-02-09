@@ -15,6 +15,7 @@ body {
   background-color: $soft-white;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 // ** Login Page Styling ** //
@@ -105,17 +106,50 @@ body {
   }
 }
 
+// ** Main Styling ** //
+
+main {
+  .date__identifier {
+    position: absolute;
+    top: 2.75vh;
+    left: 36.5vw;
+    .date__id {
+      @include glassmorphism;
+      @include flex-boiler;
+      background-color: $soft-white;
+      width: 40vw;
+      height: 10vh;
+      border-top-left-radius: 1em;
+      border-bottom-right-radius: 1em;
+
+      h1 {
+        display: inline;
+        font-weight: 400;
+        font-size: 1.25rem;
+
+        &.second {
+          font-weight: 500;
+          margin-left: 0.35em;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
 // ** Wrapper Styling ** //
 
 .outer__border {
-  border-radius: 10px;
+  border-radius: 5px;
   background: #f0ffff;
   box-shadow: inset 20px 20px 60px #ccd9d9, inset -20px -20px 60px #ffffff;
   max-width: 70vw;
+  max-height: 75vh;
+  // margin-top: 8vh;
 
   .goTopBtn {
     position: absolute;
-    top: 93.5vh;
+    top: 94.25vh;
     left: 55vw;
     opacity: 0;
     transition: opacity 0.5s;
@@ -127,7 +161,7 @@ body {
 
   .inputs__container {
     width: 85vw - $nav-width;
-    height: 80vh;
+    height: 75vh;
     overflow-y: hidden;
 
     .credentials__container {
@@ -143,8 +177,8 @@ body {
           @include flex-boiler;
           flex-direction: column;
           position: absolute;
-          top: 0;
-          margin-top: 32vh;
+          top: 32vh;
+          margin-right: 1.5vw;
           width: 30vw;
           height: 5vw;
           padding: 1em;
@@ -166,6 +200,7 @@ body {
             flex-direction: column;
             border-radius: 1em;
             padding: 2em;
+            margin-right: 1.5vw;
             width: 30vw;
             height: 30%;
 
@@ -289,8 +324,10 @@ body {
 
             .heading__KPI {
               @include flex-boiler;
+              justify-content: flex-start;
               height: 10vh;
               width: 100%;
+              padding: 0.5em 0;
               overflow-y: scroll;
               -ms-overflow-style: none; /* IE and Edge */
               scrollbar-width: none; /* Firefox */
@@ -465,7 +502,7 @@ body {
       @include flex-boiler;
       flex-direction: column;
       width: 100%;
-      height: 80vh;
+      height: 75vh;
 
       .credentials__container {
         width: 100%;
@@ -480,8 +517,8 @@ body {
             @include flex-boiler;
             flex-direction: column;
             position: absolute;
-            top: 0;
-            margin-top: 32vh;
+            top: 32vh;
+            margin-right: 1.5vw;
             width: 30vw;
             height: 5vw;
             padding: 1em;
@@ -503,6 +540,7 @@ body {
               flex-direction: column;
               border-radius: 1em;
               padding: 2em;
+              margin-right: 1.5vw;
               width: 30vw;
               height: 30%;
 
@@ -529,37 +567,14 @@ body {
 
     .view__section {
       // width: 85vw - $nav-width;
-      height: 80vh;
+      height: 75vh;
       padding-right: 1.6em;
       overflow-y: scroll;
       padding-bottom: 4em;
 
-      .date__id {
-        @include glassmorphism;
-        @include flex-boiler;
-        background-color: $soft-white;
-        width: 40vw;
-        height: 10vh;
-        margin: 2em auto 2em auto;
-        padding: 1em;
-        border-top-left-radius: 1em;
-        border-bottom-right-radius: 1em;
-
-        h1 {
-          display: inline;
-          font-weight: 400;
-          font-size: 1.25rem;
-
-          &.second {
-            font-weight: 500;
-            margin-left: 0.35em;
-            text-decoration: underline;
-          }
-        }
-      }
-
       .export__btn__container {
         @include flex-boiler;
+        margin-top: 2em;
 
         .export__btn {
           text-align: center;
@@ -651,6 +666,7 @@ body {
 
               .heading__KPI {
                 @include flex-boiler;
+                justify-content: flex-start;
                 height: 10vh;
                 width: 100%;
                 overflow-y: scroll;

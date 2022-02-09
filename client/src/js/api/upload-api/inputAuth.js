@@ -13,6 +13,8 @@ const dateIdentifier = document.querySelector(".date__identifier");
 const inputMonthText = document.querySelector(".added__at");
 const table = document.querySelector("table").children[0];
 const addKPIField = document.querySelector(".add__field");
+const outerBorder = document.querySelector(".outer__border");
+const dynamicTableBtnContainer = document.querySelector(".dynamicBtn");
 
 async function fillData(date) {
   addKPIField.classList.add("element-hidden");
@@ -144,6 +146,9 @@ async function inputAuth(date) {
     if (currMonthStatus) {
       alert("Error, Data In This Month Is Already Filled !");
     } else {
+      addKpiTable(table);
+      addKpiDesc(descContaniner, 1);
+      outerBorder.style.marginTop = "8vh";
       dateIdentifier.classList.remove("element-hidden");
       inputField.classList.remove("element-hidden");
       inputsContainer.classList.remove("flex-set");
@@ -161,6 +166,8 @@ async function inputAuth(date) {
 
     if (prevMonthStatus && !currMonthStatus && !nextMonthStatus) {
       fillData(prevMonth);
+      dynamicTableBtnContainer.style.marginTop = 0;
+      outerBorder.style.marginTop = "8vh";
       dateIdentifier.classList.remove("element-hidden");
       inputField.classList.remove("element-hidden");
       inputsContainer.classList.remove("flex-set");
