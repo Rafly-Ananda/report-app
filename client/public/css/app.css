@@ -145,7 +145,7 @@ main .date__identifier .date__id h1.second {
 .outer__border .goTopBtn {
   position: absolute;
   top: 94.25vh;
-  left: 55vw;
+  left: 56vw;
   opacity: 0;
   transition: opacity 0.5s;
 }
