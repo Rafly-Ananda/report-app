@@ -12,11 +12,6 @@ module.exports = {
     ),
 
     viewController: path.resolve(__dirname, "client/src/js/viewController.js"),
-
-    loginController: path.resolve(
-      __dirname,
-      "client/src/js/loginController.js"
-    ),
   },
 
   devtool: "inline-source-map",
