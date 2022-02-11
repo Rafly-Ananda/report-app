@@ -19,7 +19,7 @@ pdf.setProperties({
 
 // ** Medion Logo Header
 const medionImg = Object.values(imgUrl[0]).toString();
-pdf.addImage(medionImg, 10, 12.5, 40, 11);
+pdf.addImage(medionImg, 10, 11, 40, 13);
 
 // ** Texts
 pdf.setFont("times", "bold");
@@ -34,8 +34,8 @@ pdf.setFont("times", "bold");
 pdf.setFont("times", "normal");
 pdf.setFontSize(9);
 pdf.text(153, 11.5, "No. Dokumen");
-pdf.text(154, 19.5, "Mengetahui :");
-pdf.text(154, 27, "Menyetujui :");
+pdf.text(154, 19.5, "Mengetahui");
+pdf.text(154, 27, "Menyetujui");
 
 // ! lines(vertical)
 pdf.line(55, 6, 55, 30); // Medion Logo Box
