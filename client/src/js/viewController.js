@@ -1,5 +1,6 @@
 "use strict";
 import axios from "axios";
+import "../css/app.css";
 import { generateChart } from "./api/view-api/generateViewChart";
 import { generateFields } from "./api/view-api/generateViewInputField";
 import { generateTable } from "./api/view-api/generateViewTable";
@@ -99,7 +100,6 @@ const getData = async (date) => {
 async function getLoggedUser() {
   try {
     const response = await axios.get("/logged/user");
-    console.log(response.data);
     loggedUser.textContent = response.data;
     return response.data;
   } catch (error) {

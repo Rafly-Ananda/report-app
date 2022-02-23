@@ -1,5 +1,6 @@
 "use strict";
 import axios from "axios";
+import "../css/app.css";
 import { addFields } from "./api/upload-api/dynamicDescInput";
 import { addKpiTable } from "./api/upload-api/dynamicTableInput";
 import { inputAuth } from "./api/upload-api/inputAuth";

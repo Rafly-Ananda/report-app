@@ -17,36 +17,6 @@ body {
   overflow: hidden;
 }
 
-.page__wrapper,
-.login__container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-.page__wrapper .hero__img,
-.login__container .hero__img {
-  margin: 0 0 1em 0;
-  max-width: 20vw;
-}
-.page__wrapper .login__container .login__input,
-.login__container .login__container .login__input {
-  text-align: center;
-  border-radius: 1em;
-  width: 80%;
-  padding: 0.5em;
-  margin: 0.5em;
-  display: inline-block;
-  border: 1px solid #ccc;
-}
-.page__wrapper .login__container .login__btn,
-.login__container .login__container .login__btn {
-  margin: 1em;
-  width: 10em;
-  font-size: 15px;
-  font-weight: 400;
-}
-
 .side__nav {
   position: fixed;
   background-color: #0b3c58;

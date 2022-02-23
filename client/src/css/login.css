@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0ffff;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+.page__wrapper,
+.login__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.page__wrapper .hero__img,
+.login__container .hero__img {
+  margin: 0 0 1em 0;
+  max-width: 20vw;
+}
+.page__wrapper .login__container .login__input,
+.login__container .login__container .login__input {
+  text-align: center;
+  border-radius: 1em;
+  width: 80%;
+  padding: 0.5em;
+  margin: 0.5em;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+.page__wrapper .login__container .login__btn,
+.login__container .login__container .login__btn {
+  margin: 1em;
+  width: 10em;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/*# sourceMappingURL=login.css.map */

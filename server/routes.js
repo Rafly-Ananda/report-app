@@ -28,21 +28,15 @@ router.use(passport.session());
 // ** Rendering Views ** //
 
 router.get("/upload", checkIsAuthenticated, (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname + "../../client/public/views/uploadPage.html")
-  );
+  res.sendFile(path.resolve(__dirname + "../../client/dist/upload.html"));
 });
 
 router.get("/view", checkIsAuthenticated, (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname + "../../client/public/views/viewPage.html")
-  );
+  res.sendFile(path.resolve(__dirname + "../../client/dist/view.html"));
 });
 
 router.get("/login", checkNotAuthenticated, (req, res) => {
-  res.sendFile(
-    path.resolve(__dirname + "../../client/public/views/login.html")
-  );
+  res.sendFile(path.resolve(__dirname + "../../client/dist/login.html"));
 });
 
 router.get("/logged/user", checkIsAuthenticated, (req, res) => {
