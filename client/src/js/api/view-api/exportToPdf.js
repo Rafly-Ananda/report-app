@@ -89,9 +89,6 @@ const drawTable = (table, startY = 40) => {
       fontStyle: "bold",
     },
     bodyStyles: { lineColor: [0, 0, 0] },
-    didDrawPage: function (data) {
-      // console.log(data.cursor.y);
-    },
   });
 };
 
@@ -136,7 +133,6 @@ const exportToPdf = (tableData, username, canvases, descs, titleArr) => {
   });
 
   // ? Attached desc table to respective graph data
-
   pages.forEach((page, index) => {
     // ** Draw Table
     pdf.setPage(+page + 1);

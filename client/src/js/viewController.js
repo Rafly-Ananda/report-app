@@ -98,7 +98,8 @@ const getData = async (date) => {
 
 async function getLoggedUser() {
   try {
-    const response = await axios.get("logged/user");
+    const response = await axios.get("/logged/user");
+    console.log(response.data);
     loggedUser.textContent = response.data;
     return response.data;
   } catch (error) {
