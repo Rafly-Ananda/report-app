@@ -1,10 +1,9 @@
-CREATE DATABASE report_app;
+-- CREATE DATABASE report_app;
 
 CREATE TABLE users(
     id BIGSERIAL NOT NULL PRIMARY KEY,
     username VARCHAR (255) UNIQUE,
-    password VARCHAR(255),
-    roles VARCHAR(255)
+    password VARCHAR(255)
 );
 
 CREATE TABLE data_input(
@@ -13,7 +12,3 @@ CREATE TABLE data_input(
     added_at VARCHAR (255) NOT NULL,
     dataset jsonb NOT NULL
 );
-
-
-
- 
